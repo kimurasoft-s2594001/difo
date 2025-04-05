@@ -1,0 +1,88 @@
+#recruit {
+    background-color: #0000008a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#recruit .recruit-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#recruit .recruit-content>div {
+    height: 100%;
+    width: 50%;
+    padding: 0 20px;
+}
+
+#recruit .recruit-title {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#recruit .recruit-area {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+#recruit .recruit-area .recruit-image {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+#recruit .recruit-area .recruit-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000050;
+    z-index: 1;
+}
+
+#recruit .recruit-area .recruit-image h3 {
+    position: absolute;
+    z-index: 1;
+    color: #ffffff;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+#recruit .recruit-area .recruit-image img {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+
+
+
+#recruit .recruit-background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background: url(../images/recruit/31944039_m.jpg);
+    width: 100%;
+    height: 100%;
+}

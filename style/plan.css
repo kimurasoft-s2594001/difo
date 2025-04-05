@@ -1,0 +1,50 @@
+#plan {
+    background-color: #e9e2cf;
+}
+
+#plan .plan-title {
+    text-align: center;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+}
+
+#plan .plan-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70%;
+
+}
+
+#plan .plan-area .plan-content {
+    text-align: center;
+    width: 200px;
+    height: 400px;
+    padding: 20px;
+}
+
+#plan .plan-area .plan-content:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    scale: 1.05;
+    border: 1px solid #000000;
+    border-radius: 10px;
+
+}
+
+#plan .plan-area .plan-content h3 {
+    margin: 40px 0;
+}
+#plan .plan-area .plan-content:hover h3{
+    color: #000000;
+}
+#plan .plan-area .plan-content svg {
+    fill: #6b6b6b;
+}
+#plan .plan-area .plan-content:hover svg{
+    fill: #000000;
+}
