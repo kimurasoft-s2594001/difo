@@ -3,13 +3,20 @@
     height: 100%;
     border-top-left-radius: 100% 10%;
     border-bottom-right-radius: 100% 10%;
-    background-color: #e6f1ab;
+    background-color: #c78d5c;
+    color: #ffffff;
 }
 
 #products .content>div {
     height: 100%;
 }
 
+
+#products .content .product-content .content-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #products .content .product-content {
     float: left;
@@ -18,7 +25,6 @@
     align-items: center;
     flex-direction: column;
     height: 100%;
-    width: 50%;
 }
 
 #products .content .product-area {
@@ -27,7 +33,6 @@
     align-items: center;
     flex-direction: column;
     height: 100%;
-    width: 50%;
 }
 
 #products .content .product-image {

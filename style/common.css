@@ -1,0 +1,102 @@
+:root {
+    --text-color-light: #ffffff;
+    --text-color-dark: #6b6b6b;
+    --fill-color-light: #ffffff;
+    --fill-color-dark: #6b6b6b;
+    --container-area-width: 850px;
+    --container-area-height: 100vh;
+    --header-z-index: 99;
+    --body-z-index: 1;
+    --footer-z-index: 1;
+    --background-z-index: -99;
+    --h4-font-size: 35pt;
+    --h3-font-size: 20pt;
+    --p-font-size: 14pt;
+    --logo-height-width: 50px;
+    --header-height: var(--logo-height-width);
+    --body-height: calc(100vh - var(--header-height));
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-image: url(../images/background/bk.jpg);
+    background-repeat: repeat;
+    background-size: 100%;
+    min-width: 850px;
+    z-index: -99;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+h4,
+h3,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+h4 {
+    font-size: var(--h4-font-size);
+    font-weight: bold;
+}
+
+h3 {
+    font-size: var(--h3-font-size);
+    font-weight: bold;
+}
+
+P {
+    font-size: var(--p-font-size);
+}
+
+.user-select-none {
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+ */
+    -webkit-touch-callout: none;
+    /* Safari */
+    -webkit-user-drag: none;
+    /* Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Opera, Edge, and Safari */
+}
+
+.container-area {
+    margin: auto;
+    padding: 0 50px;
+    width: 850px;
+}
+
+.page {
+    scroll-snap-align: start end;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.dark {
+    color: var(--text-color-light);
+    fill: var(--fill-color-light);
+}
+
+.light {
+    color: var(--text-color-dark);
+    fill: var(--fill-color-dark);
+}
