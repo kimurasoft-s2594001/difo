@@ -1,6 +1,5 @@
-#news {
-    background-color: #ffffff;
-
+.news {
+    background-color: var(--page-background-color-wheat);
 }
 
 #news .news-container {

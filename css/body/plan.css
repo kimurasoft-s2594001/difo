@@ -1,5 +1,5 @@
 #plan {
-    background-color: #e9e2cf;
+    background-color: var(--page-background-color-green);
 }
 
 #plan .plan-title {
@@ -26,6 +26,11 @@
     padding: 20px;
 }
 
+
+#plan .plan-area .plan-content h3 {
+    margin: 40px 0;
+}
+
 #plan .plan-area .plan-content:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
@@ -36,15 +41,13 @@
 
 }
 
-#plan .plan-area .plan-content h3 {
-    margin: 40px 0;
-}
-#plan .plan-area .plan-content:hover h3{
+#plan .plan-area .plan-content:hover h3,
+#plan .plan-area .plan-content:hover p {
     color: #000000;
+    transition: all 0.3s ease-in-out;
 }
-#plan .plan-area .plan-content svg {
-    fill: #6b6b6b;
-}
-#plan .plan-area .plan-content:hover svg{
+
+#plan .plan-area .plan-content:hover svg {
     fill: #000000;
+    transition: all 0.3s ease-in-out;
 }

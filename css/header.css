@@ -7,6 +7,10 @@
     z-index: var(--header-z-index);
     background-color: #494949c2;
     backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .header .container-area {

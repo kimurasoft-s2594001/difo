@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style/common.css">
-    <link rel="stylesheet" href="style/header.css">
-    <link rel="stylesheet" href="style/body.css">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/body/home.css">
-    <link rel="stylesheet" href="style/products.css">
-    <link rel="stylesheet" href="style/plan.css">
-    <link rel="stylesheet" href="style/about.css">
-    <link rel="stylesheet" href="style/recruit.css">
-    <link rel="stylesheet" href="style/recruit.css">
-    <link rel="stylesheet" href="style/news.css">
-    <link rel="stylesheet" href="style/footer.css">
-    <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
-    <!-- <script src="script.js"></script> -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/body/home.css">
+    <link rel="stylesheet" href="css/body/products.css">
+    <link rel="stylesheet" href="css/body/plan.css">
+    <link rel="stylesheet" href="css/body/about.css">
+    <link rel="stylesheet" href="css/body/recruit.css">
+    <link rel="stylesheet" href="css/body/news.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
@@ -34,10 +32,10 @@
             <div class="navigation">
                 <a href="#home">ホーム</a>
                 <a href="#products">製品紹介</a>
-                <a href="#plan">プラン紹介</a>
+                <a href="#plan">プラン</a>
                 <a href="#about">会社概要</a>
                 <a href="#recruit">採用情報</a>
-                <a href="#news">ニュース一覧</a>
+                <a href="#news">ニュース</a>
                 <a href="https://www.shulin-soft.com:8048/login.html">ログイン</a>
             </div>
         </div>
@@ -56,9 +54,9 @@
                     従来の製造トレーニングに必要な材料や機械・電気設備の使用費用を削減することが可能です。</p>
             </div>
         </div>
-        <div id="products" class="page">
-            <div class="content">
-                <div class="content-area">
+        <div id="products" class="products page light">
+            <div id="products-background" class="products-background">
+                <div id="products-container-area" class="products-container-area container-area">
                     <div class="product-content">
                         <h4>製品紹介</h4>
                         <p> オンラインシミュレーション職業技能研修ソフトウェアは、職業訓練を受ける学生や新入社員が、実際の作業環境に近い形でスキルを習得できるように設計されています。
@@ -68,27 +66,38 @@
                     </div>
                     <div class="product-area">
                         <div class="product-image">
-                            <img src="images/products/goodsImg01.png" alt="Product Image">
+                            <h2> 階段軸<br>プログラミング加工</h2>
+                            <img src="images/products/NC旋盤.jpg" alt="Product Image">
                         </div>
                         <div class="product-image">
-                            <img src="images/products/goodsImg02.png" alt="Product Image">
+                            <h2> 円形部品<br>プログラミング加工</h2>
+                            <img src="images/products/マシニングセンター.png" alt="Product Image">
                         </div>
                         <div class="product-image">
-                            <img src="images/products/goodsImg03.png" alt="Product Image">
+                            <h2> 正逆転制御回路</h2>
+                            <img src="images/products/電磁開閉器.jpg" alt="Product Image">
                         </div>
                         <div class="product-image">
-                            <img src="images/products/goodsImg04.png" alt="Product Image">
+                            <h2> 研削盤制御回路</h2>
+                            <img src="images/products/金属製のファクトリーマシン.jpg" alt="Product Image">
+                        </div>
+                        <div class="product-image">
+                            <h2> 気圧切替回路</h2>
+                            <img src="images/products/ソレノイドオペレーテッドバルブ.png" alt="Product Image">
+                        </div>
+                        <div class="product-image">
+                            <h2> 油圧制御回路</h2>
+                            <img src="images/products/油圧.png" alt="Product Image">
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-        <div id="plan" class="page">
-            <div class="plan-title content-area">
-                <h4>プラン紹介</h4>
+        <div id="plan" class="page dark">
+            <div class="plan-title container-area">
+                <h4>プラン</h4>
             </div>
-            <div class="plan-area content-area">
+            <div class="plan-area container-area">
                 <div class="plan-content">
                     <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
@@ -177,23 +186,17 @@
                 </div>
             </div>
         </div>
-        <div id="about" class="page">
-            <div class="about-content content-area">
+        <div id="about" class="about page light">
+            <div class="about-content container-area">
                 <h4>会社概要</h4>
                 <p>私たちの会社は、オンラインシミュレーション職業技能研修ソフトウェアの開発を専門としています。
                     私たちの目標は、ユーザーが実際の作業環境に近い形でスキルを習得できるようにすることです。
                     私たちは、最新の技術を駆使して、ユーザーに最高の学習体験を提供します。</p>
             </div>
-            <div class="about-map content-area">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d808.8395389611117!2d139.7008843696421!3d35.81568738579086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601895007faa2589%3A0x9cea66f6ce98a450!2z44Oe44OK44OE44Or5ZWG5LqL5qCq5byP5Lya56S-!5e0!3m2!1sja!2sjp!4v1743866508238!5m2!1sja!2sjp"
-                    width="850" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
         </div>
-        <div id="recruit" class="page">
-            <div class="recruit-content content-area">
-                <div class="recruit-title">
+        <div id="recruit" class="recruit page dark">
+            <div class="recruit-container container-area">
+                <div class="recruit-content">
                     <h4>採用情報</h4>
                     <p>私たちの会社では、常に新しい才能を求めています。
                         私たちは、情熱を持っている人々と共に働くことを楽しみにしています。
@@ -208,14 +211,11 @@
             </div>
             <div class="recruit-background"></div>
         </div>
-        <div id="news" class="page">
-            <div class="news-container content-area">
-                <h4>ニュース一覧</h4>
+        <div id="news" class="news page light">
+            <div class="news-container container-area">
+                <h4>ニュース</h4>
                 <ul class="news-list">
                     <li class="news-item">
-                        <div class="news-image">
-                            <img src="images/news/c837a6_870aaf57c1d9484a9a6ee57f2465df75~mv2.avif" alt="">
-                        </div>
                         <div class="news-content">
                             <h3>新製品発売のお知らせ</h3>
                             <p>新製品「オンラインシミュレーション職業技能研修ソフトウェア」の発売を発表します。
@@ -223,9 +223,6 @@
                         </div>
                     </li>
                     <li class="news-item">
-                        <div class="news-image">
-                            <img src="images/news/AV8684_d8076_TP_V.jpg" alt="">
-                        </div>
                         <div class="news-content">
                             <h3>新製品発売のお知らせ</h3>
                             <p>新製品「オンラインシミュレーション職業技能研修ソフトウェア」の発売を発表します。
@@ -233,9 +230,6 @@
                         </div>
                     </li>
                     <li class="news-item">
-                        <div class="news-image">
-                            <img src="images/news/AI_24911400025_TP_V.webp" alt="">
-                        </div>
                         <div class="news-content">
                             <h3>新製品発売のお知らせ</h3>
                             <p>新製品「オンラインシミュレーション職業技能研修ソフトウェア」の発売を発表します。
@@ -258,10 +252,10 @@
                 <div class="footer-navi">
                     <h2>LINK</h2>
                     <a href="#products">製品紹介</a>
-                    <a href="#plan">プラン紹介</a>
+                    <a href="#plan">プラン</a>
                     <a href="#about">会社概要</a>
                     <a href="#recruit">採用情報</a>
-                    <a href="#news">ニュース一覧</a>
+                    <a href="#news">ニュース</a>
                     <a href="https://www.shulin-soft.com:8048/login.html">ログイン</a>
                 </div>
                 <div class="footer-info">
@@ -321,7 +315,6 @@
                 <p>Copyright© 2025 Manatsuru Corporation, Ltd. All rights reserved.</p>
             </div>
         </div>
-        <!-- <div id="background" class="background user-select-none"></div> -->
     </div>
     <div id="side-navi" class="side-navi">
         <a href="#home">
