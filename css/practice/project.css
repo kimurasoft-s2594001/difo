@@ -1,0 +1,19 @@
+.project {
+    background-color: var(--page-background-color-wheat);
+}
+
+.project-container-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-title {
+    text-align: center;
+}
+
+.project-content {
+    width: 100%;
+}

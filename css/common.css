@@ -27,7 +27,7 @@ html {
 
 body {
     margin: 0;
-    background-image: url(../images/background/bk.jpg);
+    background-image: url(../img/background/bk.jpg);
     background-repeat: repeat;
     background-size: 100%;
     min-width: var(--container-area-width);
@@ -49,7 +49,8 @@ body::before {
 h4,
 h3,
 h2,
-p {
+p,
+a {
     margin: 0;
     padding: 0;
 }
@@ -72,6 +73,11 @@ h2 {
 P {
     margin-top: 20px;
     font-size: var(--p-font-size);
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
 }
 
 .show {

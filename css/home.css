@@ -4,18 +4,18 @@
 }
 
 .home-container-area {
-display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100%;
 }
 
-.home-container-area h4{
+.home-container-area h4 {
     text-align: center;
 }
 
-.home-container-area p{
+.home-container-area p {
     margin-top: 50px;
     padding: 0 50px;
 }
