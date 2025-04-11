@@ -27,12 +27,12 @@ html {
 
 body {
     margin: 0;
-    background-image: url(../img/background/bk.jpg);
-    background-repeat: repeat;
-    background-size: 100%;
-    min-width: var(--container-area-width);
-    z-index: -99;
-    opacity: 0;
+    /* background-image: url(../img/background/bk.jpg); */
+    /* background-repeat: repeat; */
+    /* background-size: 100%; */
+    /* min-width: var(--container-area-width); */
+    /* z-index: -99; */
+    /* opacity: 0; */
 }
 
 body::before {

@@ -1,0 +1,13 @@
+.news-detail-content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.news-detail-content a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: bold;
+}
