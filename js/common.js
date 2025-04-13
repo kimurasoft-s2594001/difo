@@ -103,7 +103,6 @@ const sideBtnContent = `
         <circle cx="12" cy="12" r="10"></circle>
     </svg>`;
 
-// 初始化函数
 $.loadBefore = function () {
     // 加载头部和底部内容
     $("#header").html(headerContent);

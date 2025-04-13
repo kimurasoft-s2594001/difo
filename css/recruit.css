@@ -1,45 +1,45 @@
 .recruit {
-    background-color: var(--page-background-color-wheat);
+  background-color: var(--page-background-color-wheat);
 }
 
 .description-container-area,
 .recruitment-container-area,
 .treatment-container-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-.description-container-area>div,
-.recruitment-container-area>div,
-.treatment-container-area>div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-    align-items: start;
+.description-container-area > div,
+.recruitment-container-area > div,
+.treatment-container-area > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  align-items: start;
 }
 
-.description-container-area>div.description-left,
-.recruitment-container-area>div.recruitment-left,
-.treatment-container-area>div.treatment-left {
-    padding-right: 50px;
+.description-container-area > div.description-left,
+.recruitment-container-area > div.recruitment-left,
+.treatment-container-area > div.treatment-left {
+  padding-right: 50px;
 }
 
-.description-container-area>div.description-right,
-.recruitment-container-area>div.recruitment-right,
-.treatment-container-area>div.treatment-right {
-    align-items: start;
-    padding-left: 50px;
+.description-container-area > div.description-right,
+.recruitment-container-area > div.recruitment-right,
+.treatment-container-area > div.treatment-right {
+  align-items: start;
+  padding-left: 50px;
 }
 
 .container-area h3 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .container-area p {
-    padding-left: 10px;
+  padding-left: 10px;
 }

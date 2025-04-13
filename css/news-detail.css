@@ -1,13 +1,17 @@
+.news-detail {
+  background-color: var(--page-background-color-wheat);
+}
+
 .news-detail-content {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: 100%;
 }
 
 .news-detail-content a {
-    color: #ffffff;
-    text-decoration: underline;
-    font-weight: bold;
+  color: inherit;
+  text-decoration: underline;
+  font-weight: bold;
 }
