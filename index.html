@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ホーム</title>
     <link rel="stylesheet" href="css/common.css">
+    <!-- <link rel="stylesheet" href="style.css" media="screen and (max-width: 768px)">     -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/index/products.css">
@@ -16,7 +17,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
+    <script src="js/common.js"></script>
 </head>
 
 <body>
@@ -56,40 +57,38 @@
             </div>
         </div>
         <div id="products" class="products page light">
-            <div id="products-background" class="products-background">
-                <div id="products-container-area" class="products-container-area container-area">
-                    <div class="product-content">
-                        <h4>製品紹介</h4>
-                        <p> オンラインシミュレーション職業技能研修ソフトウェアは、職業訓練を受ける学生や新入社員が、実際の作業環境に近い形でスキルを習得できるように設計されています。
-                        </p>
-                        <p> このソフトウェアは、様々な業種や職種に対応しており、ユーザーは自分のペースで学習を進めることができます。
-                        </p>
+            <div id="products-container-area" class="products-container-area container-area">
+                <div class="product-content">
+                    <h4>製品紹介</h4>
+                    <p> オンラインシミュレーション職業技能研修ソフトウェアは、職業訓練を受ける学生や新入社員が、実際の作業環境に近い形でスキルを習得できるように設計されています。
+                    </p>
+                    <p> このソフトウェアは、様々な業種や職種に対応しており、ユーザーは自分のペースで学習を進めることができます。
+                    </p>
+                </div>
+                <div class="product-area">
+                    <div class="product-image">
+                        <a href="cnct.html"> 階段軸<br>プログラミング加工</a>
+                        <img src="img/products/NC旋盤.jpg" alt="Product Image">
                     </div>
-                    <div class="product-area">
-                        <div class="product-image">
-                            <a href="cnct.html"> 階段軸<br>プログラミング加工</a>
-                            <img src="img/products/NC旋盤.jpg" alt="Product Image">
-                        </div>
-                        <div class="product-image">
-                            <a href="cnct.html"> 円形部品<br>プログラミング加工</a>
-                            <img src="img/products/マシニングセンター.png" alt="Product Image">
-                        </div>
-                        <div class="product-image">
-                            <a href="cnct.html"> 正逆転制御回路</a>
-                            <img src="img/products/電磁開閉器.jpg" alt="Product Image">
-                        </div>
-                        <div class="product-image">
-                            <a href="cnct.html"> 研削盤制御回路</a>
-                            <img src="img/products/金属製のファクトリーマシン.jpg" alt="Product Image">
-                        </div>
-                        <div class="product-image">
-                            <a href="cnct.html"> 気圧切替回路</a>
-                            <img src="img/products/ソレノイドオペレーテッドバルブ.png" alt="Product Image">
-                        </div>
-                        <div class="product-image">
-                            <a href="cnct.html"> 油圧制御回路</a>
-                            <img src="img/products/油圧.jpg" alt="Product Image">
-                        </div>
+                    <div class="product-image">
+                        <a href="cnct.html"> 円形部品<br>プログラミング加工</a>
+                        <img src="img/products/マシニングセンター.png" alt="Product Image">
+                    </div>
+                    <div class="product-image">
+                        <a href="cnct.html"> 正逆転制御回路</a>
+                        <img src="img/products/電磁開閉器.jpg" alt="Product Image">
+                    </div>
+                    <div class="product-image">
+                        <a href="cnct.html"> 研削盤制御回路</a>
+                        <img src="img/products/金属製のファクトリーマシン.jpg" alt="Product Image">
+                    </div>
+                    <div class="product-image">
+                        <a href="cnct.html"> 気圧切替回路</a>
+                        <img src="img/products/ソレノイドオペレーテッドバルブ.png" alt="Product Image">
+                    </div>
+                    <div class="product-image">
+                        <a href="cnct.html"> 油圧制御回路</a>
+                        <img src="img/products/油圧.jpg" alt="Product Image">
                     </div>
                 </div>
             </div>
@@ -211,7 +210,8 @@
                 <div class="recruit-content">
                     <a href="recruit.html"></a>
                     <h4>採用情報</h4>
-                    <p>私たちは、常に新しい挑戦を楽しみながら、一緒に成長できる仲間を募集しています。技術やものづくりに興味があり、自ら学び続ける意欲をお持ちの方を歓迎します。最先端の開発環境と多様なプロジェクトを通じて、自分の可能性を広げてみませんか？</p>
+                    <p>私たちは、常に新しい挑戦を楽しみながら、一緒に成長できる仲間を募集しています。技術やものづくりに興味があり、自ら学び続ける意欲をお持ちの方を歓迎します。最先端の開発環境と多様なプロジェクトを通じて、自分の可能性を広げてみませんか？
+                    </p>
                 </div>
                 <div class="recruit-area">
                     <a href="recruit.html">
@@ -226,29 +226,42 @@
         </div>
         <div id="news" class="news page light">
             <div class="news-container container-area">
-                <h4>ニュース</h4>
-                <ul class="news-list">
-                    <li class="news-item">
-                        <div class="news-content">
-                            <h3>第16回 EDIX（教育総合展）東京</h3>
-                            <p>出展のお知らせ（4/23～25）</p>
-                        </div>
-                    </li>
-                    <li class="news-item">
-                        <div class="news-content">
-                            <h3>新製品発売のお知らせ</h3>
-                            <p>新製品「オンラインシミュレーション職業技能研修ソフトウェア」の発売を発表します。
-                                詳細は製品紹介ページをご覧ください。</p>
-                        </div>
-                    </li>
-                    <li class="news-item">
-                        <div class="news-content">
-                            <h3>新製品発売のお知らせ</h3>
-                            <p>新製品「オンラインシミュレーション職業技能研修ソフトウェア」の発売を発表します。
-                                詳細は製品紹介ページをご覧ください。</p>
-                        </div>
-                    </li>
-                </ul>
+                <div class="news-container-title">
+                    <h4>ニュース</h4>
+                </div>
+                <div class="news-container-list">
+                    <ul class="news-list">
+                        <li class="news-item">
+                            <div class="news-content">
+                                <a href="news_detail.html">
+                                    <h3>出展のお知らせ（4/23～25）</h3>
+                                </a>
+                                <p>第16回 EDIX（教育総合展）東京</p>
+                            </div>
+                        </li>
+                        <li class="news-item">
+                            <div class="news-content">
+                                <a href="news_detail.html">
+                                    <h3>新製品発売のお知らせ</h3>
+                                </a>
+                                <p>新製品「オンラインシミュレーション職業技能研修ソフトウェア」の発売を発表します。
+                                    詳細は製品紹介ページをご覧ください。</p>
+                            </div>
+                        </li>
+                        <li class="news-item">
+                            <div class="news-content">
+                                <a href="news_detail.html">
+                                    <h3>新製品発売のお知らせ</h3>
+                                </a>
+                                <p>新製品「オンラインシミュレーション職業技能研修ソフトウェア」の発売を発表します。
+                                    詳細は製品紹介ページをご覧ください。</p>
+                            </div>
+                        </li>
+                        <li style="text-align: right;">
+                            MORE
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div id="footer" class="footer page">

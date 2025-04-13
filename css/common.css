@@ -120,7 +120,7 @@ a {
     height: var(--page-height);
     position: relative;
     padding-top: var(--header-height);
-    min-height: calc(500px - var(--header-height));
+    min-height: calc(700px - var(--header-height));
 }
 
 .dark {

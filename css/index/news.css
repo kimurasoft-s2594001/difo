@@ -1,22 +1,31 @@
 .news {
     background-color: var(--page-background-color-wheat);
+
 }
 
-#news .news-container {
+.news-container {
+    height: 100%;
+}
+
+.news-container-title {
+    height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
 }
 
-#news .news-container .news-list {
+.news-container-list {
+    height: 80%;
+}
+
+.news-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#news .news-container .news-list .news-item {
+.news-item {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -26,23 +35,17 @@
     padding-bottom: 20px;
 }
 
-#news .news-container .news-list .news-item .news-image {
-    width: 300px;
-    height: 200px;
-    overflow: hidden;
-    background-size: 300px;
-}
-
-#news .news-container .news-list .news-item .news-image img {
-    width:  100%;
-}
-
-#news .news-container .news-list .news-item .news-content {
-    width: calc(100% - 300px - 40px);
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-direction: column;
+.news-content {
     padding: 0 20px;
+    margin: auto;
+    width: 500px;
+}
+
+.news-content a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.news-content a:hover {
+    text-decoration: underline;
 }
