@@ -103,11 +103,29 @@ const sideBtnContent = `
         <circle cx="12" cy="12" r="10"></circle>
     </svg>`;
 
+/**
+ * 更全面的移动设备检测方法
+ * 同时检查 User-Agent 和触摸事件支持
+ * @returns {boolean} 如果是移动设备则返回 true
+ */
+function isComprehensiveMobileCheck() {
+    // 检查 User-Agent
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    // 检查触摸事件支持
+    const hasTouchSupport = 'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0;
+
+    // 检查屏幕尺寸
+    const hasSmallScreen = window.innerWidth < 768;
+    return mobileRegex.test(userAgent) || (hasTouchSupport && hasSmallScreen);
+}
+
 $.loadBefore = function () {
     // 加载头部和底部内容
     $("#header").html(headerContent);
     $("#footer").html(footerContent);
-
     const sideNaviTag = $("#side-navi");
     // 加载侧边导航内容
     $(".page").each(function () {
@@ -115,7 +133,8 @@ $.loadBefore = function () {
             $("<a></a>").attr("href", "#" + this.id).append(sideBtnContent)
         );
     });
-
+    // 判定终端类型，添加相应的类名
+    $("body").addClass(isComprehensiveMobileCheck() ? "mobile-device" : "desktop-device");
 };
 
 $.loadAfter = function () {

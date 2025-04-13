@@ -1,0 +1,87 @@
+.practice {
+  background-color: var(--page-background-color-wheat);
+}
+
+.practice-container-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.practice-title {
+  text-align: center;
+}
+
+.practice-content {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.drawings {
+  background-color: var(--page-background-color-wheat);
+}
+
+.drawings-container-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.drawings-title {
+  text-align: center;
+}
+
+.drawings-content {
+  width: 100%;
+}
+.drawings-content img {
+  width: 100%;
+}
+
+.project {
+  background-color: var(--page-background-color-wheat);
+}
+
+.project-container-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-title {
+  text-align: center;
+}
+
+.project-content {
+  width: 100%;
+}
+
+.evaluation {
+  background-color: var(--page-background-color-wheat);
+}
+
+.evaluation-container-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.evaluation-title {
+  text-align: center;
+}
+
+.evaluation-content {
+  width: 100%;
+}
+
+.evaluation-content img {
+  width: 100%;
+}
