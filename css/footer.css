@@ -2,6 +2,8 @@
     background-color: #505050;
     color: #ffffff;
     height: 500px;
+    padding: 0;
+    min-height: auto;
 }
 
 #footer .footer-content {
