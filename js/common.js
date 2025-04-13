@@ -1,4 +1,5 @@
 const loginUrl = "https://www.shulin-soft.com:8048/login.html";
+const homePage = "index.html";
 const headerContent = `
     <div id="header-container-area" class="header-container-area container-area">
         <a href="index.html" class="logo">
@@ -10,13 +11,13 @@ const headerContent = `
             </svg>
         </a>
         <div class="navigation">
-            <a href="#home">ホーム</a>
-            <a href="#products">製品紹介</a>
-            <a href="#plan">プラン</a>
-            <a href="#about">会社概要</a>
-            <a href="#recruit">採用情報</a>
-            <a href="#news">ニュース</a>
-            <a href="${loginUrl}">ログイン</a>
+            <a href="${homePage}#home">ホーム</a>
+            <a href="${homePage}#products">製品紹介</a>
+            <a href="${homePage}#plan">プラン</a>
+            <a href="${homePage}#about">会社概要</a>
+            <a href="${homePage}#recruit">採用情報</a>
+            <a href="${homePage}#news">ニュース</a>
+            <a class="login-btn" href="${loginUrl}">ログイン</a>
         </div>
     </div>`;
 
@@ -34,12 +35,12 @@ const footerContent = `
         </div>
         <div class="footer-navi">
             <h2>LINK</h2>
-            <a href="#products">製品紹介</a>
-            <a href="#plan">プラン</a>
-            <a href="#about">会社概要</a>
-            <a href="#recruit">採用情報</a>
-            <a href="#news">ニュース</a>
-            <a href="${loginUrl}">ログイン</a>                    
+            <a href="${homePage}#products">製品紹介</a>
+            <a href="${homePage}#plan">プラン</a>
+            <a href="${homePage}#about">会社概要</a>
+            <a href="${homePage}#recruit">採用情報</a>
+            <a href="${homePage}#news">ニュース</a>
+            <a class="login-btn" href="${loginUrl}">ログイン</a>                    
         </div>
         <div class="footer-info">
             <h2>INFO</h2>
@@ -102,8 +103,8 @@ const sideBtnContent = `
         <circle cx="12" cy="12" r="10"></circle>
     </svg>`;
 
-// 这是一个公共的 JavaScript 文件，用于存放所有页面通用的 JS 代码
-$(document).ready(function () {
+// 初始化函数
+$.loadBefore = function () {
     // 加载头部和底部内容
     $("#header").html(headerContent);
     $("#footer").html(footerContent);
@@ -115,6 +116,10 @@ $(document).ready(function () {
             $("<a></a>").attr("href", "#" + this.id).append(sideBtnContent)
         );
     });
+
+};
+
+$.loadAfter = function () {
     // 页面加载完毕后，显示隐藏的画面
     $("body").addClass("show");
-});
+}
