@@ -1,0 +1,47 @@
+.header-container-area {
+  height: var(--header-height);
+}
+
+.header .logo {
+  width: var(--logo-height-width);
+  height: var(--logo-height-width);
+}
+.header .menu-btn {
+  width: var(--logo-height-width);
+  height: var(--logo-height-width);
+  fill: #ffffff;
+  display: block;
+}
+
+.header .navigation {
+  position: fixed;
+  left: 0;
+  top: var(--header-height);
+  justify-content: start !important;
+  align-items: start !important;
+  flex-direction: column;
+  background-color: #3e3e3ef7;
+  z-index: var(--header-z-index);
+  padding-left: var(--container-area-padding-left-right);
+  padding-right: var(--container-area-padding-left-right);
+  width: calc(
+    var(--container-area-width) - var(--container-area-padding-left-right) * 2
+  );
+  height: 0px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.header .navigation.show {
+  height: 330px;
+}
+.header .navigation a {
+  padding: 10px 0;
+  display: block;
+  width: 100%;
+}
+
+.header .navigation a:active {
+  text-decoration: underline !important;
+  color: #a8a8a8;
+}

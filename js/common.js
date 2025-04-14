@@ -10,6 +10,7 @@ const headerContent = `
                     fill-rule="nonzero" />
             </svg>
         </a>
+        <svg class="menu-btn" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
         <div class="navigation">
             <a href="${homePage}#home">ホーム</a>
             <a href="${homePage}#products">製品紹介</a>
@@ -20,9 +21,8 @@ const headerContent = `
             <a class="login-btn" href="${loginUrl}">ログイン</a>
         </div>
     </div>`;
-
 const footerContent = `
-    <div class="footer-content content-area">
+    <div class="footer-content container-area">
         <div class="footer-logo">
             <a href="index.html" class="logo">
                 <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
@@ -97,7 +97,6 @@ const footerContent = `
     <div class="footer-meta content-area">
         <p>Copyright© 2025 Manatsuru Corporation, Ltd. All rights reserved.</p>
     </div>`;
-
 const sideBtnContent = `
     <svg class="side-btn" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10"></circle>
@@ -124,6 +123,7 @@ function isComprehensiveMobileCheck() {
 
 $.loadBefore = function () {
     // 加载头部和底部内容
+    // $("#header").html(isComprehensiveMobileCheck() ? headerContentMobile : headerContent);
     $("#header").html(headerContent);
     $("#footer").html(footerContent);
     const sideNaviTag = $("#side-navi");
@@ -135,6 +135,17 @@ $.loadBefore = function () {
     });
     // 判定终端类型，添加相应的类名
     $("body").addClass(isComprehensiveMobileCheck() ? "mobile-device" : "desktop-device");
+
+    $(".menu-btn").on("click", function () {
+        // 点击菜单按钮，显示或隐藏导航栏
+        $(".navigation").toggleClass("show");
+    });
+    $(window).on("click", function () {
+        // 点击窗口其他地方，隐藏导航栏
+        if ($(".navigation").hasClass("show") && !$(event.target).closest(".menu-btn").length) {
+            $(".navigation").removeClass("show");
+        }
+    });
 };
 
 $.loadAfter = function () {

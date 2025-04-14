@@ -1,7 +1,15 @@
+:root {
+  --footer-height: 500px;
+  --footer-content-div-height: 300px;
+  --footer-meta-height: 50px;
+  --footer-content-height: calc(
+    var(--footer-height) - var(--footer-meta-height)
+  );
+}
 #footer {
   background-color: #505050;
   color: #ffffff;
-  height: 500px;
+  height: var(--footer-height);
   padding: 0;
   min-height: auto;
 }
@@ -11,11 +19,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  height: calc(100% - 50px);
+  height: var(--footer-content-height);
 }
 
 #footer .footer-content > div {
-  height: 300px;
+  height: var(--footer-content-div-height);
   width: 150px;
   margin: 0 10px;
   display: flex;

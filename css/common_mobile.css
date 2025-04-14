@@ -1,0 +1,27 @@
+:root {
+  --container-area-width-mobile: 100vw;
+  --container-area-width: var(--container-area-width-mobile);
+  --container-area-padding-left-right-mobile: 20px;
+  --container-area-padding-left-right: var(
+    --container-area-padding-left-right-mobile
+  );
+  --h4-font-size-mobile: 20pt;
+  --h4-font-size: var(--h4-font-size-mobile);
+  --h3-font-size-mobile: 15pt;
+  --h3-font-size: var(--h3-font-size-mobile);
+  --h2-font-size-mobile: 13pt;
+  --h2-font-size: var(--h2-font-size-mobile);
+  --p-font-size-mobile: 13pt;
+  --p-font-size: var(--p-font-size-mobile);
+}
+
+.container-area {
+  width: calc(
+    var(--container-area-width) - var(--container-area-padding-left-right) * 2
+  );
+  min-width: auto;
+}
+
+.side-navi {
+  display: none;
+}
