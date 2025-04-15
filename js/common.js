@@ -94,7 +94,7 @@ const footerContent = `
             </div>
         </div>
     </div>
-    <div class="footer-meta content-area">
+    <div class="footer-meta container-area">
         <p>Copyright© 2025 Manatsuru Corporation, Ltd. All rights reserved.</p>
     </div>`;
 const sideBtnContent = `
@@ -108,47 +108,60 @@ const sideBtnContent = `
  * @returns {boolean} 如果是移动设备则返回 true
  */
 function isComprehensiveMobileCheck() {
-    // 检查 User-Agent
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-    // 检查触摸事件支持
-    const hasTouchSupport = 'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0 ||
-        navigator.msMaxTouchPoints > 0;
+  // 检查 User-Agent
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const mobileRegex =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  // 检查触摸事件支持
+  const hasTouchSupport =
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    navigator.msMaxTouchPoints > 0;
 
-    // 检查屏幕尺寸
-    const hasSmallScreen = window.innerWidth < 768;
-    return mobileRegex.test(userAgent) || (hasTouchSupport && hasSmallScreen);
+  // 检查屏幕尺寸
+  const hasSmallScreen = window.innerWidth < 768;
+  return mobileRegex.test(userAgent) || (hasTouchSupport && hasSmallScreen);
 }
 
 $.loadBefore = function () {
-    // 加载头部和底部内容
-    // $("#header").html(isComprehensiveMobileCheck() ? headerContentMobile : headerContent);
-    $("#header").html(headerContent);
-    $("#footer").html(footerContent);
-    const sideNaviTag = $("#side-navi");
-    // 加载侧边导航内容
-    $(".page").each(function () {
-        sideNaviTag.append(
-            $("<a></a>").attr("href", "#" + this.id).append(sideBtnContent)
-        );
-    });
-    // 判定终端类型，添加相应的类名
-    $("body").addClass(isComprehensiveMobileCheck() ? "mobile-device" : "desktop-device");
-
-    $(".menu-btn").on("click", function () {
-        // 点击菜单按钮，显示或隐藏导航栏
-        $(".navigation").toggleClass("show");
-    });
-    $(window).on("click", function () {
-        // 点击窗口其他地方，隐藏导航栏
-        if ($(".navigation").hasClass("show") && !$(event.target).closest(".menu-btn").length) {
-            $(".navigation").removeClass("show");
-        }
-    });
+  // 加载头部和底部内容
+  $("#header").html(headerContent);
+  $("#footer").html(footerContent);
+  const sideNaviTag = $("#side-navi");
+  // 加载侧边导航内容
+  $(".page").each(function () {
+    sideNaviTag.append(
+      $("<a></a>")
+        .attr("href", "#" + this.id)
+        .append(sideBtnContent)
+    );
+  });
+  // 判定终端类型，添加相应的类名
+  $("body").addClass(
+    isComprehensiveMobileCheck() ? "mobile-device" : "desktop-device"
+  );
+  // 点击菜单按钮，显示或隐藏导航栏
+  $(".menu-btn").on("click", function () {
+    $(".navigation").toggleClass("show");
+  });
+  $(window).on("click", function (event) {
+    // 点击窗口其他地方，隐藏导航栏
+    if (
+      $(".navigation").hasClass("show") &&
+      !$(event.target).closest(".menu-btn").length
+    ) {
+      $(".navigation").removeClass("show");
+    }
+  });
 };
 
 $.loadAfter = function () {
-    // 页面加载完毕后，显示隐藏的画面
-    $("body").addClass("show");
-}
+  // TODO for test
+  //   $(":root").css("--js-window-innerHeight", window.innerHeight + "px");
+  // 页面加载完毕后，显示隐藏的画面
+  $("body").addClass("show");
+
+  //   $("#header").append($("<h2 />").text($("#home").height()));
+  //   $("#header").append($("<h2 />").text($("#products").height()));
+  //   $("#header").append($("<h2 />").text($("#plan").height()));
+};
