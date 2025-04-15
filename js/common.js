@@ -156,12 +156,6 @@ $.loadBefore = function () {
 };
 
 $.loadAfter = function () {
-  // TODO for test
-  //   $(":root").css("--js-window-innerHeight", window.innerHeight + "px");
   // 页面加载完毕后，显示隐藏的画面
   $("body").addClass("show");
-
-  //   $("#header").append($("<h2 />").text($("#home").height()));
-  //   $("#header").append($("<h2 />").text($("#products").height()));
-  //   $("#header").append($("<h2 />").text($("#plan").height()));
 };
