@@ -6,6 +6,7 @@
   --plan-title-height: var(--plan-title-height-mobile);
   --news-container-title-height: 20%;
 }
+
 .home {
   background-image: url(../../img/background/bk.jpg);
   background-repeat: repeat;

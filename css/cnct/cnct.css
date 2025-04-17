@@ -1,3 +1,31 @@
+.container-area {
+  min-width: 1500px;
+}
+
+.home {
+  background-color: var(--page-background-color-wheat);
+  min-width: var(--container-area-width);
+  overflow: hidden;
+}
+
+.home-container-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.home-container-area h4 {
+  text-align: center;
+}
+
+.home-container-area p {
+  margin-top: 50px;
+  padding: 0 50px;
+}
+
 .practice {
   background-color: var(--page-background-color-wheat);
 }
@@ -16,6 +44,10 @@
 
 .practice-content {
   width: 60%;
+  margin: 0 auto;
+}
+
+.practice-content iframe {
   margin: 0 auto;
 }
 
@@ -39,7 +71,10 @@
   width: 100%;
 }
 .drawings-content img {
-  width: 100%;
+  width: 900px;
+  position: relative;
+  margin: 0 auto;
+  display: block;
 }
 
 .project {
@@ -55,11 +90,17 @@
 }
 
 .project-title {
+  height: 150px;
   text-align: center;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: column;
 }
 
 .project-content {
   width: 100%;
+  height: calc(100% - 150px);
 }
 
 .evaluation {
@@ -83,5 +124,8 @@
 }
 
 .evaluation-content img {
-  width: 100%;
+  width: 900px;
+  position: relative;
+  margin: 0 auto;
+  display: block;
 }
