@@ -1,0 +1,20 @@
+.news-detail {
+  background-color: var(--page-background-color-wheat);
+  height: auto;
+  min-height: 100%;
+}
+
+.news-detail-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.news-detail-content a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: bold;
+}

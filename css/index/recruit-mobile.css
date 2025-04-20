@@ -1,0 +1,21 @@
+section {
+  height: auto;
+}
+
+section .container-area {
+  flex-direction: column;
+}
+
+section .container-area > div {
+  width: 100%;
+}
+.container-left {
+  padding-right: 0;
+}
+
+.container-right {
+  padding-left: 0;
+}
+.treatment {
+  padding-bottom: 20px;
+}

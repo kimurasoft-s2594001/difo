@@ -1,7 +1,37 @@
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+}
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px; /* 滚动条宽度 */
+  height: 8px; /* 水平滚动条高度 */
 }
 
+::-webkit-scrollbar-track {
+  background: rgba(50, 50, 50, 0.8); /* 轨道背景色 - 深灰色半透明 */
+  border-radius: 4px; /* 轨道圆角 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.8); /* 滑块颜色 - 浅灰色半透明 */
+  border-radius: 4px; /* 滑块圆角 */
+  transition: background 0.3s; /* 过渡效果 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 180, 180, 0.9); /* 悬停时滑块颜色 - 更亮的灰色 */
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(50, 50, 50, 0.8); /* 滚动条交汇处的颜色 */
+}
+
+/* Firefox滚动条样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(150, 150, 150, 0.8) rgba(50, 50, 50, 0.8);
+}
 :root {
   --text-color-light: #ffffff;
   --text-color-dark: #6b6b6b;
@@ -42,8 +72,14 @@ body {
   margin: 0;
   opacity: 0;
   background-color: var(--page-background-color-grey);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  overflow: hidden;
 }
 
 body::before {
@@ -55,6 +91,11 @@ body::before {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: -1;
+}
+
+body.show {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
 }
 
 h4,
@@ -91,11 +132,6 @@ a {
   display: inline-block;
 }
 
-body.show {
-  opacity: 1;
-  transition: all 0.3s ease-in-out;
-}
-
 .user-select-none {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
@@ -112,21 +148,12 @@ body.show {
   fill: inherit;
 }
 
-.login-btn:active {
+.desktop-device .login-btn:hover,
+.mobile-device .login-btn:active {
   text-decoration: underline !important;
 }
 
-.body {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-}
-
-.header {
+header {
   position: relative;
   top: 0;
   left: 0;
@@ -141,24 +168,25 @@ body.show {
   margin: 0;
 }
 
-.header .container-area {
+header .container-area {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header .logo {
+header .logo {
   width: var(--logo-height-width);
   height: var(--logo-height-width);
 }
 
-.header .navigation {
+header .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
 }
 
-.header .navigation a {
+header .navigation a {
   padding: 10px;
   display: inline-block;
   font-size: 14pt;
@@ -170,30 +198,34 @@ body.show {
   display: none;
 }
 
-.body-container {
+main {
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   overflow-y: scroll;
+  overflow-x: hidden;
   position: relative;
   z-index: var(--body-z-index);
   width: 100%;
   height: calc(100% - var(--header-height));
+  min-width: var(--container-area-width);
 }
 
-.page {
+section {
   position: relative;
   width: 100%;
   height: 100%;
   scroll-snap-align: start end;
   min-height: var(--page-min-height);
+  margin: 0 auto;
 }
 
 .container-area {
+  position: relative;
   margin: auto;
   padding-left: var(--container-area-padding-left-right);
   padding-right: var(--container-area-padding-left-right);
   width: var(--container-area-width);
-  min-width: var(--container-area-width);
+  /* width: calc(var(--container-area-width) - 10px); */
 }
 
 .dark {
@@ -234,7 +266,8 @@ body.show {
   filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.7));
 }
 
-.side-navi a:active svg {
+.desktop-device .side-navi a:hover svg,
+.mobile-device .side-navi a:active svg {
   fill: #ffffff;
 }
 

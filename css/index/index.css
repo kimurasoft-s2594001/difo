@@ -1,5 +1,5 @@
 :root {
-  --product-image-width: 250px;
+  --product-image-width: 200px;
   --product-image-height: calc(var(--product-image-width) / 4 * 3);
   --product-content-width: 40%;
   --plan-title-height-mobile: 30%;
@@ -49,10 +49,11 @@
 }
 
 .products-container-area {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   height: 100%;
+  position: relative;
 }
 
 .products-container-area > div {
@@ -61,32 +62,42 @@
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
+  position: relative;
+  height: 100%;
 }
 
 .products-container-area > div.product-content {
   width: var(--product-content-width);
+  float: left;
 }
 
-.products-container-area > div.product-area {
+.products-container-area > .product-area {
+  float: left;
   width: calc(100% - var(--product-content-width));
+  height: 100%;
+}
+
+.products-container-area > .product-area .product-area-image {
   height: 70%;
-  min-height: 640px;
-  justify-content: space-around;
-  align-items: end;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列等宽 */
+  grid-template-rows: repeat(3, auto); /* 3行，高度自适应 */
+  justify-items: end;
+  align-items: center;
+  gap: 20px;
 }
 
 .product-image {
+  position: relative;
+  height: 0;
+  padding-bottom: 75%; /* 控制宽高比为4:3 */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
   width: var(--product-image-width);
   height: var(--product-image-height);
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  padding: 0;
 }
 
 .product-image a {
@@ -97,11 +108,13 @@
   font-size: 15pt;
 }
 
-.product-image:active {
+.desktop-device .product-image:hover,
+.mobile-device .product-image:active {
   transform: scale(1.05);
 }
 
-.product-image:active a {
+.desktop-device .product-image:hover a,
+.mobile-device .product-image:active a {
   color: #ffffff;
 }
 
@@ -117,7 +130,8 @@
   transition: inherit;
 }
 
-.product-image:active::before {
+.desktop-device .product-image:hover::before,
+.mobile-device .product-image:active::before {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -163,7 +177,8 @@
   margin: 40px 0;
 }
 
-.plan-area .plan-content:active {
+.desktop-device .plan-area .plan-content:hover,
+.mobile-device .plan-area .plan-content:active {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   scale: 1.05;
@@ -171,12 +186,15 @@
   border-radius: 10px;
 }
 
-.plan-area .plan-content:active h3,
-.plan-area .plan-content:active p {
+.desktop-device .plan-area .plan-content:hover h3,
+.desktop-device .plan-area .plan-content:hover p,
+.mobile-device .plan-area .plan-content:active h3,
+.mobile-device .plan-area .plan-content:active p {
   transition: all 0.3s ease-in-out;
 }
 
-.plan-area .plan-content:active svg {
+.desktop-device .plan-area .plan-content:hover svg,
+.mobile-device .plan-area .plan-content:active svg {
   transition: all 0.3s ease-in-out;
 }
 
@@ -275,16 +293,19 @@
   transition: inherit;
 }
 
-.recruit-image:active {
+.desktop-device .recruit-image:hover,
+.mobile-device .recruit-image:active {
   transform: scale(1.05);
   cursor: pointer;
 }
 
-.recruit-image:active::before {
+.desktop-device .recruit-image:hover::before,
+.mobile-device .recruit-image:active::before {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.recruit-image:active h3 {
+.desktop-device .recruit-image:hover h3,
+.mobile-device .recruit-image:active h3 {
   color: #ffffff;
   transition: all 0.3s ease-in-out;
 }
@@ -346,7 +367,7 @@
   font-weight: bold;
 }
 
-.news-list a:active,
-.news-list a:active {
+.desktop-device .news-list a:hover,
+.mobile-device .news-list a:active {
   text-decoration: underline;
 }

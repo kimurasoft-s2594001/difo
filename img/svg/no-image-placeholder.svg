@@ -1,0 +1,16 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="300" height="200" rx="5" fill="#f0f0f0"/>
+  
+  <!-- 图像图标 - 放大版 -->
+  <rect x="90" y="40" width="120" height="90" rx="4" stroke="#aaa" stroke-width="3" fill="none"/>
+  <polyline points="90,105 120,80 145,95 175,65 210,95" stroke="#aaa" stroke-width="3" fill="none"/>
+  <circle cx="125" cy="70" r="8" fill="#aaa"/>
+  
+  <!-- 文字 -->
+  <text x="150" y="155" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666">no image</text>
+  
+  <!-- 对角线 -->
+  <line x1="90" y1="40" x2="210" y2="130" stroke="#aaa" stroke-width="2" stroke-dasharray="6,3"/>
+  <line x1="90" y1="130" x2="210" y2="40" stroke="#aaa" stroke-width="2" stroke-dasharray="6,3"/>
+</svg>

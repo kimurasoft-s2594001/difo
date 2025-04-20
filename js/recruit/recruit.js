@@ -1,4 +1,6 @@
-$(document).ready(function () {
-    $.loadBefore();
-    $.loadAfter();
+import { loadBefore, loadAfter } from "../common.js";
+
+document.addEventListener("DOMContentLoaded", function () {
+  loadBefore();
+  loadAfter();
 });

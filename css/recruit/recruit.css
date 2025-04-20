@@ -1,19 +1,17 @@
-.recruit {
+section {
   background-color: var(--page-background-color-wheat);
 }
 
-.description-container-area,
-.recruitment-container-area,
-.treatment-container-area {
+section .container-area {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.description-container-area > div,
-.recruitment-container-area > div,
-.treatment-container-area > div {
+section .container-area > div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,15 +21,11 @@
   align-items: start;
 }
 
-.description-container-area > div.description-left,
-.recruitment-container-area > div.recruitment-left,
-.treatment-container-area > div.treatment-left {
+.container-left {
   padding-right: 50px;
 }
 
-.description-container-area > div.description-right,
-.recruitment-container-area > div.recruitment-right,
-.treatment-container-area > div.treatment-right {
+.container-right {
   align-items: start;
   padding-left: 50px;
 }

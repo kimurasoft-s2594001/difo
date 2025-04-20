@@ -11,7 +11,7 @@ const headerContent = `
             </svg>
         </a>
         <svg class="menu-btn" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
-        <div class="navigation">
+        <menu class="navigation">
             <a href="${homePage}#home">ホーム</a>
             <a href="${homePage}#products">製品紹介</a>
             <a href="${homePage}#plan">プラン</a>
@@ -19,7 +19,7 @@ const headerContent = `
             <a href="${homePage}#recruit">採用情報</a>
             <a href="${homePage}#news">ニュース</a>
             <a class="login-btn" href="${loginUrl}">ログイン</a>
-        </div>
+        </menu>
     </div>`;
 const footerContent = `
     <div class="footer-content container-area">
@@ -123,15 +123,15 @@ function isComprehensiveMobileCheck() {
   return mobileRegex.test(userAgent) || (hasTouchSupport && hasSmallScreen);
 }
 
-$.loadBefore = function () {
+const loadBefore = function () {
   // 加载头部和底部内容
   $("#header").html(headerContent);
   $("#footer").html(footerContent);
   const sideNaviTag = $("#side-navi");
   // 加载侧边导航内容
-  $(".page").each(function () {
+  $("section").each(function () {
     sideNaviTag.append(
-      $("<a></a>")
+      $("<a />")
         .attr("href", "#" + this.id)
         .append(sideBtnContent)
     );
@@ -155,7 +155,9 @@ $.loadBefore = function () {
   });
 };
 
-$.loadAfter = function () {
+const loadAfter = function () {
   // 页面加载完毕后，显示隐藏的画面
   $("body").addClass("show");
 };
+
+export { loadBefore, loadAfter };

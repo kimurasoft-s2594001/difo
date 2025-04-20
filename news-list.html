@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>ニュース一覧</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/news-list/news-list.css" />
+    <link
+      rel="stylesheet"
+      href="css/common-mobile.css"
+      media="screen and (max-width: 768px)"
+    />
+    <link
+      rel="stylesheet"
+      href="css/news-list/news-list-mobile.css"
+      media="screen and (max-width: 768px)"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header id="header" class="header dark"></header>
+    <main>
+      <section id="news-list" class="news-list light">
+        <div class="news-header container-area">
+          <h2>ニュース一覧</h2>
+        </div>
+        <div class="news-container container-area">
+          <div class="news-items"></div>
+          <div class="news-pagination">
+            <button id="prev-page" disabled>
+              <i class="fas fa-chevron-left"></i> 前へ
+            </button>
+            <div class="page-numbers">
+              <span class="current-page">1</span> /
+              <span class="total-pages">5</span>
+            </div>
+            <button id="next-page">
+              次へ <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+      <footer id="footer" class="footer dark"></footer>
+    </main>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/common.js" type="module"></script>
+    <script src="js/news-list/news-list.js" type="module"></script>
+  </body>
+</html>
