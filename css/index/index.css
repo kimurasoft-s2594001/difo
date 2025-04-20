@@ -98,11 +98,15 @@
   width: var(--product-image-width);
   height: var(--product-image-height);
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .product-image a {
   position: absolute;
-  color: #ffffff00;
+  color: #ffffffb7;
   z-index: 2;
   transition: inherit;
   font-size: 15pt;
@@ -126,7 +130,7 @@
   left: 0;
   top: 0;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
   transition: inherit;
 }
 

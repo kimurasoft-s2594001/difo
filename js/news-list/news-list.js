@@ -8,6 +8,7 @@ const newsData = [
     category: "event",
     image: "img/news/exhibition.png",
     excerpt: "第16回 EDIX（教育総合展）東京",
+    detail_url: "news-detail.html",
   },
   {
     id: 2,
@@ -105,9 +106,9 @@ function renderNewsItems() {
                             }">${getCategoryName(item.category)}</span>
                         </div>
                         <h3 class="news-item-title">
-                            <a href="news-detail.html?id=${item.id}">${
-      item.title
-    }</a>
+                            <a href="${
+                              item.detail_url ? item.detail_url : ""
+                            }">${item.title}</a>
                         </h3>
                         <div class="news-item-excerpt">${item.excerpt}</div>
                     </div>
