@@ -56,7 +56,7 @@
   position: relative;
 }
 
-.products-container-area > div {
+.products-container-area>div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,22 +66,24 @@
   height: 100%;
 }
 
-.products-container-area > div.product-content {
+.products-container-area>div.product-content {
   width: var(--product-content-width);
   float: left;
 }
 
-.products-container-area > .product-area {
+.products-container-area>.product-area {
   float: left;
   width: calc(100% - var(--product-content-width));
   height: 100%;
 }
 
-.products-container-area > .product-area .product-area-image {
+.products-container-area>.product-area .product-area-image {
   height: 70%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2列等宽 */
-  grid-template-rows: repeat(3, auto); /* 3行，高度自适应 */
+  grid-template-columns: repeat(2, 1fr);
+  /* 2列等宽 */
+  grid-template-rows: repeat(3, auto);
+  /* 3行，高度自适应 */
   justify-items: end;
   align-items: center;
   gap: 20px;
@@ -90,7 +92,8 @@
 .product-image {
   position: relative;
   height: 0;
-  padding-bottom: 75%; /* 控制宽高比为4:3 */
+  padding-bottom: 75%;
+  /* 控制宽高比为4:3 */
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -242,7 +245,7 @@
   height: 100%;
 }
 
-.recruit-container > div {
+.recruit-container>div {
   height: 100%;
   width: 50%;
   display: flex;
