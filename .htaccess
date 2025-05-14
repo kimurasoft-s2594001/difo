@@ -1,0 +1,3 @@
+RewriteEngine On
+# RewriteRule ^$ index-j.htm [QSA]
+RewriteRule ^$ index.html [QSA]
