@@ -109,7 +109,7 @@ const sideBtnContent = `
  */
 function isComprehensiveMobileCheck() {
   // 检查 User-Agent
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const userAgent = navigator.userAgent || window.opera;
   const mobileRegex =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
   // 检查触摸事件支持
