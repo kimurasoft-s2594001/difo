@@ -40,9 +40,8 @@ const newsDetails = [
         皆様のご来場を心よりお待ち申し上げております。
         <br />
         なお、展示会の詳細情報は、
-          href="https://www.edix-expo.jp/tokyo/ja-jp/search/2025/directory/directory-details.%E3%83%9E%E3%83%8A%E3%83%84%E3%83%AB%E5%95%86%E4%BA%8B%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE.org-3d0ac210-2394-44f3-84ad-0ee6990d0b5c.html#/"
-          >展示会公式サイトURL</a
-        >をご覧ください。
+        <a href="https://www.edix-expo.jp/tokyo/ja-jp/search/2025/directory/directory-details.%E3%83%9E%E3%83%8A%E3%83%84%E3%83%AB%E5%95%86%E4%BA%8B%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE.org-3d0ac210-2394-44f3-84ad-0ee6990d0b5c.html#/">展示会公式サイトURL</a>
+        をご覧ください。
       </p>
     `,
   },
@@ -83,11 +82,9 @@ const newsDetails = [
         皆様のご来場を心よりお待ち申し上げております。
         <br />
         なお、展示会の詳細情報は、
-          href="https://www.edix-expo.jp/osaka/"
-          >展示会公式サイトURL</a
-        >をご覧ください。
-      </p>
-    `,
+          <a href="https://www.edix-expo.jp/osaka/">展示会公式サイトURL</a>
+        をご覧ください。
+      </p>`,
   },
   // 可以添加更多新闻项...
 ];
