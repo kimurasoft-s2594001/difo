@@ -1,5 +1,10 @@
 import { loadBefore, loadAfter } from "../common.js";
-import { newsUtils, formatDate, getCategoryName } from "../news-data.js";
+import {
+  newsUtils,
+  formatDate,
+  getCategoryName,
+  newsData,
+} from "../news-data.js";
 
 const ITEMS_PER_PAGE = 4;
 let currentPage = 1;
@@ -92,38 +97,42 @@ function updatePagination() {
   }
 }
 
-// Helper functions
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}.${month}.${day}`;
-}
-
-function getCategoryName(category) {
-  switch (category) {
-    case "product":
-      return "製品情報";
-    case "event":
-      return "イベント";
-    case "update":
-      return "アップデート";
-    default:
-      return "";
-  }
-}
-
 function scrollToTop() {
   location.href = "#header";
 }
+
+// // 添加分类过滤器
+// function addCategoryFilters() {
+//   const categories = newsUtils.getCategories();
+//   const filterContainer = $('<div class="news-categories"></div>');
+
+//   categories.forEach((category) => {
+//     const button = $(
+//       `<button class="news-category${
+//         category.id === "all" ? " active" : ""
+//       }" data-category="${category.id}">${category.name} (${
+//         category.count
+//       })</button>`
+//     );
+//     filterContainer.append(button);
+//   });
+
+//   // 如果需要搜索框，还可以添加搜索框
+//   const searchContainer = $('<div class="news-search"></div>');
+//   searchContainer.append(
+//     '<input type="text" id="news-search" placeholder="ニュースを検索...">'
+//   );
+
+//   $(".news-container").prepend(filterContainer);
+//   $(".news-container").prepend(searchContainer);
+// }
 
 // 初始化
 function initialize() {
   // 获取所有新闻
   filteredNews = newsUtils.getAll();
   // 添加分类过滤器
-  addCategoryFilters();
+  // addCategoryFilters();
   // 绑定事件
   onEvent();
   // 渲染新闻列表

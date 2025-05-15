@@ -1,5 +1,13 @@
 import { throttle } from "./utils.js";
 
+export const companyInfo = {
+  zipCode: "114-0012",
+  address1: "東京都北区田端新町1-8-14",
+  address2: "山貴田端新町ビル 2階",
+  phone: "03-6807-9627",
+  email: "jyh@mana-tsuru.co.jp",
+};
+
 const loginUrl = "https://www.shulin-soft.com:8048/login.html";
 const homePage = "index.html";
 const headerContent = `
@@ -103,14 +111,6 @@ const sideBtnContent = `
     <svg class="side-btn" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10"></circle>
     </svg>`;
-
-export const companyInfo = {
-  zipCode: "114-0012",
-  address1: "東京都北区田端新町1-8-14",
-  address2: "山貴田端新町ビル 2階",
-  phone: "03-6807-9627",
-  email: "jyh@mana-tsuru.co.jp",
-};
 
 /**
  * 更全面的移动设备检测方法
@@ -238,15 +238,4 @@ const loadAfter = function () {
   window.addEventListener("scroll", handleScroll);
 };
 
-// 节流函数，限制函数执行频率
-function throttle(func, delay) {
-  let lastCall = 0;
-  return function (...args) {
-    const now = Date.now();
-    if (now - lastCall < delay) return;
-    lastCall = now;
-    func.apply(this, args);
-  };
-}
-
-export { loadBefore, loadAfter, companyInfo };
+export { loadBefore, loadAfter };
