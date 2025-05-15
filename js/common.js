@@ -24,6 +24,13 @@ const headerContent = `
             <a class="login-btn" href="${loginUrl}">ログイン</a>
         </menu>
     </div>`;
+export const companyInfo = {
+  zipCode: "114-0012",
+  address1: "東京都北区田端新町1-8-14",
+  address2: "山貴田端新町ビル 2階",
+  phone: "03-6807-9627",
+  email: "jyh@mana-tsuru.co.jp",
+};
 const footerContent = `
     <div class="footer-content container-area">
         <div class="footer-logo">

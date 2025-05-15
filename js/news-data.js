@@ -180,16 +180,6 @@ export const newsData = [
   },
 ];
 
-// 公司联系信息配置 - 集中管理地址和电话
-export const companyInfo = {
-  zipCode: "114-0012",
-  address1: "東京都北区田端新町1-8-14",
-  address2: "山貴田端新町ビル 2階",
-  phone: "03-6807-9627",
-  email: "jyh@mana-tsuru.co.jp",
-};
-
-// 辅助函数
 export function formatDate(dateString) {
   const date = new Date(dateString);
   return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(
