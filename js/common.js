@@ -1,4 +1,3 @@
-import { companyInfo } from "./news-data.js";
 import { throttle } from "./utils.js";
 
 const loginUrl = "https://www.shulin-soft.com:8048/login.html";
