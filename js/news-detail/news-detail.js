@@ -20,7 +20,7 @@ function loadNewsContent() {
     }
   } else {
     // 处理找不到新闻的情况
-    handleNewsNotFound();
+    // handleNewsNotFound();
   }
 }
 

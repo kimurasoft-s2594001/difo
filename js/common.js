@@ -1,4 +1,5 @@
 import { throttle } from "./utils.js";
+import { initLazyLoading } from "./lazyload.js";
 
 export const companyInfo = {
   zipCode: "114-0012",
@@ -133,58 +134,6 @@ function isComprehensiveMobileCheck() {
   return mobileRegex.test(userAgent) || (hasTouchSupport && hasSmallScreen);
 }
 
-// <!-- 关键图片，立即加载 -->
-// <img src="img/logo.png" alt="Logo" loading="eager">
-// <!-- 普通图片，自动懒加载 -->
-// <img src="img/content.jpg" alt="Content">
-// <!-- 优先级低的大图，使用data-src更精细控制 -->
-// <img data-src="img/large-banner.jpg" alt="Banner" src="img/placeholder.svg"></img>
-// 初始化图片懒加载
-function initLazyLoading() {
-  // 检查是否支持原生懒加载
-  if ("loading" in HTMLImageElement.prototype) {
-    // 浏览器支持原生懒加载，为所有图片添加loading="lazy"属性
-    const images = document.querySelectorAll("img:not([loading])");
-    images.forEach((img) => {
-      img.setAttribute("loading", "lazy");
-    });
-  } else {
-    // 浏览器不支持原生懒加载，使用Intersection Observer实现
-    if (!("IntersectionObserver" in window)) {
-      // 不支持Intersection Observer，什么都不做
-      return;
-    }
-
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          // 如果有data-src属性，则设置src
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            img.removeAttribute("data-src");
-          }
-          observer.unobserve(img);
-        }
-      });
-    });
-
-    // 观察所有有data-src属性的图片或没有loading属性的图片
-    const lazyImages = document.querySelectorAll(
-      "img[data-src], img:not([loading])"
-    );
-    lazyImages.forEach((img) => {
-      // 如果没有data-src属性但有src属性，先保存原始src
-      if (!img.dataset.src && img.src) {
-        img.dataset.src = img.src;
-        // 对于非可见区域的图片，可以设置一个小的占位图
-        // img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
-      }
-      imageObserver.observe(img);
-    });
-  }
-}
-
 // 页面加载前执行的函数
 const loadBefore = function () {
   // 加载头部和底部内容
@@ -222,7 +171,7 @@ const loadBefore = function () {
   });
 
   // 初始化图片懒加载
-  initLazyLoading();
+  initLazyLoading(false);
 };
 
 // 页面加载后执行的函数
@@ -232,7 +181,7 @@ const loadAfter = function () {
 
   // 滚动时检查是否有新的图片需要懒加载
   const handleScroll = throttle(() => {
-    initLazyLoading();
+    initLazyLoading(true);
   }, 200);
 
   window.addEventListener("scroll", handleScroll);
