@@ -1,6 +1,5 @@
 import { loadBefore, loadAfter } from "../common.js";
-import { newsData } from "../news-data.js";
-import { initLazyLoading } from "../lazy-load.js";
+import { newsUtils, formatDate, getCategoryName } from "../news-data.js";
 
 const ITEMS_PER_PAGE = 4;
 let currentPage = 1;
@@ -119,19 +118,22 @@ function scrollToTop() {
   location.href = "#header";
 }
 
+// 初始化
 function initialize() {
-  // 按日期降序排序（最新的在前）
-  filteredNews = [...newsData].sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
+  // 获取所有新闻
+  filteredNews = newsUtils.getAll();
+  // 添加分类过滤器
+  addCategoryFilters();
+  // 绑定事件
   onEvent();
+  // 渲染新闻列表
   renderNewsItems();
+  // 更新分页
   updatePagination();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   loadBefore();
-  initLazyLoading();
   initialize();
   loadAfter();
 });

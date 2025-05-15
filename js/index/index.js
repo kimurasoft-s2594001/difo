@@ -1,14 +1,10 @@
 // js/index/index.js
 import { loadBefore, loadAfter } from "../common.js";
-import { newsData } from "../news-data.js";
-import { initLazyLoading } from "../lazy-load.js";
+import { newsUtils } from "../news-data.js";
 
 function renderLatestNews() {
   // 获取最新的3条新闻
-  const latestNews = [...newsData]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 3);
-
+  const latestNews = newsUtils.getLatest(3);
   const newsContainer = document.querySelector(
     ".news-container-list .news-list"
   );
@@ -42,6 +38,5 @@ function renderLatestNews() {
 document.addEventListener("DOMContentLoaded", function () {
   loadBefore();
   renderLatestNews();
-  initLazyLoading();
   loadAfter();
 });

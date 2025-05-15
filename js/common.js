@@ -24,13 +24,6 @@ const headerContent = `
             <a class="login-btn" href="${loginUrl}">ログイン</a>
         </menu>
     </div>`;
-export const companyInfo = {
-  zipCode: "114-0012",
-  address1: "東京都北区田端新町1-8-14",
-  address2: "山貴田端新町ビル 2階",
-  phone: "03-6807-9627",
-  email: "jyh@mana-tsuru.co.jp",
-};
 const footerContent = `
     <div class="footer-content container-area">
         <div class="footer-logo">
@@ -112,36 +105,12 @@ const sideBtnContent = `
         <circle cx="12" cy="12" r="10"></circle>
     </svg>`;
 
-const isMobileDevice = () => {
-  return (
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    ) ||
-    (("ontouchstart" in window || navigator.maxTouchPoints > 0) &&
-      window.innerWidth < 768)
-  );
-};
-
-// 使用sessionStorage缓存一些不经常变化的DOM元素
-const getElement = (selector) => {
-  const cacheKey = `dom_cache_${selector}`;
-  let element;
-
-  try {
-    const cached = sessionStorage.getItem(cacheKey);
-    if (cached) {
-      return document.querySelector(selector);
-    }
-
-    element = document.querySelector(selector);
-    if (element) {
-      sessionStorage.setItem(cacheKey, "cached");
-    }
-    return element;
-  } catch (e) {
-    // 如果sessionStorage不可用，直接返回元素
-    return document.querySelector(selector);
-  }
+export const companyInfo = {
+  zipCode: "114-0012",
+  address1: "東京都北区田端新町1-8-14",
+  address2: "山貴田端新町ビル 2階",
+  phone: "03-6807-9627",
+  email: "jyh@mana-tsuru.co.jp",
 };
 
 /**
@@ -165,12 +134,66 @@ function isComprehensiveMobileCheck() {
   return mobileRegex.test(userAgent) || (hasTouchSupport && hasSmallScreen);
 }
 
+// <!-- 关键图片，立即加载 -->
+// <img src="img/logo.png" alt="Logo" loading="eager">
+// <!-- 普通图片，自动懒加载 -->
+// <img src="img/content.jpg" alt="Content">
+// <!-- 优先级低的大图，使用data-src更精细控制 -->
+// <img data-src="img/large-banner.jpg" alt="Banner" src="img/placeholder.svg"></img>
+// 初始化图片懒加载
+function initLazyLoading() {
+  // 检查是否支持原生懒加载
+  if ("loading" in HTMLImageElement.prototype) {
+    // 浏览器支持原生懒加载，为所有图片添加loading="lazy"属性
+    const images = document.querySelectorAll("img:not([loading])");
+    images.forEach((img) => {
+      img.setAttribute("loading", "lazy");
+    });
+  } else {
+    // 浏览器不支持原生懒加载，使用Intersection Observer实现
+    if (!("IntersectionObserver" in window)) {
+      // 不支持Intersection Observer，什么都不做
+      return;
+    }
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          // 如果有data-src属性，则设置src
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute("data-src");
+          }
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    // 观察所有有data-src属性的图片或没有loading属性的图片
+    const lazyImages = document.querySelectorAll(
+      "img[data-src], img:not([loading])"
+    );
+    lazyImages.forEach((img) => {
+      // 如果没有data-src属性但有src属性，先保存原始src
+      if (!img.dataset.src && img.src) {
+        img.dataset.src = img.src;
+        // 对于非可见区域的图片，可以设置一个小的占位图
+        // img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
+      }
+      imageObserver.observe(img);
+    });
+  }
+}
+
+// 页面加载前执行的函数
 const loadBefore = function () {
   // 加载头部和底部内容
   $("#header").html(headerContent);
   $("#footer").html(footerContent);
-  const sideNaviTag = $("#side-navi");
+
   // 加载侧边导航内容
+  const sideNaviTag = $("#side-navi");
   $("section").each(function () {
     sideNaviTag.append(
       $("<a />")
@@ -178,14 +201,17 @@ const loadBefore = function () {
         .append(sideBtnContent)
     );
   });
+
   // 判定终端类型，添加相应的类名
   $("body").addClass(
     isComprehensiveMobileCheck() ? "mobile-device" : "desktop-device"
   );
+
   // 点击菜单按钮，显示或隐藏导航栏
   $(".menu-btn").on("click", function () {
     $(".navigation").toggleClass("show");
   });
+
   $(window).on("click", function (event) {
     // 点击窗口其他地方，隐藏导航栏
     if (
@@ -195,52 +221,33 @@ const loadBefore = function () {
       $(".navigation").removeClass("show");
     }
   });
+
+  // 初始化图片懒加载
+  initLazyLoading();
 };
 
+// 页面加载后执行的函数
 const loadAfter = function () {
   // 页面加载完毕后，显示隐藏的画面
   $("body").addClass("show");
 
-  // 添加优化后的滚动事件处理
-  const scrollHandler = throttle(() => {
-    // 滚动处理逻辑
-    // 例如: 实现滚动时导航栏的隐藏/显示
-    const header = document.getElementById("header");
-    if (header) {
-      if (window.scrollY > 100) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    }
+  // 滚动时检查是否有新的图片需要懒加载
+  const handleScroll = throttle(() => {
+    initLazyLoading();
+  }, 200);
 
-    // 或者处理侧边导航的激活状态
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("#side-navi a");
-
-    if (sections.length && navLinks.length) {
-      let current = "";
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 200) {
-          current = "#" + section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === current) {
-          link.classList.add("active");
-        }
-      });
-    }
-  }, 100);
-
-  window.addEventListener("scroll", scrollHandler);
-
-  // 初始触发一次滚动处理逻辑
-  scrollHandler();
+  window.addEventListener("scroll", handleScroll);
 };
 
-export { loadBefore, loadAfter };
+// 节流函数，限制函数执行频率
+function throttle(func, delay) {
+  let lastCall = 0;
+  return function (...args) {
+    const now = Date.now();
+    if (now - lastCall < delay) return;
+    lastCall = now;
+    func.apply(this, args);
+  };
+}
+
+export { loadBefore, loadAfter, companyInfo };

@@ -1,5 +1,4 @@
 import { loadBefore, loadAfter } from "../common.js";
-import { initLazyLoading } from "../lazy-load.js";
 
 function loadNewsContent() {
   // 获取URL参数
@@ -56,7 +55,6 @@ function updateContactInfo(element) {
 
 document.addEventListener("DOMContentLoaded", function () {
   loadBefore();
-  initLazyLoading();
   loadNewsContent();
   loadAfter();
 });
