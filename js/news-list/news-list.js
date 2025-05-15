@@ -1,9 +1,47 @@
 import { loadBefore, loadAfter } from "../common.js";
 import { newsData } from "../news-data.js";
+import { initLazyLoading } from "../lazy-load.js";
 
 const ITEMS_PER_PAGE = 4;
 let currentPage = 1;
 let filteredNews = [...newsData];
+
+function renderNewsItems() {
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentItems = filteredNews.slice(startIndex, endIndex);
+  const $newsItems = $(".news-items");
+  $newsItems.empty();
+
+  if (currentItems.length === 0) {
+    $newsItems.html('<div class="no-results">検索結果がありません</div>');
+    return;
+  }
+
+  currentItems.forEach((item) => {
+    const formattedDate = formatDate(item.date);
+    const $newsItem = $(`
+      <div class="news-item">
+        <div class="news-item-image">
+          <img src="${item.image}" alt="${item.title}" loading="lazy">
+        </div>
+        <div class="news-item-content">
+          <div class="news-item-meta">
+            <span class="news-item-date">${formattedDate}</span>
+            <span class="news-item-category ${item.category}">${getCategoryName(
+      item.category
+    )}</span>
+          </div>
+          <h3 class="news-item-title">
+            <a href="news-detail.html?id=${item.id}">${item.title}</a>
+          </h3>
+          <div class="news-item-excerpt">${item.excerpt}</div>
+        </div>
+      </div>
+    `);
+    $newsItems.append($newsItem);
+  });
+}
 
 function onEvent() {
   $(".news-category").on("click", function () {
@@ -35,47 +73,6 @@ function onEvent() {
       updatePagination();
       scrollToTop();
     }
-  });
-}
-
-// Render news items
-function renderNewsItems() {
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
-  const currentItems = filteredNews.slice(startIndex, endIndex);
-  const $newsItems = $(".news-items");
-  $newsItems.empty();
-  if (currentItems.length === 0) {
-    $newsItems.html('<div class="no-results">検索結果がありません</div>');
-    return;
-  }
-  // 在renderNewsItems函数中
-  currentItems.forEach((item) => {
-    const formattedDate = formatDate(item.date);
-    const $newsItem = $(`
-            <div class="news-item">
-                <div class="news-item-image">
-                    <img src="${item.image}" alt="${item.title}">
-                </div>
-                <div class="news-item-content">
-                    <div class="news-item-meta">
-                        <span class="news-item-date">${formattedDate}</span>
-                        <span class="news-item-category ${
-                          item.category
-                        }">${getCategoryName(item.category)}</span>
-                    </div>
-                    <h3 class="news-item-title">
-                        <a href="${
-                          item.detail_url
-                            ? item.detail_url + "?id=" + item.id
-                            : ""
-                        }">${item.title}</a>
-                    </h3>
-                    <div class="news-item-excerpt">${item.excerpt}</div>
-                </div>
-            </div>
-        `);
-    $newsItems.append($newsItem);
   });
 }
 
@@ -123,6 +120,10 @@ function scrollToTop() {
 }
 
 function initialize() {
+  // 按日期降序排序（最新的在前）
+  filteredNews = [...newsData].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
   onEvent();
   renderNewsItems();
   updatePagination();
@@ -130,6 +131,7 @@ function initialize() {
 
 document.addEventListener("DOMContentLoaded", function () {
   loadBefore();
+  initLazyLoading();
   initialize();
   loadAfter();
 });

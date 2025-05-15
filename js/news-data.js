@@ -1,5 +1,5 @@
-// 共享的新闻数据
-const newsData = [
+// 新闻数据存储
+export const newsData = [
   {
     id: 1,
     title: "出展のお知らせ（4/23～25）",
@@ -109,8 +109,100 @@ const newsData = [
       </ul>
     `,
   },
-  // 其他新闻项...
+  //   {
+  //     id: 4,
+  //     title: "新オフィス移転のお知らせ",
+  //     date: "2025-03-01",
+  //     category: "update",
+  //     image: "img/news/office.jpg",
+  //     excerpt: "2025年3月1日より新オフィスに移転しました。",
+  //     content: `
+  //       <h3>新オフィス移転のお知らせ</h3>
+  //       <p>
+  //         平素は格別のご高配を賜り、厚く御礼申し上げます。
+  //       </p>
+  //       <p>
+  //         この度、業務拡大に伴い、2025年3月1日より下記の新オフィスに移転いたしました。
+  //       </p>
+  //       <p>新オフィス所在地：</p>
+  //       <p>
+  //         〒114-0012<br>
+  //         東京都北区田端新町1-8-14<br>
+  //         山貴田端新町ビル 2階
+  //       </p>
+  //       <p>
+  //         新オフィスでは、より一層のサービス向上に努めてまいります。今後とも変わらぬご愛顧を賜りますよう、よろしくお願い申し上げます。
+  //       </p>
+  //       <p>お問い合わせ先：</p>
+  //       <ul>
+  //         <li>03 6807 9627</li>
+  //         <li>info@mana-tsuru.co.jp</li>
+  //       </ul>
+  //     `,
+  //   },
+  {
+    id: 5,
+    title: "公開予定",
+    date: "2025-01-01",
+    category: "update",
+    image: "img/svg/no-image-placeholder.svg",
+    excerpt: "公開予定",
+    content: `
+      <h3>公開予定</h3>
+      <p>
+        このコンテンツは現在準備中です。詳細は後日公開いたします。
+      </p>
+      <p>お問い合わせ先：</p>
+      <ul>
+        <li>03 6807 9627</li>
+        <li>info@mana-tsuru.co.jp</li>
+      </ul>
+    `,
+  },
+  {
+    id: 6,
+    title: "公開予定",
+    date: "2025-01-01",
+    category: "event",
+    image: "img/svg/no-image-placeholder.svg",
+    excerpt: "公開予定",
+    content: `
+      <h3>公開予定</h3>
+      <p>
+        このコンテンツは現在準備中です。詳細は後日公開いたします。
+      </p>
+      <p>お問い合わせ先：</p>
+      <ul>
+        <li>03 6807 9627</li>
+        <li>info@mana-tsuru.co.jp</li>
+      </ul>
+    `,
+  },
 ];
 
-// 导出newsData以便其他文件使用
-export { newsData };
+// 公司联系信息配置 - 集中管理地址和电话
+export const companyInfo = {
+  zipCode: "114-0012",
+  address1: "東京都北区田端新町1-8-14",
+  address2: "山貴田端新町ビル 2階",
+  phone: "03-6807-9627",
+  email: "jyh@mana-tsuru.co.jp",
+};
+
+// 辅助函数
+export function formatDate(dateString) {
+  const date = new Date(dateString);
+  return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}.${String(date.getDate()).padStart(2, "0")}`;
+}
+
+export function getCategoryName(category) {
+  const categories = {
+    product: "製品情報",
+    event: "イベント",
+    update: "アップデート",
+  };
+  return categories[category] || "";
+}

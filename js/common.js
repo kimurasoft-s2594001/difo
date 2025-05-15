@@ -1,3 +1,6 @@
+import { companyInfo } from "./news-data.js";
+import { throttle } from "./utils.js";
+
 const loginUrl = "https://www.shulin-soft.com:8048/login.html";
 const homePage = "index.html";
 const headerContent = `
@@ -44,10 +47,10 @@ const footerContent = `
         </div>
         <div class="footer-info">
             <h2>INFO</h2>
-            <p>〒114-0012</p>
-            <p>東京都北区田端新町1-8-14</p>
-            <p>山貴田端新町ビル 2階</p>
-            <p style="font-size: 10pt;">info@mana-tsuru.co.jp</p>
+            <p>〒${companyInfo.zipCode}</p>
+            <p>${companyInfo.address1}</p>
+            <p>${companyInfo.address2}</p>
+            <p style="font-size: 10pt;">${companyInfo.email}</p>
         </div>
         <div class="footer-sns">
             <h2>SNS</h2>
@@ -101,6 +104,38 @@ const sideBtnContent = `
     <svg class="side-btn" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10"></circle>
     </svg>`;
+
+const isMobileDevice = () => {
+  return (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    ) ||
+    (("ontouchstart" in window || navigator.maxTouchPoints > 0) &&
+      window.innerWidth < 768)
+  );
+};
+
+// 使用sessionStorage缓存一些不经常变化的DOM元素
+const getElement = (selector) => {
+  const cacheKey = `dom_cache_${selector}`;
+  let element;
+
+  try {
+    const cached = sessionStorage.getItem(cacheKey);
+    if (cached) {
+      return document.querySelector(selector);
+    }
+
+    element = document.querySelector(selector);
+    if (element) {
+      sessionStorage.setItem(cacheKey, "cached");
+    }
+    return element;
+  } catch (e) {
+    // 如果sessionStorage不可用，直接返回元素
+    return document.querySelector(selector);
+  }
+};
 
 /**
  * 更全面的移动设备检测方法
@@ -158,21 +193,47 @@ const loadBefore = function () {
 const loadAfter = function () {
   // 页面加载完毕后，显示隐藏的画面
   $("body").addClass("show");
+
+  // 添加优化后的滚动事件处理
+  const scrollHandler = throttle(() => {
+    // 滚动处理逻辑
+    // 例如: 实现滚动时导航栏的隐藏/显示
+    const header = document.getElementById("header");
+    if (header) {
+      if (window.scrollY > 100) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    }
+
+    // 或者处理侧边导航的激活状态
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("#side-navi a");
+
+    if (sections.length && navLinks.length) {
+      let current = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 200) {
+          current = "#" + section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === current) {
+          link.classList.add("active");
+        }
+      });
+    }
+  }, 100);
+
+  window.addEventListener("scroll", scrollHandler);
+
+  // 初始触发一次滚动处理逻辑
+  scrollHandler();
 };
 
-/**
- * 从URL获取查询参数
- * @param {string} name - 参数名
- * @param {string} url - URL字符串，默认为当前窗口URL
- * @returns {string|null} 参数值或null
- */
-function getParameterByName(name, url = window.location.href) {
-  name = name.replace(/[\[\]]/g, "\\$&");
-  const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-    results = regex.exec(url);
-  if (!results) return null;
-  if (!results[2]) return "";
-  return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-export { loadBefore, loadAfter, getParameterByName };
+export { loadBefore, loadAfter };
