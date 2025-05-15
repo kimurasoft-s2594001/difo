@@ -44,9 +44,9 @@ const footerContent = `
         </div>
         <div class="footer-info">
             <h2>INFO</h2>
-            <p>〒332-0021</p>
-            <p>埼玉県川口市</p>
-            <p>西川口1-17-16-404</p>
+            <p>〒114-0012</p>
+            <p>東京都北区田端新町1-8-14</p>
+            <p>山貴田端新町ビル 2階</p>
             <p style="font-size: 10pt;">info@mana-tsuru.co.jp</p>
         </div>
         <div class="footer-sns">

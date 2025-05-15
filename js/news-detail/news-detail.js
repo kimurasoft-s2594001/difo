@@ -33,7 +33,7 @@ const newsDetails = [
         <li>
           展示会へのご来場をご希望の方、または詳細情報をご希望の方は、以下の連絡先までお気軽にお問い合わせください。
         </li>
-        <li>048-430-7969</li>
+        <li>03-6807-9627</li>
         <li>jyh@mana-tsuru.co.jp</li>
       </ul>
       <p>
@@ -75,14 +75,14 @@ const newsDetails = [
         <li>
           展示会へのご来場をご希望の方、または詳細情報をご希望の方は、以下の連絡先までお気軽にお問い合わせください。
         </li>
-        <li>048-430-7969</li>
+        <li>03-6807-9627</li>
         <li>jyh@mana-tsuru.co.jp</li>
       </ul>
       <p>
         皆様のご来場を心よりお待ち申し上げております。
         <br />
         なお、展示会の詳細情報は、
-          <a href="https://www.edix-expo.jp/osaka/">展示会公式サイトURL</a>
+          <a href="https://www.edix-expo.jp/osaka/ja-jp/search/2025/directory/directory-details.org-40a88f5b-95b8-416f-9099-17e860d6e3ce.html#/">展示会公式サイトURL</a>
         をご覧ください。
       </p>`,
   },
