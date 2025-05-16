@@ -156,7 +156,7 @@ const loadBefore = function () {
 
 // 页面加载后执行的函数
 const loadAfter = function () {
-  // 页面加载完毕后，显示隐藏的画面
+  // 现有代码
   $("body").addClass("show");
 
   // 处理菜单按钮点击
@@ -167,8 +167,8 @@ const loadAfter = function () {
   });
 
   // 点击导航链接后关闭菜单
-  $(".navigation a").on("click", function () {
-    $(".navigation").removeClass("show");
+  $(".navigation.show a").on("click", function () {
+    $(".navigation.show").removeClass("active");
     $(".menu-btn").removeClass("active");
   });
 
@@ -176,19 +176,23 @@ const loadAfter = function () {
   $(document).on("click", function (e) {
     if (
       !$(e.target).closest(".menu-btn").length &&
-      !$(e.target).closest(".navigation").length
+      !$(e.target).closest(".navigation.show").length
     ) {
-      $(".navigation").removeClass("show");
+      $(".navigation.show").removeClass("active");
       $(".menu-btn").removeClass("active");
     }
   });
-
   // 滚动时检查是否有新的图片需要懒加载
   const handleScroll = throttle(() => {
     initLazyLoading(true);
   }, 200);
 
   window.addEventListener("scroll", handleScroll);
+
+  // 新增：在初始化时为所有导航项设置级联索引
+  $(".navigation a").each(function (index) {
+    $(this).css("--menu-index", index + 1);
+  });
 };
 
 export { loadBefore, loadAfter };
