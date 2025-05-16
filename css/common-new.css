@@ -58,6 +58,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* 与桌面版导航栏高度相同 */
 }
 
 body {

@@ -8,6 +8,14 @@
     --font-size-base: 14px;
   }
 
+  html {
+    scroll-padding-top: 60px; /* 与移动版导航栏高度相同 */
+  }
+
+  main {
+    padding-top: 60px; /* 调整为与移动设备头部高度相匹配 */
+  }
+
   .container-area {
     min-width: auto;
     padding-left: var(--container-padding);
@@ -18,6 +26,10 @@
     padding: var(--spacing-md) 0;
   }
 
+  /* 如果第一个section也有额外的padding，也需要调整 */
+  section:first-of-type {
+    padding-top: 20px; /* 减小顶部内边距 */
+  }
   .header {
     height: 60px;
   }
@@ -27,46 +39,24 @@
   }
 
   .menu-btn {
-    /* 基本样式 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
     cursor: pointer;
     position: relative;
     z-index: 110;
-    box-sizing: border-box;
-
-    /* 使用 flex 布局使内容居中 */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    /* 增加点击区域 */
     padding: 10px;
   }
 
   .menu-btn .menu-bar {
-    display: block;
-    width: 20px; /* 固定宽度 */
+    width: 20px;
     height: 2px;
     background-color: var(--neutral-dark);
     margin: 3px 0;
     transition: all 0.3s ease;
-  }
-
-  /* 添加这个确保菜单栏居中 */
-  .menu-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* 关闭状态的样式 - 改进版 */
-  .menu-btn.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .menu-btn.active .menu-bar {
