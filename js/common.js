@@ -167,6 +167,30 @@ const loadAfter = function () {
   // 页面加载完毕后，显示隐藏的画面
   $("body").addClass("show");
 
+  // 处理菜单按钮点击
+  $(".menu-btn").on("click", function (e) {
+    $(".navigation").toggleClass("show");
+    $(this).toggleClass("active");
+    e.stopPropagation();
+  });
+
+  // 点击导航链接后关闭菜单
+  $(".navigation a").on("click", function () {
+    $(".navigation").removeClass("show");
+    $(".menu-btn").removeClass("active");
+  });
+
+  // 点击页面其他地方关闭菜单
+  $(document).on("click", function (e) {
+    if (
+      !$(e.target).closest(".menu-btn").length &&
+      !$(e.target).closest(".navigation").length
+    ) {
+      $(".navigation").removeClass("show");
+      $(".menu-btn").removeClass("active");
+    }
+  });
+
   // 滚动时检查是否有新的图片需要懒加载
   const handleScroll = throttle(() => {
     initLazyLoading(true);
