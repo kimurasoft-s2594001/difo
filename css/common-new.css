@@ -216,10 +216,22 @@ section {
   justify-content: space-between;
 }
 
+/* LOGO大小暂时对应 */
 .header .logo {
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 120px;
   margin-right: 20px;
+  overflow: hidden;
+}
+
+/* LOGO大小暂时对应 */
+.header .logo img {
+  width: 200%;
+  height: auto;
+  display: block;
+  position: relative;
+  top: -30px;
+  left: -20px;
 }
 
 /* 更新导航链接样式 */
