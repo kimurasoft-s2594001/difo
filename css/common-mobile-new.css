@@ -27,22 +27,63 @@
   }
 
   .menu-btn {
-    display: block; /* 在移动设备上显示 */
+    /* 基本样式 */
     width: 40px;
     height: 40px;
     cursor: pointer;
     position: relative;
-    z-index: 110; /* 确保按钮在导航菜单之上 */
-    padding: 10px; /* 增加点击区域 */
+    z-index: 110;
+    box-sizing: border-box;
+
+    /* 使用 flex 布局使内容居中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* 增加点击区域 */
+    padding: 10px;
   }
 
-  .menu-btn span {
+  .menu-btn .menu-bar {
     display: block;
-    width: 100%;
+    width: 20px; /* 固定宽度 */
     height: 2px;
     background-color: var(--neutral-dark);
-    margin: 4px 0;
+    margin: 3px 0;
     transition: all 0.3s ease;
+  }
+
+  /* 添加这个确保菜单栏居中 */
+  .menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 关闭状态的样式 - 改进版 */
+  .menu-btn.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu-btn.active .menu-bar {
+    position: absolute;
+    margin: 0;
+  }
+
+  .menu-btn.active .menu-bar:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .menu-btn.active .menu-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-btn.active .menu-bar:nth-child(3) {
+    transform: rotate(-45deg);
   }
 
   /* 移动菜单样式 */

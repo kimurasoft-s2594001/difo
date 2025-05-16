@@ -267,13 +267,6 @@ section {
   opacity: 0.85;
 }
 
-.menu-btn {
-  display: none;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
 /* 主内容区 */
 main {
   scroll-snap-type: y proximity;
@@ -461,8 +454,8 @@ main {
   transition-delay: 0.3s;
 }
 
-/* 汉堡菜单按钮样式 */
 .menu-btn {
+  display: none; /* 在桌面版上不显示 */
   position: relative;
   width: 30px;
   height: 24px;
@@ -470,40 +463,11 @@ main {
   z-index: 2;
 }
 
-.menu-btn span,
-.menu-btn:before,
-.menu-btn:after {
-  content: "";
-  position: absolute;
+.menu-btn .menu-bar {
+  display: block;
   width: 100%;
   height: 2px;
   background-color: currentColor;
+  margin: 5px 0;
   transition: all 0.3s ease;
-  left: 0;
-}
-
-.menu-btn:before {
-  top: 0;
-}
-
-.menu-btn span {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.menu-btn:after {
-  bottom: 0;
-}
-
-/* 菜单按钮动画效果 */
-.menu-btn.active:before {
-  transform: translateY(11px) rotate(45deg);
-}
-
-.menu-btn.active span {
-  opacity: 0;
-}
-
-.menu-btn.active:after {
-  transform: translateY(-11px) rotate(-45deg);
 }

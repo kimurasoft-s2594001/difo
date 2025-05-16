@@ -24,7 +24,9 @@ const headerContent = `
             </svg>
         </a>
         <div class="menu-btn">
-            <span></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
         </div>
         <nav class="navigation">
             <a href="${homePage}#home">ホーム</a>
