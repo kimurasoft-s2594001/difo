@@ -1,0 +1,91 @@
+@media (max-width: 768px) {
+  /* 首页移动端样式 */
+  .home {
+    padding: 4rem 0;
+    min-height: 60vh;
+  }
+
+  .home-container-area h4 {
+    font-size: 1.8rem;
+  }
+
+  .home-container-area p {
+    font-size: 1rem;
+  }
+
+  /* 产品部分 */
+  .products {
+    padding: 3rem 0;
+  }
+
+  .products-container-area {
+    flex-direction: column;
+  }
+
+  .product-content,
+  .product-area {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .product-content {
+    margin-bottom: 2rem;
+  }
+
+  .product-area-image {
+    grid-template-columns: 1fr;
+  }
+
+  /* 计划部分 */
+  .plan {
+    padding: 3rem 0;
+  }
+
+  .plan-area {
+    flex-direction: column;
+  }
+
+  .plan-content {
+    width: 100%;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  /* 关于部分 */
+  .about {
+    padding: 3rem 0;
+  }
+
+  /* 招聘部分 */
+  .recruit {
+    padding: 3rem 0;
+  }
+
+  .recruit-container {
+    flex-direction: column;
+  }
+
+  .recruit-content,
+  .recruit-area {
+    width: 100%;
+  }
+
+  .recruit-content {
+    margin-bottom: 2rem;
+  }
+
+  /* 新闻部分 */
+  .news {
+    padding: 3rem 0;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container-area h4 {
+    font-size: 1.5rem;
+  }
+}

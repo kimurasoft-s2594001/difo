@@ -11,8 +11,6 @@ export const companyInfo = {
 
 const loginUrl = "https://www.shulin-soft.com:8048/login.html";
 const homePage = "index.html";
-
-// 头部HTML内容
 const headerContent = `
     <div id="header-container-area" class="header-container-area container-area">
         <a href="index.html" class="logo">
@@ -23,10 +21,8 @@ const headerContent = `
                     fill-rule="nonzero" />
             </svg>
         </a>
-        <div class="menu-btn">
-            <span></span>
-        </div>
-        <nav class="navigation">
+        <svg class="menu-btn" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
+        <menu class="navigation">
             <a href="${homePage}#home">ホーム</a>
             <a href="${homePage}#products">製品紹介</a>
             <a href="${homePage}#plan">プラン</a>
@@ -34,10 +30,8 @@ const headerContent = `
             <a href="${homePage}#recruit">採用情報</a>
             <a href="${homePage}#news">ニュース</a>
             <a class="login-btn" href="${loginUrl}">ログイン</a>
-        </nav>
+        </menu>
     </div>`;
-
-// 底部HTML内容
 const footerContent = `
     <div class="footer-content container-area">
         <div class="footer-logo">
@@ -64,12 +58,12 @@ const footerContent = `
             <p>〒${companyInfo.zipCode}</p>
             <p>${companyInfo.address1}</p>
             <p>${companyInfo.address2}</p>
-            <p>${companyInfo.email}</p>
+            <p style="font-size: 10pt;">${companyInfo.email}</p>
         </div>
         <div class="footer-sns">
             <h2>SNS</h2>
             <div class="footer-sns-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 100 100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
                     <g transform="translate(-713 -334)">
                         <rect width="100" height="100" transform="translate(713 334)" fill="none" />
                         <path
@@ -77,7 +71,7 @@ const footerContent = `
                             transform="translate(712.572 333.176)" fill="#fff" />
                     </g>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 100 100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
                     <g transform="translate(-271 -334)">
                         <rect width="100" height="100" transform="translate(271 334)" fill="none" />
                         <g transform="translate(267.6 329.2)">
@@ -92,7 +86,7 @@ const footerContent = `
                         </g>
                     </g>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 100 100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
                     <g transform="translate(-564 -334)">
                         <rect width="100" height="100" transform="translate(564 334)" fill="none" />
                         <path
@@ -100,7 +94,7 @@ const footerContent = `
                             transform="translate(564 335.428)" fill="#fff" />
                     </g>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 100 100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
                     <g transform="translate(-417 -334)">
                         <rect width="100" height="100" transform="translate(417 334)" fill="none" />
                         <path
@@ -114,27 +108,29 @@ const footerContent = `
     <div class="footer-meta container-area">
         <p>Copyright© 2025 Manatsuru Corporation, Ltd. All rights reserved.</p>
     </div>`;
-
-// 侧边导航按钮
 const sideBtnContent = `
     <svg class="side-btn" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10"></circle>
     </svg>`;
 
 /**
- * 检测移动设备
+ * 更全面的移动设备检测方法
+ * 同时检查 User-Agent 和触摸事件支持
  * @returns {boolean} 如果是移动设备则返回 true
  */
 function isComprehensiveMobileCheck() {
+  // 检查 User-Agent
   const userAgent = navigator.userAgent || window.opera;
   const mobileRegex =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  // 检查触摸事件支持
   const hasTouchSupport =
     "ontouchstart" in window ||
     navigator.maxTouchPoints > 0 ||
     navigator.msMaxTouchPoints > 0;
-  const hasSmallScreen = window.innerWidth < 768;
 
+  // 检查屏幕尺寸
+  const hasSmallScreen = window.innerWidth < 768;
   return mobileRegex.test(userAgent) || (hasTouchSupport && hasSmallScreen);
 }
 
@@ -158,6 +154,22 @@ const loadBefore = function () {
   $("body").addClass(
     isComprehensiveMobileCheck() ? "mobile-device" : "desktop-device"
   );
+
+  // 点击菜单按钮，显示或隐藏导航栏
+  $(".menu-btn").on("click", function () {
+    $(".navigation").toggleClass("show");
+  });
+
+  $(window).on("click", function (event) {
+    // 点击窗口其他地方，隐藏导航栏
+    if (
+      $(".navigation").hasClass("show") &&
+      !$(event.target).closest(".menu-btn").length
+    ) {
+      $(".navigation").removeClass("show");
+    }
+  });
+
   // 初始化图片懒加载
   initLazyLoading(false);
 };

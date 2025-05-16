@@ -1,0 +1,413 @@
+/* 首页特有样式 */
+
+/* 主页 Banner */
+.home {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../../img/background/bk.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  padding: 8rem 0;
+  text-align: center;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.home-container-area {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.home-container-area h4 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.home-container-area p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* 产品展示部分 */
+.products {
+  background-color: var(--neutral-light);
+  padding: 5rem 0;
+}
+
+.products-container-area {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-content {
+  width: 40%;
+  padding-right: 3rem;
+}
+
+.product-content h4 {
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.product-content h4::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 0;
+}
+
+.product-area {
+  width: 60%;
+}
+
+.product-area-image {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 20px;
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-image::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease;
+}
+
+.product-image a {
+  position: absolute;
+  z-index: 2;
+  color: var(--white);
+  font-weight: 600;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.product-image:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-image:hover img {
+  transform: scale(1.1);
+}
+
+.product-image:hover::before {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 计划部分 */
+.plan {
+  background-color: var(--neutral-dark);
+  padding: 5rem 0;
+}
+
+.plan-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.plan-title h4 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.plan-title h4::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.plan-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.plan-content {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.plan-content:hover {
+  transform: translateY(-10px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.plan-content-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.plan-content-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--white);
+}
+
+.plan-content-title h3 {
+  margin-bottom: 1rem;
+}
+
+/* 关于部分 */
+.about {
+  background-color: var(--primary-light);
+  padding: 5rem 0;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-content h4 {
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.about-content h4::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about-content p {
+  line-height: 1.8;
+}
+
+/* 招聘部分 */
+.recruit {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../img/recruit/31944039_m.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 0;
+}
+
+.recruit-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.recruit-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.recruit-content h4 {
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.recruit-content h4::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color);
+  bottom: 0;
+  left: 0;
+}
+
+.recruit-area {
+  flex: 1;
+  min-width: 300px;
+}
+
+.recruit-image {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.recruit-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.recruit-image h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.recruit-image::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.recruit-image:hover {
+  transform: translateY(-10px);
+}
+
+.recruit-image:hover img {
+  transform: scale(1.1);
+}
+
+.recruit-image:hover::before {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 新闻部分 */
+.news {
+  background-color: var(--neutral-light);
+  padding: 5rem 0;
+}
+
+.news-container-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.news-container-title h4 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.news-container-title h4::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 2rem;
+}
+
+.news-item {
+  background-color: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.news-content {
+  padding: 1.5rem;
+}
+
+.news-date {
+  font-size: 0.9rem;
+  color: var(--neutral-medium);
+  margin-bottom: 0.5rem;
+}
+
+.news-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--neutral-dark);
+}
+
+.news-content p {
+  color: var(--neutral-medium);
+  margin-bottom: 0;
+}
+
+.news-more {
+  text-align: center;
+  margin-top: 2rem;
+}

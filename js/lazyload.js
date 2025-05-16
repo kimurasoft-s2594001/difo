@@ -4,7 +4,10 @@
 // <img src="img/content.jpg" alt="Content">
 // <!-- 优先级低的大图，使用data-src更精细控制 -->
 // <img data-src="img/large-banner.jpg" alt="Banner" src="img/placeholder.svg"></img>
-// 初始化图片懒加载
+/**
+ * 初始化懒加载图片
+ * @param {boolean} incrementalOnly 是否只处理新增的图片
+ */
 export function initLazyLoading(incrementalOnly = false) {
   // 检查是否支持原生懒加载
   if ("loading" in HTMLImageElement.prototype) {
