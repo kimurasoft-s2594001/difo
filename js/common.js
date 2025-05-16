@@ -1,5 +1,6 @@
 import { throttle } from "./utils.js";
 import { initLazyLoading } from "./lazyload.js";
+import { highlightCurrentNavItem } from "./animation.js";
 
 export const companyInfo = {
   zipCode: "114-0012",
@@ -159,40 +160,96 @@ const loadAfter = function () {
   // 现有代码
   $("body").addClass("show");
 
-  // 处理菜单按钮点击
-  $(".menu-btn").on("click", function (e) {
-    $(".navigation").toggleClass("show");
-    $(this).toggleClass("active");
-    e.stopPropagation();
+  // 为导航菜单项设置索引
+  $(".navigation a").each(function (index) {
+    $(this).css("--menu-index", index + 1);
   });
 
+  // 修改现有菜单按钮点击处理
+  $(".menu-btn")
+    .off("click")
+    .on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const $navigation = $(".navigation");
+
+      if ($navigation.hasClass("show")) {
+        // 关闭菜单
+        $navigation.addClass("closing");
+        $(this).removeClass("active");
+
+        // 等待动画完成
+        setTimeout(function () {
+          $navigation.removeClass("show closing");
+          $("body").css("overflow", "");
+        }, 400);
+      } else {
+        // 打开菜单
+        $navigation.removeClass("closing").addClass("show");
+        $(this).addClass("active");
+        $("body").css("overflow", "hidden");
+      }
+    });
+
   // 点击导航链接后关闭菜单
-  $(".navigation.show a").on("click", function () {
-    $(".navigation.show").removeClass("active");
-    $(".menu-btn").removeClass("active");
+  $(".navigation a").on("click", function () {
+    if ($(window).width() <= 768) {
+      const $navigation = $(".navigation");
+      const $menuBtn = $(".menu-btn");
+
+      $navigation.addClass("closing");
+      $menuBtn.removeClass("active");
+
+      setTimeout(function () {
+        $navigation.removeClass("show closing");
+        $("body").css("overflow", "");
+      }, 400);
+    }
   });
 
   // 点击页面其他地方关闭菜单
   $(document).on("click", function (e) {
     if (
-      !$(e.target).closest(".menu-btn").length &&
-      !$(e.target).closest(".navigation.show").length
+      $(".navigation").hasClass("show") &&
+      !$(e.target).closest(".navigation").length &&
+      !$(e.target).closest(".menu-btn").length
     ) {
-      $(".navigation.show").removeClass("active");
-      $(".menu-btn").removeClass("active");
+      const $navigation = $(".navigation");
+      const $menuBtn = $(".menu-btn");
+
+      $navigation.addClass("closing");
+      $menuBtn.removeClass("active");
+
+      setTimeout(function () {
+        $navigation.removeClass("show closing");
+        $("body").css("overflow", "");
+      }, 400);
     }
   });
+
+  // 处理窗口尺寸变化
+  let resizeTimer;
+  $(window).on("resize", function () {
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(function () {
+      if ($(window).width() > 768) {
+        $(".navigation").removeClass("show closing");
+        $(".menu-btn").removeClass("active");
+        $("body").css("overflow", "");
+      }
+    }, 150);
+  });
+
   // 滚动时检查是否有新的图片需要懒加载
   const handleScroll = throttle(() => {
     initLazyLoading(true);
   }, 200);
 
   window.addEventListener("scroll", handleScroll);
-
-  // 新增：在初始化时为所有导航项设置级联索引
-  $(".navigation a").each(function (index) {
-    $(this).css("--menu-index", index + 1);
-  });
+  // 如果页面有可能通过JavaScript更改hash，也可以添加hashchange事件监听
+  window.addEventListener("hashchange", highlightCurrentNavItem);
 };
 
 export { loadBefore, loadAfter };

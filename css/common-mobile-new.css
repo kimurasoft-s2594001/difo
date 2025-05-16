@@ -122,40 +122,68 @@
     display: none;
   }
 
-  /* 导航菜单动画样式 */
+  /* 导航菜单基础样式 */
   .navigation {
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     max-height: 0;
-    overflow: hidden;
     opacity: 0;
+    transform: translateY(-15px);
     visibility: hidden;
+    overflow: hidden;
+    pointer-events: none; /* 隐藏状态下禁用交互 */
+
+    /* 优化过渡曲线和时间 */
+    transition: max-height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+      opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      visibility 0.3s linear, pointer-events 0.3s linear;
+
+    /* 添加阴影预设，设为0透明度 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0);
   }
 
   /* 显示状态 */
   .navigation.show {
-    max-height: 500px; /* 根据实际菜单高度调整 */
+    max-height: 500px; /* 或根据实际内容设置更精确的值 */
     opacity: 1;
+    transform: translateY(0);
     visibility: visible;
+    pointer-events: auto; /* 显示状态下启用交互 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 显示阴影 */
   }
 
   /* 菜单项动画 */
+  /* 菜单项基础样式 */
   .navigation a {
     opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transform: translateX(-10px);
+    position: relative;
+
+    /* 优化过渡曲线 */
+    transition: opacity 0.35s ease,
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      background-color 0.2s ease;
+  }
+
+  /* 显示状态下的菜单项 */
+  .navigation.show a {
+    opacity: 1;
+    transform: translateX(0);
+
+    /* 级联延迟计算 - 确保每项都有不同延迟 */
     transition-delay: calc(0.05s * var(--menu-index));
   }
 
-  /* 菜单项显示状态 */
-  .navigation.show a {
-    opacity: 1;
-    transform: translateY(0);
+  /* 菜单项悬停效果 */
+  .navigation a:hover {
+    background-color: rgba(32, 118, 74, 0.05); /* 使用品牌色的淡化版本 */
   }
 
-  /* 当前活动菜单项样式(可选) */
+  /* 当前页面对应的导航项高亮样式 */
   .navigation a.active {
-    color: #20764a; /* 替换为您网站的主题色 */
+    background-color: rgba(32, 118, 74, 0.08);
     border-left: 3px solid #20764a;
+    padding-left: 17px; /* 补偿边框宽度 */
+    font-weight: 600;
+    color: #20764a;
   }
 
   /* 移动版登录链接样式 */
