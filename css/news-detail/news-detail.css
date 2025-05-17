@@ -1,7 +1,8 @@
 .news-detail {
-  background-color: var(--page-background-color-wheat);
+  background-color: var(--background-light);
   height: auto;
   min-height: 100%;
+  padding: 5rem 0;
 }
 
 .news-detail-content {

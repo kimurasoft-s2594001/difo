@@ -2,7 +2,7 @@
  * 导航交互模块
  * 处理导航菜单交互、高亮等功能
  */
-import { highlightCurrentNavItem } from "./animation.js";
+import { highlightCurrentNavItem } from "./nav-highlight.js";
 
 /**
  * 设置导航菜单索引

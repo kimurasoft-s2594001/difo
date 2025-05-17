@@ -1,5 +1,6 @@
 section {
-  background-color: var(--page-background-color-wheat);
+  background-color: var(--background-light);
+  padding: 5rem 0;
 }
 
 section .container-area {

@@ -18,6 +18,7 @@
   --background-dark: var(--neutral-dark);
   --text-light: var(--white);
   --text-dark: var(--neutral-dark);
+  --page-background-color-wheat: var(--neutral-light); /* 添加页面背景色 */
 
   /* 字体 */
   --font-main: "Noto Sans JP", sans-serif;
@@ -40,6 +41,7 @@
 
   /* 容器宽度 */
   --container-width: 1200px;
+  --container-area-width: 1200px; /* 添加容器区域宽度 */
   --container-padding: 2rem;
 
   /* 导航和页脚相关 */
@@ -332,6 +334,38 @@ main {
   transform: scale(1.2);
 }
 
+/* 统一标题区样式 */
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title h4,
+.section-title h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title h4::after,
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 深色背景的样式 */
+.dark .section-title h4::after,
+.dark .section-title h2::after {
+  background-color: var(--accent-color);
+}
+
 /* 按钮样式 */
 .btn {
   display: inline-block;
@@ -451,11 +485,13 @@ main {
 /* 动画效果 */
 .fade-in {
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .fade-in-1 {

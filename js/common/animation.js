@@ -1,92 +1,33 @@
-// animation.js - 滚动动画效果
 import { throttle } from "./utils.js";
+
+// 使用nav-highlight.js中的导航高亮函数
+import { highlightCurrentNavItem as highlightNavItem } from "./nav-highlight.js";
+
+/**
+ * 手动触发滚动动画检测
+ * 立即调用一次以显示可见内容
+ */
+export function triggerFadeAnimations() {
+  handleScrollAnimations();
+
+  // 添加延迟命令以确保所有元素都能正确显示
+  setTimeout(() => {
+    handleScrollAnimations();
+    // 手动将所有当前可见的fade-in元素设置为visible
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((element) => {
+      element.classList.add("visible");
+    });
+  }, 300);
+}
 
 /**
  * 高亮显示当前页面对应的导航菜单项
+ * 调用nav-highlight.js中的实现
  */
 function highlightCurrentNavItem() {
-  // 获取当前页面URL路径部分
-  const currentPath = window.location.pathname;
-  // 获取当前页面的hash部分（如果有）
-  const currentHash = window.location.hash;
-
-  // 获取所有导航链接
-  const navLinks = document.querySelectorAll(".navigation a");
-
-  // 移除所有active类
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-  });
-
-  // 匹配导航项并添加active类
-  navLinks.forEach((link) => {
-    const linkHref = link.getAttribute("href");
-
-    // 检查是否匹配当前页面路径
-    if (linkHref) {
-      // 情况1: 完全匹配URL路径（例如 /index.html）
-      if (linkHref === currentPath) {
-        link.classList.add("active");
-        return;
-      }
-
-      // 情况2: 如果是 index.html 且当前也是首页
-      if (
-        linkHref.includes("index.html") &&
-        (currentPath === "/" || currentPath.includes("index"))
-      ) {
-        // 但不包含hash或hash匹配
-        if (
-          !linkHref.includes("#") ||
-          (currentHash && linkHref.includes(currentHash))
-        ) {
-          link.classList.add("active");
-          return;
-        }
-      }
-
-      // 情况3: 链接包含hash且hash匹配当前hash
-      if (currentHash && linkHref.includes(currentHash)) {
-        link.classList.add("active");
-        return;
-      }
-
-      // 情况4: 匹配当前URL的路径部分（忽略hash）
-      if (currentPath !== "/" && linkHref.includes(currentPath)) {
-        // 避免部分URL匹配（例如，/about不应匹配/about-us）
-        const pathParts = linkHref.split("/");
-        const currentParts = currentPath.split("/");
-        const lastPathPart = pathParts[pathParts.length - 1].split("#")[0]; // 移除hash部分
-        const lastCurrentPart = currentParts[currentParts.length - 1];
-
-        if (lastPathPart === lastCurrentPart) {
-          link.classList.add("active");
-          return;
-        }
-      }
-
-      // 情况5：对于首页特殊处理 - 如果链接文本是"ホーム"且当前是首页
-      if (
-        link.textContent.trim() === "ホーム" &&
-        (currentPath === "/" || currentPath.includes("index.html"))
-      ) {
-        // 检查是否没有hash或当前在页面顶部
-        if (!currentHash || currentHash === "" || currentHash === "#home") {
-          link.classList.add("active");
-          return;
-        }
-      }
-
-      // 情况6：基于导航项文本内容和当前页面标题匹配
-      const pageTitle = document.title.toLowerCase();
-      const linkText = link.textContent.trim().toLowerCase();
-
-      if (pageTitle.includes(linkText) && linkText !== "ホーム") {
-        // 排除首页通用名称
-        link.classList.add("active");
-      }
-    }
-  });
+  // 使用统一的导航高亮实现
+  highlightNavItem();
 }
 
 // 处理滚动动画
@@ -96,7 +37,8 @@ function handleScrollAnimations() {
 
   fadeElements.forEach((element) => {
     const elementTop = element.getBoundingClientRect().top;
-    const elementVisible = 150;
+    // 调整可见性阈值，使元素更容易被视为可见
+    const elementVisible = windowHeight * 0.25; // 当元素进入可见区域的25%时显示
 
     if (elementTop < windowHeight - elementVisible) {
       element.classList.add("visible");
@@ -106,38 +48,22 @@ function handleScrollAnimations() {
 
 // 处理导航高亮
 function handleNavHighlight() {
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".navigation a");
+  // 使用统一的导航高亮实现
+  highlightNavItem();
+
+  // 处理侧边导航高亮
+  const currentHash = window.location.hash;
   const sideLinks = document.querySelectorAll(".side-navi a");
 
-  let currentSectionId = "";
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 100;
-    const sectionHeight = section.offsetHeight;
-    const sectionId = section.getAttribute("id");
-
-    if (
-      window.scrollY >= sectionTop &&
-      window.scrollY < sectionTop + sectionHeight
-    ) {
-      currentSectionId = sectionId;
-    }
+  // 移除所有侧边导航的高亮
+  sideLinks.forEach((link) => {
+    link.classList.remove("active");
   });
 
-  if (currentSectionId) {
-    // 更新主导航高亮
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(currentSectionId)) {
-        link.classList.add("active");
-      }
-    });
-
-    // 更新侧边导航高亮
+  // 根据hash设置侧边导航高亮
+  if (currentHash) {
     sideLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(currentSectionId)) {
+      if (link.getAttribute("href") === currentHash) {
         link.classList.add("active");
       }
     });
@@ -272,7 +198,12 @@ function initNavAnimation() {
   });
 }
 
-// 当DOM加载完成后初始化
-document.addEventListener("DOMContentLoaded", initAnimations);
+// 重要：注释掉这个事件监听器，因为我们已经在index.js中执行了相关初始化
+// document.addEventListener("DOMContentLoaded", initAnimations);
 
-export { handleScrollAnimations, handleNavHighlight, highlightCurrentNavItem };
+export {
+  handleScrollAnimations,
+  handleNavHighlight,
+  highlightCurrentNavItem,
+  initAnimations,
+};

@@ -63,29 +63,7 @@ function initPageFeatures() {
     });
   });
 
-  // 自动突出显示当前部分
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".navigation a");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-
-      if (pageYOffset >= sectionTop - sectionHeight / 3) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(current)) {
-        link.classList.add("active");
-      }
-    });
-  });
+  // 导航高亮功能已通过app.js中的highlightCurrentNavItem实现
 }
 
 document.addEventListener("DOMContentLoaded", function () {

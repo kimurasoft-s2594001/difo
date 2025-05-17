@@ -1,5 +1,4 @@
-import { loadBefore, loadAfter, companyInfo } from "../common.js";
-import { newsUtils } from "../news-data.js";
+import { loadBefore, loadAfter, newsUtils } from "../app.js";
 
 function loadNewsContent() {
   // 获取URL参数

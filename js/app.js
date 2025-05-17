@@ -20,9 +20,11 @@ import {
   setupNavLinkEvents,
   setupDocumentClickEvent,
 } from "./common/navigation.js";
+import { newsUtils } from "./common/news-data.js";
+import { triggerFadeAnimations, initAnimations } from "./common/animation.js";
 
 // 导出公司信息和URL（保持原有API兼容性）
-export { companyInfo, urls };
+export { companyInfo, urls, newsUtils };
 
 /**
  * 页面加载前执行的函数
@@ -37,6 +39,7 @@ export function loadBefore() {
   initLazyLoading(false);
 }
 
+// 更新app.js中loadAfter函数
 /**
  * 页面加载后执行的函数
  * 初始化交互和事件
@@ -52,6 +55,7 @@ export function loadAfter() {
   setupScrollEvents();
   setupResizeEvents();
   setupHashChangeEvents();
+
   // 显示页面内容
   $("body").addClass("show");
 }

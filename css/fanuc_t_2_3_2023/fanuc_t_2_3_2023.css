@@ -3,9 +3,10 @@
 }
 
 .home {
-  background-color: var(--page-background-color-wheat);
+  background-color: var(--background-light);
   min-width: var(--container-area-width);
   overflow: hidden;
+  padding: 5rem 0;
 }
 
 .home-container-area {
@@ -27,7 +28,8 @@
 }
 
 .practice {
-  background-color: var(--page-background-color-wheat);
+  background-color: var(--background-light);
+  padding: 5rem 0;
 }
 
 .practice-container-area {
@@ -52,7 +54,8 @@
 }
 
 .drawings {
-  background-color: var(--page-background-color-wheat);
+  background-color: var(--background-light);
+  padding: 5rem 0;
 }
 
 .drawings-container-area {
@@ -78,7 +81,8 @@
 }
 
 .project {
-  background-color: var(--page-background-color-wheat);
+  background-color: var(--background-light);
+  padding: 5rem 0;
 }
 
 .project-container-area {
@@ -104,7 +108,8 @@
 }
 
 .evaluation {
-  background-color: var(--page-background-color-wheat);
+  background-color: var(--background-light);
+  padding: 5rem 0;
 }
 
 .evaluation-container-area {
