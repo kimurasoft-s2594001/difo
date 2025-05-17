@@ -121,6 +121,7 @@
   z-index: 2;
   color: var(--white);
   font-weight: 600;
+  font-size: 1.3rem; /* 增大字体大小 */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -214,7 +215,7 @@
 
 /* 关于部分 */
 .about {
-  background-color: var(--primary-light);
+  background-color: var(--background-light);
   padding: 5rem 0;
 }
 

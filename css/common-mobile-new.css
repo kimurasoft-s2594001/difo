@@ -149,6 +149,19 @@
     right: 10px;
   }
 
+  /* 移动端上禁用hover效果，使用active替代 */
+  .side-navi a:hover svg {
+    /* 移动端上禁用hover效果 */
+    fill: transparent;
+    transform: none;
+  }
+  
+  .side-navi a:active svg {
+    /* 使用active代替hover */
+    fill: var(--white);
+    transform: scale(1.2);
+  }
+
   /* ===== 页脚样式 ===== */
   .footer-content {
     grid-template-columns: 1fr;
