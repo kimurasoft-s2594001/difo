@@ -1,17 +1,4 @@
 /* 移动端适配样式 */
-.container-area {
-  padding: 0 1rem;
-}
-
-/* 主页部分 */
-.home {
-  padding: 3rem 0;
-}
-
-/* 实习内容部分 */
-.practice-content {
-  width: 100%;
-}
 
 /* 图面部分 */
 .image-container {
@@ -26,23 +13,4 @@
 /* 项目部分 - iframe */
 .iframe-container {
   padding-bottom: 75%; /* 移动端使用4:3比例 */
-}
-
-/* 评价表部分 */
-.evaluation-content .image-container {
-  overflow-x: auto;
-}
-
-/* 调整标题大小 */
-.section-title h4 {
-  font-size: 1.4rem;
-}
-
-/* 调整间距 */
-section {
-  padding: 2.5rem 0;
-}
-
-.section-title {
-  margin-bottom: 1.5rem;
 }

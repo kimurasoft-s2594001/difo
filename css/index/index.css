@@ -412,3 +412,35 @@
   text-align: center;
   margin-top: 2rem;
 }
+
+/* 首页按钮特定样式 */
+.home .btn {
+  background-color: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.home .btn:hover {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+.recruit .btn-light {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.recruit .btn-light:hover {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+.news .btn-outline {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.news .btn-outline:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}

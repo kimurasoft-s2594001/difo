@@ -45,12 +45,30 @@ main {
   padding-right: var(--container-padding);
 }
 
+/* 通用容器 */
 section {
   padding: var(--spacing-md) 0;
 }
 
 section:first-of-type {
   padding-top: 20px;
+}
+
+/* 标题样式统一 */
+.section-title {
+  margin-bottom: 1.5rem;
+}
+
+.requirements-title {
+  font-size: 1.3rem;
+  padding: 0.4rem 1.5rem;
+  border-width: 1px;
+}
+
+.requirements-title:after {
+  width: 60%;
+  height: 2px;
+  bottom: -0.15rem;
 }
 
 /* ===== 头部样式 ===== */
@@ -226,9 +244,8 @@ height: 10px;
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
 }
 
-/* 移动端上禁用hover效果，使用active替代 */
+/* 完全禁用hover效果，只保留active */
 .side-navi a:hover svg {
-  /* 移动端上禁用hover效果 */
   fill: transparent;
   transform: none;
 }
@@ -247,7 +264,19 @@ height: 10px;
 }
 
 .footer-content > div.footer-logo {
-  display: none;
+  display: block;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.footer-logo .logo {
+  height: 100px;
+  display: inline-block;
+}
+
+.footer-logo .logo img {
+  height: 100%;
+  width: auto;
 }
 
 .footer-content > div {
@@ -315,6 +344,32 @@ height: 10px;
 .btn {
   padding: 0.7rem 1.5rem;
   font-size: 0.9rem;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn:active {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: scale(0.98);
+}
+
+.btn-light:active {
+  background-color: var(--white);
+  color: var(--primary-color);
+  border-color: var(--white);
+}
+
+/* 深色背景上的按钮 */
+.dark .btn {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.dark .btn:active {
+  background-color: var(--white);
+  color: var(--primary-color);
 }
 
 /* ===== 登录按钮样式 ===== */
@@ -335,8 +390,152 @@ height: 10px;
   padding-bottom: 0.8rem;
 }
 
+/* 卡片式容器统一样式 */
+.recruit-section,
+.news-detail-content,
+.news-item {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+/* 列表样式统一 */
+.recruit-content ul,
+.news-content ul, 
+.news-items ul {
+  padding-left: 0;
+  list-style-type: none;
+  margin-bottom: 1rem;
+}
+
+.recruit-content li,
+.news-content li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* 列表项标记统一 */
+.recruit-content li:before,
+.news-content li:before {
+  content: "•";
+  position: absolute;
+  left: 0.3rem;
+  color: #1a7c4b;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* 文本内容统一 */
+.recruit-content p,
+.news-content p,
+.news-item-excerpt {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* 标题统一 */
+.recruit-section-title,
+.news-title,
+.news-item-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+/* 图片容器统一 */
+.news-item-image {
+  height: 160px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* 按钮统一样式 */
+.apply-btn,
+.back-button,
+.news-pagination button {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  border-width: 1px;
+  border-radius: 4px;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* 触摸状态统一 */
+.apply-btn:active,
+.back-button:active,
+.news-pagination button:active:not([disabled]) {
+  transform: scale(0.98);
+  background-color: #1a7c4b;
+  color: #fff;
+}
+
+/* 分类、标签统一 */
+.news-category,
+.news-item-category {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.8rem;
+  border-radius: 1rem;
+}
+
+/* 日期文本统一 */
+.news-date,
+.news-item-date {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* 信息区块统一 */
+.info-section,
+.exhibition-info,
+.contact-info {
+  margin: 1.2rem 0;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+/* 间距和分隔线统一 */
+.news-meta,
+.exhibition-venue,
+.exhibition-features,
+.visit-info {
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* 分页统一样式 */
+.news-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.news-pagination button {
+  width: auto;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.page-numbers {
+  font-size: 0.9rem;
+}
+
 /* 超小屏幕设备调整 */
 @media (max-width: 480px) {
+  section {
+    padding: 2rem 0;
+  }
+
   .btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.85rem;
@@ -357,6 +556,45 @@ height: 10px;
   /* 超小屏幕的logo调整 */
   .header .logo {
     height: 35px;
+  }
+
+  .requirements-title {
+    font-size: 1.1rem;
+    padding: 0.3rem 1rem;
+  }
+
+  .recruit-section,
+  .news-detail-content,
+  .news-item {
+    padding: 1rem;
+  }
+
+  .recruit-section-title,
+  .news-title,
+  .news-item-title {
+    font-size: 1.1rem;
+  }
+
+  .news-item-image {
+    height: 140px;
+  }
+
+  .recruit-content p,
+  .news-content p,
+  .news-item-excerpt {
+    font-size: 0.85rem;
+  }
+
+  .apply-btn,
+  .back-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .info-section,
+  .exhibition-info,
+  .contact-info {
+    padding: 0.8rem;
   }
 }
 
