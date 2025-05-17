@@ -1,136 +1,121 @@
+/* 主要样式 */
+:root {
+  --section-padding: 4rem;
+  --content-max-width: 1200px;
+}
+
 .container-area {
-  min-width: 1500px;
+  max-width: var(--content-max-width);
+  width: 100%;
+  padding: 0 2rem;
+  margin: 0 auto;
 }
 
-.home {
-  background-color: var(--background-light);
-  min-width: var(--container-area-width);
-  overflow: hidden;
-  padding: 5rem 0;
-}
-
-.home-container-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
+/* 通用部分样式 */
+section {
+  padding: var(--section-padding) 0;
   position: relative;
 }
 
-.home-container-area h4 {
+.section-title {
   text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.home-container-area p {
-  margin-top: 50px;
-  padding: 0 50px;
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
 }
 
-.practice {
+/* 主页部分 */
+.home {
   background-color: var(--background-light);
-  padding: 5rem 0;
+  padding: 6rem 0;
 }
 
-.practice-container-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-}
-
-.practice-title {
-  text-align: center;
-}
-
+/* 实习内容部分 */
 .practice-content {
-  width: 60%;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.practice-content iframe {
-  margin: 0 auto;
+.practice-content ol {
+  padding-left: 2rem;
 }
 
-.drawings {
-  background-color: var(--background-light);
-  padding: 5rem 0;
+.practice-content li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
-.drawings-container-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-}
-
-.drawings-title {
-  text-align: center;
-}
-
+/* 图面部分 */
 .drawings-content {
   width: 100%;
 }
-.drawings-content img {
-  width: 900px;
-  position: relative;
-  margin: 0 auto;
-  display: block;
-}
 
-.project {
-  background-color: var(--background-light);
-  padding: 5rem 0;
-}
-
-.project-container-area {
+.image-container {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
+  margin: 2rem 0;
+  overflow: hidden;
 }
 
-.project-title {
-  height: 80px;
-  text-align: center;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  flex-direction: column;
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* 项目部分 */
 .project-content {
   width: 100%;
-  height: calc(100% - 150px);
 }
 
-.evaluation {
-  background-color: var(--background-light);
-  padding: 5rem 0;
+.iframe-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 纵横比 */
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.evaluation-container-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+#simulation-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
+  border: none;
 }
 
-.evaluation-title {
-  text-align: center;
-}
-
+/* 评价表部分 */
 .evaluation-content {
   width: 100%;
 }
 
-.evaluation-content img {
-  width: 900px;
-  position: relative;
-  margin: 0 auto;
-  display: block;
+/* 淡入动画 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-1 {
+  transition-delay: 0.1s;
+}
+
+.fade-in-2 {
+  transition-delay: 0.2s;
 }
