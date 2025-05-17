@@ -1,6 +1,6 @@
 // js/index/index.js
-import { loadBefore, loadAfter } from "../common.js";
-import { newsUtils } from "../news-data.js";
+import { loadBefore, loadAfter } from "../app.js";
+import { newsUtils } from "../common/news-data.js";
 
 /**
  * 渲染最新新闻到页面

@@ -67,7 +67,7 @@ export function initNavHighlight() {
  * 高亮显示当前导航项
  * 根据URL和滚动位置确定当前页面
  */
-function highlightCurrentNavItem() {
+export function highlightCurrentNavItem() {
   // 获取当前页面URL信息
   const currentPath = window.location.pathname;
   const currentHash = window.location.hash;

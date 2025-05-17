@@ -1,23 +1,14 @@
-import { throttle } from "./utils.js";
-import { initLazyLoading } from "./lazyload.js";
-import { highlightCurrentNavItem } from "./animation.js";
-import { initNavHighlight } from "./nav-highlight.js";
-
-export const companyInfo = {
-  zipCode: "114-0012",
-  address1: "東京都北区田端新町1-8-14",
-  address2: "山貴田端新町ビル 2階",
-  phone: "03-6807-9627",
-  email: "info@difo.jp",
-};
-
-const loginUrl = "https://www.shulin-soft.com:8048/login.html";
-const homePage = "index.html";
+/**
+ * HTML模板模块
+ * 负责生成各种HTML模板内容
+ */
+import { companyInfo, urls } from "./config.js";
 
 // 头部HTML内容
-const headerContent = `
+export function getHeaderTemplate() {
+  return `
     <div id="header-container-area" class="header-container-area container-area">
-        <a href="index.html" class="logo">
+        <a href="${urls.home}" class="logo">
             <img src="img/logo/black_on_white.png" alt="">
         </a>
         <div class="menu-btn">
@@ -26,32 +17,34 @@ const headerContent = `
           <span class="menu-bar"></span>
         </div>
         <nav class="navigation">
-            <a href="${homePage}#home">ホーム</a>
-            <a href="${homePage}#products">製品紹介</a>
-            <a href="${homePage}#plan">プラン</a>
-            <a href="${homePage}#about">会社概要</a>
-            <a href="${homePage}#recruit">採用情報</a>
-            <a href="${homePage}#news">ニュース</a>
-            <a class="login-btn" href="${loginUrl}">ログイン</a>
+            <a href="${urls.home}#home">ホーム</a>
+            <a href="${urls.home}#products">製品紹介</a>
+            <a href="${urls.home}#plan">プラン</a>
+            <a href="${urls.home}#about">会社概要</a>
+            <a href="${urls.home}#recruit">採用情報</a>
+            <a href="${urls.home}#news">ニュース</a>
+            <a class="login-btn" href="${urls.login}">ログイン</a>
         </nav>
     </div>`;
+}
 
 // 底部HTML内容
-const footerContent = `
+export function getFooterTemplate() {
+  return `
     <div class="footer-content container-area">
         <div class="footer-logo">
-            <a href="index.html" class="logo">
+            <a href="${urls.home}" class="logo">
               <img src="img/logo/white_on_trans.png" alt="">
             </a>
         </div>
         <div class="footer-navi">
             <h2>LINK</h2>
-            <a href="${homePage}#products">製品紹介</a>
-            <a href="${homePage}#plan">プラン</a>
-            <a href="${homePage}#about">会社概要</a>
-            <a href="${homePage}#recruit">採用情報</a>
-            <a href="${homePage}#news">ニュース</a>
-            <a class="login-btn" href="${loginUrl}">ログイン</a>                    
+            <a href="${urls.home}#products">製品紹介</a>
+            <a href="${urls.home}#plan">プラン</a>
+            <a href="${urls.home}#about">会社概要</a>
+            <a href="${urls.home}#recruit">採用情報</a>
+            <a href="${urls.home}#news">ニュース</a>
+            <a class="login-btn" href="${urls.login}">ログイン</a>                    
         </div>
         <div class="footer-info">
             <h2>INFO</h2>
@@ -108,148 +101,12 @@ const footerContent = `
     <div class="footer-meta container-area">
         <p>Copyright© 2025 Manatsuru Corporation, Ltd. All rights reserved.</p>
     </div>`;
+}
 
 // 侧边导航按钮
-const sideBtnContent = `
+export function getSideNavButtonTemplate() {
+  return `
     <svg class="side-btn" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10"></circle>
     </svg>`;
-
-/**
- * 检测移动设备
- * @returns {boolean} 如果是移动设备则返回 true
- */
-function isComprehensiveMobileCheck() {
-  const userAgent = navigator.userAgent || window.opera;
-  const mobileRegex =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-  const hasTouchSupport =
-    "ontouchstart" in window ||
-    navigator.maxTouchPoints > 0 ||
-    navigator.msMaxTouchPoints > 0;
-  const hasSmallScreen = window.innerWidth < 768;
-
-  return mobileRegex.test(userAgent) || (hasTouchSupport && hasSmallScreen);
 }
-
-// 页面加载前执行的函数
-export const loadBefore = function () {
-  // 加载头部和底部内容
-  $("#header").html(headerContent);
-  $("#footer").html(footerContent);
-
-  // 加载侧边导航内容
-  const sideNaviTag = $("#side-navi");
-  $("section").each(function () {
-    sideNaviTag.append(
-      $("<a />")
-        .attr("href", "#" + this.id)
-        .append(sideBtnContent)
-    );
-  });
-
-  // 判定终端类型，添加相应的类名
-  $("body").addClass(
-    isComprehensiveMobileCheck() ? "mobile-device" : "desktop-device"
-  );
-  // 初始化图片懒加载
-  initLazyLoading(false);
-};
-
-// 页面加载后执行的函数
-export const loadAfter = function () {
-  // 现有代码
-  $("body").addClass("show");
-
-  // 为导航菜单项设置索引
-  $(".navigation a").each(function (index) {
-    $(this).css("--menu-index", index + 1);
-  });
-
-  // 修改现有菜单按钮点击处理
-  $(".menu-btn")
-    .off("click")
-    .on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const $navigation = $(".navigation");
-
-      if ($navigation.hasClass("show")) {
-        // 关闭菜单
-        $navigation.addClass("closing");
-        $(this).removeClass("active");
-
-        // 等待动画完成
-        setTimeout(function () {
-          $navigation.removeClass("show closing");
-          $("body").css("overflow", "");
-        }, 400);
-      } else {
-        // 打开菜单
-        $navigation.removeClass("closing").addClass("show");
-        $(this).addClass("active");
-        $("body").css("overflow", "hidden");
-      }
-    });
-
-  // 点击导航链接后关闭菜单
-  $(".navigation a").on("click", function () {
-    if ($(window).width() <= 768) {
-      const $navigation = $(".navigation");
-      const $menuBtn = $(".menu-btn");
-
-      $navigation.addClass("closing");
-      $menuBtn.removeClass("active");
-
-      setTimeout(function () {
-        $navigation.removeClass("show closing");
-        $("body").css("overflow", "");
-      }, 400);
-    }
-  });
-  initNavHighlight();
-
-  // 点击页面其他地方关闭菜单
-  $(document).on("click", function (e) {
-    if (
-      $(".navigation").hasClass("show") &&
-      !$(e.target).closest(".navigation").length &&
-      !$(e.target).closest(".menu-btn").length
-    ) {
-      const $navigation = $(".navigation");
-      const $menuBtn = $(".menu-btn");
-
-      $navigation.addClass("closing");
-      $menuBtn.removeClass("active");
-
-      setTimeout(function () {
-        $navigation.removeClass("show closing");
-        $("body").css("overflow", "");
-      }, 400);
-    }
-  });
-
-  // 处理窗口尺寸变化
-  let resizeTimer;
-  $(window).on("resize", function () {
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(function () {
-      if ($(window).width() > 768) {
-        $(".navigation").removeClass("show closing");
-        $(".menu-btn").removeClass("active");
-        $("body").css("overflow", "");
-      }
-    }, 150);
-  });
-
-  // 滚动时检查是否有新的图片需要懒加载
-  const handleScroll = throttle(() => {
-    initLazyLoading(true);
-  }, 200);
-
-  window.addEventListener("scroll", handleScroll);
-  // 如果页面有可能通过JavaScript更改hash，也可以添加hashchange事件监听
-  window.addEventListener("hashchange", highlightCurrentNavItem);
-};

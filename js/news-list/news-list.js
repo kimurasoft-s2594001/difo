@@ -1,10 +1,10 @@
-import { loadBefore, loadAfter } from "../common.js";
+import { loadBefore, loadAfter } from "../app.js";
 import {
   newsUtils,
   formatDate,
   getCategoryName,
   newsData,
-} from "../news-data.js";
+} from "../common/news-data.js";
 
 const ITEMS_PER_PAGE = 4;
 let currentPage = 1;

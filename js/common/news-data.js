@@ -1,4 +1,4 @@
-import { companyInfo } from "./common.js";
+import { companyInfo } from "../app.js";
 
 // 新闻数据存储
 export const newsData = [

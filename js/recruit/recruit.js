@@ -1,5 +1,4 @@
-import { loadBefore, loadAfter } from "../common.js";
-
+import { loadBefore, loadAfter } from "../app.js";
 document.addEventListener("DOMContentLoaded", function () {
   loadBefore();
   loadAfter();
