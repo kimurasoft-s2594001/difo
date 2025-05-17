@@ -1,6 +1,7 @@
 import { throttle } from "./utils.js";
 import { initLazyLoading } from "./lazyload.js";
 import { highlightCurrentNavItem } from "./animation.js";
+import { initNavHighlight } from "./nav-highlight.js";
 
 export const companyInfo = {
   zipCode: "114-0012",
@@ -132,7 +133,7 @@ function isComprehensiveMobileCheck() {
 }
 
 // 页面加载前执行的函数
-const loadBefore = function () {
+export const loadBefore = function () {
   // 加载头部和底部内容
   $("#header").html(headerContent);
   $("#footer").html(footerContent);
@@ -156,7 +157,7 @@ const loadBefore = function () {
 };
 
 // 页面加载后执行的函数
-const loadAfter = function () {
+export const loadAfter = function () {
   // 现有代码
   $("body").addClass("show");
 
@@ -207,6 +208,7 @@ const loadAfter = function () {
       }, 400);
     }
   });
+  initNavHighlight();
 
   // 点击页面其他地方关闭菜单
   $(document).on("click", function (e) {
@@ -251,5 +253,3 @@ const loadAfter = function () {
   // 如果页面有可能通过JavaScript更改hash，也可以添加hashchange事件监听
   window.addEventListener("hashchange", highlightCurrentNavItem);
 };
-
-export { loadBefore, loadAfter };

@@ -80,7 +80,6 @@
   }
 
   /* ===== 导航菜单样式 - 修复版 ===== */
-  /* 恢复原始导航布局 */
   .header .navigation {
     position: fixed;
     top: 60px;
@@ -88,28 +87,34 @@
     width: 100%;
     height: 0;
     background-color: rgba(255, 255, 255, 0.98);
-    flex-direction: column;
-    align-items: flex-start;
     overflow: hidden;
     transition: height 0.3s ease;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
     z-index: 100;
+    display: block; /* 确保是块级显示 */
   }
 
   .header .navigation.show {
-    height: 350px; /* 或适合您菜单的高度 */
+    height: 350px;
     overflow-y: auto;
   }
 
+  /* 导航菜单项 - 确保每项占满一行 */
   .header .navigation a {
+    display: block; /* 确保是块级元素 */
     width: 100%;
     height: 50px;
     line-height: 50px;
     padding: 0 30px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    display: block;
+    text-align: left; /* 文本左对齐 */
+    white-space: nowrap; /* 防止文本换行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box; /* 确保内边距不会增加宽度 */
   }
 
+  /* 移除可能导致布局问题的样式 */
   .header .navigation a::after {
     display: none;
   }
@@ -119,11 +124,24 @@
     background-color: rgba(227, 240, 235, 0.5);
     border-left: 4px solid #20764a;
     padding-left: 26px;
+    font-weight: 500;
+    color: #20764a;
   }
 
-  /* 悬停效果 */
+  /* 移除可能导致布局问题的伪元素 */
+  .navigation a.active::after,
+  .navigation a.active::before {
+    display: none;
+  }
+
+  /* 菜单项悬停效果 */
   .navigation a:hover {
     background-color: rgba(227, 240, 235, 0.3);
+  }
+
+  /* 活动菜单项悬停效果 */
+  .navigation a.active:hover {
+    background-color: rgba(227, 240, 235, 0.6);
   }
 
   /* ===== 侧边导航样式 ===== */
@@ -150,11 +168,27 @@
     padding: 0.7rem 1.5rem;
     font-size: 0.9rem;
   }
+
+  /* ===== 登录按钮样式 ===== */
+  .login-link {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: 600 !important;
+  }
 }
 
+/* 超小屏幕设备调整 */
 @media (max-width: 480px) {
   .btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.85rem;
   }
+}
+
+/* 确保键盘导航可用性 */
+.navigation a:focus-visible {
+  outline: 2px solid #20764a;
+  outline-offset: -2px;
+  background-color: rgba(227, 240, 235, 0.4);
 }
