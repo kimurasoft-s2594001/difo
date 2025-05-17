@@ -51,6 +51,10 @@ export function loadAfter() {
   setupNavLinkEvents();
   setupDocumentClickEvent();
   highlightCurrentNavItem();
+  
+  // 初始化动画
+  initAnimations();
+  
   // 设置事件监听
   setupScrollEvents();
   setupResizeEvents();
@@ -58,6 +62,11 @@ export function loadAfter() {
 
   // 显示页面内容
   $("body").addClass("show");
+  
+  // 触发滚动动画 - 立即显示所有内容
+  setTimeout(() => {
+    triggerFadeAnimations();
+  }, 50); // 缩短时间以避免闪烁
 }
 
 /**

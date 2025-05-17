@@ -1,6 +1,4 @@
 import { throttle } from "./utils.js";
-
-// 使用nav-highlight.js中的导航高亮函数
 import { highlightCurrentNavItem as highlightNavItem } from "./nav-highlight.js";
 
 /**
@@ -8,16 +6,23 @@ import { highlightCurrentNavItem as highlightNavItem } from "./nav-highlight.js"
  * 立即调用一次以显示可见内容
  */
 export function triggerFadeAnimations() {
-  handleScrollAnimations();
+  // 直接将所有fade-in元素设置为可见，而不依赖于滚动位置
+  // 在初始化时确保页面内容全部可见
+  const fadeElements = document.querySelectorAll(".fade-in");
+  fadeElements.forEach((element) => {
+    element.classList.add("visible");
+  });
 
-  // 添加延迟命令以确保所有元素都能正确显示
+  // 延迟再次调用，防止可能的渲染问题
   setTimeout(() => {
-    handleScrollAnimations();
-    // 手动将所有当前可见的fade-in元素设置为visible
-    const fadeElements = document.querySelectorAll(".fade-in");
-    fadeElements.forEach((element) => {
+    // 再次确保所有元素可见
+    const allFadeElements = document.querySelectorAll(".fade-in");
+    allFadeElements.forEach((element) => {
       element.classList.add("visible");
     });
+    
+    // 这里不再调用handleScrollAnimations()，而是直接设置所有元素为可见
+    // 避免因为滚动计算错误导致部分元素不可见
   }, 300);
 }
 
@@ -197,9 +202,6 @@ function initNavAnimation() {
     }, 150);
   });
 }
-
-// 重要：注释掉这个事件监听器，因为我们已经在index.js中执行了相关初始化
-// document.addEventListener("DOMContentLoaded", initAnimations);
 
 export {
   handleScrollAnimations,
