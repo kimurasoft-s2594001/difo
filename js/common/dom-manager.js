@@ -8,7 +8,7 @@ import {
   getSideNavButtonTemplate,
 } from "./templates.js";
 import { isComprehensiveMobileCheck } from "./device-utils.js";
-import { initLazyLoading } from "../lazyload.js";
+import { initLazyLoading } from "./lazyload.js";
 
 /**
  * 初始化页面头部
