@@ -20,15 +20,25 @@ function renderLatestNews() {
     const formattedDate = formatDate(item.date);
     const newsItem = document.createElement("div");
     newsItem.className = "news-item fade-in";
+    
+    // 使用与图片匹配的HTML结构
     newsItem.innerHTML = `
-      <div class="news-content">
+      <div class="news-meta">
         <div class="news-date">${formattedDate}</div>
+        <span class="news-category ${item.category}">${newsUtils.getCategoryName(item.category)}</span>
+      </div>
+      <div class="news-content">
         <h3>${item.title}</h3>
-        <a href="news-detail.html?id=${item.id}">
-          <p>${item.excerpt}</p>
-        </a>
+        <p>${item.excerpt}</p>
       </div>
     `;
+    
+    // 为整个新闻项添加点击事件
+    newsItem.addEventListener('click', () => {
+      window.location.href = `news-detail.html?id=${item.id}`;
+    });
+    newsItem.style.cursor = 'pointer';
+    
     newsGrid.appendChild(newsItem);
   });
 }

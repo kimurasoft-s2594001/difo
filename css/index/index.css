@@ -1,5 +1,7 @@
 /* 首页特有样式 */
 
+/* 删除之前的标签样式定义，避免冲突 */
+
 /* 主页 Banner */
 .home {
   position: relative;
@@ -343,6 +345,12 @@
 .news {
   background-color: var(--neutral-light);
   padding: 5rem 0;
+  position: relative;
+}
+
+.news-container {
+  position: relative;
+  z-index: 1;
 }
 
 .news-container-title {
@@ -354,6 +362,7 @@
   display: inline-block;
   position: relative;
   padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .news-container-title h4::after {
@@ -367,45 +376,108 @@
   transform: translateX(-50%);
 }
 
+/* 重置新闻卡片样式，采用简洁设计 */
 .news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .news-item {
-  background-color: var(--white);
-  border-radius: 10px;
+  background-color: white;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  width: 340px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* 新闻链接样式 */
+.news-item-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.news-item-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+.news-content {
+  padding: 0;
+  margin-top: 8px;
+}
+
+.news-date {
+  font-size: 0.85rem;
+  color: #666;
+  margin-right: 10px;
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+/* 确保新闻项在所有页面中保持一致的样式 */
+.news-item {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 10px;
+  position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .news-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 }
 
-.news-content {
-  padding: 1.5rem;
+.news-category {
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 12px; /* 增加圆度 */
+  color: white;
+  font-weight: 500;
+  display: inline-block;
 }
 
-.news-date {
-  font-size: 0.9rem;
-  color: var(--neutral-medium);
-  margin-bottom: 0.5rem;
+.news-category.event {
+  background-color: #4d7c8a;
+}
+
+.news-category.product {
+  background-color: #e57373;
+}
+
+.news-category.update {
+  background-color: #7c6c1a;
 }
 
 .news-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  color: var(--neutral-dark);
+  font-size: 1.05rem;
+  margin: 0 0 5px 0;
+  color: #333;
+  line-height: 1.4;
+  font-weight: 600;
 }
 
 .news-content p {
-  color: var(--neutral-medium);
+  color: #666;
   margin-bottom: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .news-more {

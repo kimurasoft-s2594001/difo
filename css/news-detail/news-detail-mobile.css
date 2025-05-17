@@ -50,6 +50,18 @@
     padding: 0.3rem 1rem;
   }
   
+  .news-category.product {
+    background-color: #e57373; /* 淡红色 */
+  }
+  
+  .news-category.event {
+    background-color: #4d7c8a; /* 蓝绿色 */
+  }
+  
+  .news-category.update {
+    background-color: #7c6c1a; /* 暖色调 */
+  }
+  
   /* 新闻内容样式 */
   .news-content {
     font-size: 0.95rem;

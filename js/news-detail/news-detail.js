@@ -8,10 +8,12 @@ import { loadBefore, loadAfter, newsUtils } from "../app.js";
 function formatNewsContent(newsItem) {
   // 创建基本内容结构
   let formattedContent = `
-    <div class="news-title">${newsItem.title}</div>
-    <div class="news-meta">
-      <div class="news-date">${newsUtils.formatDate(newsItem.date)}</div>
-      <div class="news-category ${newsItem.category}">${newsUtils.getCategoryName(newsItem.category)}</div>
+    <div class="news-header">
+      <div class="news-title">${newsItem.title}</div>
+      <div class="news-meta">
+        <div class="news-date">${newsUtils.formatDate(newsItem.date)}</div>
+        <span class="news-category ${newsItem.category}">${newsUtils.getCategoryName(newsItem.category)}</span>
+      </div>
     </div>
     <div class="news-content">
       ${enhanceContentStructure(newsItem.content)}

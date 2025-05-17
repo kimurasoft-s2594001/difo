@@ -25,23 +25,20 @@ function renderNewsItems() {
   currentItems.forEach((item) => {
     const formattedDate = formatDate(item.date);
     const $newsItem = $(`
-      <div class="news-item">
-        <div class="news-item-image">
-          <img src="${item.image}" alt="${item.title}" loading="lazy">
-        </div>
-        <div class="news-item-content">
-          <div class="news-item-meta">
-            <span class="news-item-date">${formattedDate}</span>
-            <span class="news-item-category ${item.category}">${getCategoryName(
+      <a href="news-detail.html?id=${item.id}" class="news-item-link">
+        <div class="news-item">
+          <div class="news-meta">
+            <div class="news-date">${formattedDate}</div>
+            <span class="news-category ${item.category}">${getCategoryName(
       item.category
     )}</span>
           </div>
-          <h3 class="news-item-title">
-            <a href="news-detail.html?id=${item.id}">${item.title}</a>
-          </h3>
-          <div class="news-item-excerpt">${item.excerpt}</div>
+          <div class="news-content">
+            <h3>${item.title}</h3>
+            <p>${item.excerpt}</p>
+          </div>
         </div>
-      </div>
+      </a>
     `);
     $newsItems.append($newsItem);
   });
