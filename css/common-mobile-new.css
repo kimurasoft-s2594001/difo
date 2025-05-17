@@ -9,12 +9,12 @@
   }
 
   html {
-    /* 与移动版导航栏高度相同 */
     scroll-padding-top: 60px;
+    scroll-behavior: smooth;
   }
 
   main {
-    padding-top: 60px; /* 调整为与移动设备头部高度相匹配 */
+    padding-top: 60px;
   }
 
   .container-area {
@@ -27,10 +27,11 @@
     padding: var(--spacing-md) 0;
   }
 
-  /* 如果第一个section也有额外的padding，也需要调整 */
   section:first-of-type {
-    padding-top: 20px; /* 减小顶部内边距 */
+    padding-top: 20px;
   }
+
+  /* ===== 头部样式 ===== */
   .header {
     height: 60px;
   }
@@ -39,6 +40,7 @@
     margin-left: 15px;
   }
 
+  /* 菜单按钮样式 */
   .menu-btn {
     display: flex;
     flex-direction: column;
@@ -77,38 +79,26 @@
     transform: rotate(-45deg);
   }
 
-  /* 菜单项动画 */
-  .menu-item {
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-  }
-
-  .menu-open .menu-item {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: calc(
-      0.05s * var(--item-index)
-    ); /* 为每个项目添加级联延迟 */
-  }
-
-  /* 移动菜单样式 */
+  /* ===== 导航菜单样式 - 修复版 ===== */
+  /* 恢复原始导航布局 */
   .header .navigation {
     position: fixed;
     top: 60px;
     left: 0;
     width: 100%;
-    height: 0px;
+    height: 0;
     background-color: rgba(255, 255, 255, 0.98);
-    overflow: hidden;
     flex-direction: column;
     align-items: flex-start;
+    overflow: hidden;
     transition: height 0.3s ease;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
   }
 
   .header .navigation.show {
-    height: 350px;
+    height: 350px; /* 或适合您菜单的高度 */
+    overflow-y: auto;
   }
 
   .header .navigation a {
@@ -117,67 +107,18 @@
     line-height: 50px;
     padding: 0 30px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: block;
   }
 
   .header .navigation a::after {
     display: none;
   }
 
-  /* 导航菜单基础样式 */
-  .navigation {
-    max-height: 0;
-    opacity: 0;
-    transform: translateY(-15px);
-    visibility: hidden;
-    overflow: hidden;
-
-    /* 过渡效果 */
-    transition: max-height 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
-      opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-      visibility 0.3s linear;
-  }
-
-  /* 导航菜单展开状态 */
-  .navigation.show {
-    max-height: 500px;
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-  }
-
-  /* 菜单项基础样式 */
-  .navigation a {
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    transition-delay: calc(0.05s * var(--menu-index));
-  }
-
-  /* 活动项样式 */
+  /* 活动菜单项样式 */
   .navigation a.active {
-    background-color: rgba(227, 240, 235, 0.5); /* 浅青/绿色背景 */
-    border-left: 4px solid #20764a; /* 左侧边框 */
-    padding-left: 16px; /* 补偿边框宽度 */
-    position: relative; /* 为伪元素定位 */
-  }
-
-  /* 添加顶部和底部边框线 */
-  .navigation a.active::before,
-  .navigation a.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.05); /* 浅灰色边框 */
-  }
-
-  .navigation a.active::before {
-    top: 0; /* 顶部边框 */
-  }
-
-  .navigation a.active::after {
-    bottom: 0; /* 底部边框 */
+    background-color: rgba(227, 240, 235, 0.5);
+    border-left: 4px solid #20764a;
+    padding-left: 26px;
   }
 
   /* 悬停效果 */
@@ -185,30 +126,12 @@
     background-color: rgba(227, 240, 235, 0.3);
   }
 
-  /* 活动项悬停效果 */
-  .navigation a.active:hover {
-    background-color: rgba(227, 240, 235, 0.6);
-  }
-  /* 菜单项展开状态 */
-  .navigation.show a {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* 移动版登录链接样式 */
-  .login-link {
-    background-color: var(--primary-light);
-    color: var(--primary-color);
-    text-align: center;
-    font-weight: 600 !important;
-  }
-
-  /* 侧边导航移动端样式 */
+  /* ===== 侧边导航样式 ===== */
   .side-navi {
     right: 10px;
   }
 
-  /* 页脚移动端样式 */
+  /* ===== 页脚样式 ===== */
   .footer-content {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -222,6 +145,7 @@
     padding-top: 1rem;
   }
 
+  /* ===== 按钮样式 ===== */
   .btn {
     padding: 0.7rem 1.5rem;
     font-size: 0.9rem;
