@@ -1,64 +1,11 @@
 /**
- * 初始化导航高亮功能
- * 可在loadAfter函数中调用
+ * 初始化导航菜单项索引
+ * 用于设置级联动画的索引
  */
-export function initNavHighlight() {
-  // 为导航菜单项添加索引（用于级联动画）
+export function setupMenuIndexes() {
   $(".navigation a").each(function (index) {
     $(this).css("--menu-index", index + 1);
   });
-
-  // 初始高亮
-  highlightCurrentNavItem();
-
-  // 滚动时更新高亮（节流处理）
-  let scrollTimer;
-  $(window).on("scroll", function () {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(function () {
-      highlightCurrentNavItem();
-    }, 100);
-  });
-
-  // hash变化时更新高亮
-  $(window).on("hashchange", function () {
-    highlightCurrentNavItem();
-  });
-
-  // 修改现有的菜单按钮点击事件，加入高亮更新
-  $(".menu-btn")
-    .off("click")
-    .on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const $navigation = $(".navigation");
-      const $menuBtn = $(this);
-
-      // 切换菜单状态
-      $navigation.toggleClass("show");
-      $menuBtn.toggleClass("active");
-
-      // 根据菜单状态控制背景滚动
-      if ($navigation.hasClass("show")) {
-        $("body").css("overflow", "hidden");
-        // 更新导航高亮
-        setTimeout(highlightCurrentNavItem, 50);
-      } else {
-        $("body").css("overflow", "");
-      }
-    });
-
-  // 点击导航项关闭菜单
-  $(".navigation a")
-    .off("click.navClose")
-    .on("click.navClose", function () {
-      if ($(window).width() <= 768 && $(".navigation").hasClass("show")) {
-        $(".navigation").removeClass("show");
-        $(".menu-btn").removeClass("active");
-        $("body").css("overflow", "");
-      }
-    });
 }
 
 /**

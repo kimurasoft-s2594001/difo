@@ -4,6 +4,10 @@
 // <img src="img/content.jpg" alt="Content">
 // <!-- 优先级低的大图，使用data-src更精细控制 -->
 // <img data-src="img/large-banner.jpg" alt="Banner" src="img/placeholder.svg"></img>
+
+// 懒加载初始化状态
+let lazyLoadingInitialized = false;
+
 /**
  * 初始化懒加载图片
  * @param {boolean} incrementalOnly 是否只处理新增的图片
@@ -22,6 +26,11 @@ export function initLazyLoading(incrementalOnly = false) {
       // 标记为已初始化
       img.setAttribute("data-lazy-initialized", "true");
     });
+    
+    if (!lazyLoadingInitialized && !incrementalOnly) {
+      lazyLoadingInitialized = true;
+      console.log("Native lazy loading initialized");
+    }
   } else {
     // 浏览器不支持原生懒加载，使用Intersection Observer实现
     if (!("IntersectionObserver" in window)) {
@@ -47,6 +56,11 @@ export function initLazyLoading(incrementalOnly = false) {
           });
         }
       );
+      
+      if (!lazyLoadingInitialized && !incrementalOnly) {
+        lazyLoadingInitialized = true;
+        console.log("IntersectionObserver lazy loading initialized");
+      }
     }
 
     // 观察所有未初始化的图片
@@ -68,4 +82,21 @@ export function initLazyLoading(incrementalOnly = false) {
       window.lazyLoadObserver.observe(img);
     });
   }
+}
+
+/**
+ * 重置懒加载状态
+ * 用于强制重新初始化懒加载
+ */
+export function resetLazyLoading() {
+  lazyLoadingInitialized = false;
+  
+  // 重置Observer
+  if (window.lazyLoadObserver) {
+    window.lazyLoadObserver.disconnect();
+    window.lazyLoadObserver = null;
+  }
+  
+  // 重新初始化
+  initLazyLoading(false);
 }

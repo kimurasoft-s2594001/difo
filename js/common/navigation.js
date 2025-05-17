@@ -3,16 +3,7 @@
  * 处理导航菜单交互、高亮等功能
  */
 import { highlightCurrentNavItem } from "./nav-highlight.js";
-
-/**
- * 设置导航菜单索引
- * 用于动画和CSS样式
- */
-export function setupMenuIndexes() {
-  $(".navigation a").each(function (index) {
-    $(this).css("--menu-index", index + 1);
-  });
-}
+import { setupMenuIndexes } from "./nav-highlight.js";
 
 /**
  * 设置菜单按钮点击事件
@@ -47,6 +38,9 @@ export function setupMenuButtonEvents() {
         // 更新无障碍属性
         $menuBtn.attr("aria-expanded", "true");
         $("body").css("overflow", "hidden");
+        
+        // 菜单打开后更新导航高亮
+        setTimeout(highlightCurrentNavItem, 50);
       }
     });
 
