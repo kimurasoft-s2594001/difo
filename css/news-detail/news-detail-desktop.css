@@ -1,0 +1,325 @@
+/**
+ * 新闻详情页PC端样式优化
+ * 与招聘页面风格一致的现代设计
+ */
+
+/* 整体容器和背景 */
+.news-detail {
+  background-color: var(--background-light);
+  padding: 4rem 0;
+  min-height: 80vh;
+}
+
+/* 标题区域样式 - 无标题 */
+.section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  height: 2rem; /* 保留一些空间，但不显示标题 */
+}
+
+/* 标题样式 - 隐藏但保留结构 */
+.requirements-title {
+  position: relative;
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  border: 2px solid #E6E6E6;
+  background-color: #fff;
+  display: none; /* 隐藏标题 */
+}
+
+.requirements-title:after {
+  content: "";
+  position: absolute;
+  bottom: -0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background-color: #1a7c4b;
+}
+
+/* 内容容器 */
+.news-detail-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+}
+
+/* 新闻标题 */
+.news-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+/* 元数据区域 */
+.news-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* 日期样式 */
+.news-date {
+  font-size: 1rem;
+  color: #666;
+  margin-right: 1.5rem;
+}
+
+/* 分类标签 */
+.news-category {
+  font-size: 0.9rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 2rem;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.news-category.product {
+  background-color: #1a7c4b; /* 使用品牌绿色 */
+}
+
+.news-category.event {
+  background-color: #4d7c8a; /* 蓝绿色 */
+}
+
+.news-category.update {
+  background-color: #7c6c1a; /* 暖色调 */
+}
+
+/* 新闻内容样式 */
+.news-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.news-content p {
+  margin-bottom: 1.5rem;
+}
+
+.news-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: #1a7c4b; /* 使用品牌绿色 */
+}
+
+/* 自定义列表样式 */
+.news-content ul, 
+.news-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.news-content li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+/* 添加自定义列表项标记 */
+.news-content li:before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: #1a7c4b; /* 使用品牌绿色作为列表标记 */
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* 图片样式 */
+.news-image {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.news-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* 联系信息和特殊内容样式 */
+.news-content .contact-info {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  border-left: 4px solid #1a7c4b;
+}
+
+.news-content .contact-info p {
+  margin-bottom: 0.5rem;
+}
+
+.news-content .info-section {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.news-content .info-section-title {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #1a7c4b;
+}
+
+/* 定义情場信息和项目的显示样式 */
+.exhibition-info,
+.exhibition-highlights {
+  margin-bottom: 2rem;
+}
+
+.exhibition-info-item {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.exhibition-info-label {
+  font-weight: 600;
+  min-width: 120px;
+  position: relative;
+}
+
+/* 加入一些颜色和边框以增强视觉效果 */
+.exhibition-venue,
+.exhibition-features,
+.visit-info {
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* 返回按钮容器 */
+.back-button-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  text-align: center;
+}
+
+/* 返回按钮 */
+.back-button {
+  display: inline-block;
+  background-color: #fff;
+  border: 2px solid #1a7c4b;
+  color: #1a7c4b;
+  padding: 0.7rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.back-button i {
+  margin-right: 0.5rem;
+}
+
+.back-button:hover {
+  background-color: #1a7c4b;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 相关新闻 */
+.related-news {
+  margin-top: 3rem;
+}
+
+.related-news h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid #1a7c4b;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.related-news-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.related-news-item {
+  padding: 1.2rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.related-news-item:hover {
+  background-color: #f0f7f4;
+  transform: translateY(-3px);
+}
+
+.related-news-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.related-news-title a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.related-news-title a:hover {
+  color: #1a7c4b;
+}
+
+.related-news-date {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* 链接样式 */
+.news-content a {
+  color: #1a7c4b;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.news-content a:hover {
+  color: #156a3f;
+}
+
+/* 打印样式优化 */
+@media print {
+  .news-detail-content {
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .section-title h4:after {
+    background-color: #333;
+  }
+  
+  .back-button {
+    display: none;
+  }
+}

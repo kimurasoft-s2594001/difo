@@ -1,83 +1,130 @@
+/**
+ * 新闻列表移动端样式优化
+ * 与招聘页风格一致的移动设备设计
+ */
+
 @media screen and (max-width: 768px) {
-  .news-main-visual {
-    padding: 100px 0 60px;
+  /* 整体容器 */
+  .news-list {
+    padding: 3rem 0;
   }
-
-  .news-main-visual h1 {
-    font-size: 32px;
+  
+  /* 标题样式 */
+  .section-title {
+    margin-bottom: 2rem;
   }
-
-  .breadcrumb li {
-    font-size: 14px;
+  
+  .requirements-title {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    padding: 0.4rem 1.5rem;
+    /* 移除边框 */
+    /* border-width: 1px; */
   }
-
-  .news-search {
-    margin-bottom: 15px;
+  
+  .requirements-title:after {
+    width: 60%;
+    height: 2px;
   }
-
-  .news-search input {
-    padding: 10px 12px;
-    font-size: 14px;
+  
+  /* 内容区域 */
+  .news-container {
+    padding: 0 1rem;
   }
-
-  .news-categories {
-    margin-bottom: 20px;
-  }
-
-  .news-category {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-
+  
+  /* 新闻列表 */
   .news-items {
-    gap: 20px;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
   }
-
+  
+  /* 新闻卡片 */
   .news-item {
     flex-direction: column;
+    padding: 1.2rem;
+    border-radius: 8px;
   }
-
+  
+  /* 图片容器 */
   .news-item-image {
     width: 100%;
     height: 180px;
     margin-right: 0;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
   }
-
+  
+  /* 元数据样式 */
+  .news-item-meta {
+    margin-bottom: 0.6rem;
+  }
+  
+  .news-item-date {
+    font-size: 0.8rem;
+  }
+  
+  /* 分类标签 */
+  .news-item-category {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.8rem;
+  }
+  
+  /* 标题样式 */
   .news-item-title {
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
   }
-
+  
+  /* 摘要样式 */
   .news-item-excerpt {
-    font-size: 13px;
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
-
+  
+  /* 分页导航 */
   .news-pagination {
-    padding: 10px 0;
+    padding: 1.5rem 0 1rem;
+  }
+  
+  .news-pagination button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-width: 1px;
+  }
+  
+  .page-numbers {
+    margin: 0 0.8rem;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 
+/* 小屏幕特别优化 */
 @media screen and (max-width: 480px) {
-  .news-main-visual {
-    padding: 80px 0 40px;
+  .news-list {
+    padding: 2.5rem 0;
   }
-
-  .news-main-visual h1 {
-    font-size: 28px;
+  
+  .requirements-title {
+    font-size: 1.2rem;
+    padding: 0.3rem 1.2rem;
   }
-
+  
+  .news-item {
+    padding: 1rem;
+  }
+  
   .news-item-image {
-    height: 150px;
+    height: 160px;
   }
-
+  
   .news-pagination button {
-    padding: 5px 10px;
-    font-size: 12px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
-
+  
   .page-numbers {
-    margin: 0 10px;
-    font-size: 12px;
+    margin: 0 0.6rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
   }
 }

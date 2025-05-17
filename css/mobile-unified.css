@@ -1,0 +1,218 @@
+/**
+ * 移动端统一样式
+ * 为所有页面提供一致的移动设备体验
+ */
+
+@media screen and (max-width: 768px) {
+  /* 通用容器 */
+  section {
+    padding: 2.5rem 0;
+  }
+
+  section .container-area {
+    padding: 0 1rem;
+  }
+
+  /* 标题样式统一 */
+  .section-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .requirements-title {
+    font-size: 1.3rem;
+    padding: 0.4rem 1.5rem;
+    border-width: 1px;
+  }
+
+  .requirements-title:after {
+    width: 60%;
+    height: 2px;
+    bottom: -0.15rem;
+  }
+
+  /* 卡片式容器统一样式 */
+  .recruit-section,
+  .news-detail-content,
+  .news-item {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* 列表样式统一 */
+  .recruit-content ul,
+  .news-content ul, 
+  .news-items ul {
+    padding-left: 0;
+    list-style-type: none;
+    margin-bottom: 1rem;
+  }
+
+  .recruit-content li,
+  .news-content li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+
+  /* 列表项标记统一 */
+  .recruit-content li:before,
+  .news-content li:before {
+    content: "•";
+    position: absolute;
+    left: 0.3rem;
+    color: #1a7c4b;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  /* 文本内容统一 */
+  .recruit-content p,
+  .news-content p,
+  .news-item-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* 标题统一 */
+  .recruit-section-title,
+  .news-title,
+  .news-item-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+  }
+
+  /* 图片容器统一 */
+  .news-item-image {
+    height: 160px;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+
+  /* 按钮统一样式 */
+  .apply-btn,
+  .back-button,
+  .news-pagination button {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    border-width: 1px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  /* 触摸状态统一 */
+  .apply-btn:active,
+  .back-button:active,
+  .news-pagination button:active:not([disabled]) {
+    transform: scale(0.98);
+    background-color: #1a7c4b;
+    color: #fff;
+  }
+
+  /* 分类、标签统一 */
+  .news-category,
+  .news-item-category {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 1rem;
+  }
+
+  /* 日期文本统一 */
+  .news-date,
+  .news-item-date {
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  /* 信息区块统一 */
+  .info-section,
+  .exhibition-info,
+  .contact-info {
+    margin: 1.2rem 0;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  /* 间距和分隔线统一 */
+  .news-meta,
+  .exhibition-venue,
+  .exhibition-features,
+  .visit-info {
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* 分页统一样式 */
+  .news-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .news-pagination button {
+    width: auto;
+    margin: 0;
+    flex: 0 0 auto;
+  }
+
+  .page-numbers {
+    font-size: 0.9rem;
+  }
+}
+
+/* 统一小屏幕优化 */
+@media screen and (max-width: 480px) {
+  section {
+    padding: 2rem 0;
+  }
+
+  .requirements-title {
+    font-size: 1.1rem;
+    padding: 0.3rem 1rem;
+  }
+
+  .recruit-section,
+  .news-detail-content,
+  .news-item {
+    padding: 1rem;
+  }
+
+  .recruit-section-title,
+  .news-title,
+  .news-item-title {
+    font-size: 1.1rem;
+  }
+
+  .news-item-image {
+    height: 140px;
+  }
+
+  .recruit-content p,
+  .news-content p,
+  .news-item-excerpt {
+    font-size: 0.85rem;
+  }
+
+  .apply-btn,
+  .back-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .info-section,
+  .exhibition-info,
+  .contact-info {
+    padding: 0.8rem;
+  }
+}

@@ -10,11 +10,26 @@
     <!-- 仅在屏幕宽度大于等于768px的设备上应用（平板和桌面） -->
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/news-detail/news-detail.css" />
+    <link rel="stylesheet" href="css/news-detail/news-detail-desktop.css" media="(min-width: 769px)" />
     <!-- 仅在屏幕宽度小于768px的设备上应用（手机） -->
     <link
       rel="stylesheet"
       href="css/common-mobile.css"
       media="(max-width: 768px)"
+    />
+    <link
+      rel="stylesheet"
+      href="css/mobile-unified.css"
+      media="(max-width: 768px)"
+    />
+    <link
+      rel="stylesheet"
+      href="css/news-detail/news-detail-mobile.css"
+      media="(max-width: 768px)"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
   <body>
@@ -22,10 +37,13 @@
     <main>
       <section id="news-detail" class="news-detail light">
         <div class="section-title">
-          <h4>ニュース詳細</h4>
+          <!-- 标题已被移除 -->
         </div>
         <div class="news-detail-content container-area">
           <!-- 内容将由JavaScript动态加载 -->
+        </div>
+        <div class="back-button-container">
+          <a href="news-list.html" class="back-button"><i class="fas fa-arrow-left"></i> 一覧に戻る</a>
         </div>
       </section>
       <footer id="footer" class="footer dark"></footer>
