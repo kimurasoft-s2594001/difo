@@ -7,6 +7,7 @@
     <!-- 仅在屏幕宽度大于等于768px的设备上应用（平板和桌面） -->
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/recruit/recruit.css" />
+    <link rel="stylesheet" href="css/recruit/recruit-desktop.css" media="(min-width: 769px)" />
     <!-- 仅在屏幕宽度小于768px的设备上应用（手机） -->
     <link
       rel="stylesheet"
@@ -15,7 +16,7 @@
     />
     <link
       rel="stylesheet"
-      href="css/index/recruit-mobile.css"
+      href="css/recruit/recruit-mobile.css"
       media="(max-width: 768px)"
     />
   </head>
@@ -24,148 +25,193 @@
     <main>
       <section id="description" class="description light">
         <div class="section-title">
-          <h4>募集要項</h4>
+          <h4 class="requirements-title">募集要項</h4>
         </div>
         <div class="description-container-area container-area">
-          <div class="container-left">
-            <h3>仕事内容</h3>
-            <p>
-              ⽇本市場に向けたシミュレーション技能訓練ソフトウェアの導入⽀援•技術対応業
-              務を中⼼に ､ 製品のローカライズ M内容調整や表現の最適化N
-              も含めた幅広い業務を お任せします ｡
-            </p>
-            <ul>
-              <li>日本市場向けの製品仕様·操作性の最適化支援（ローカライズ）</li>
-              <li>顧客からの要望やフィードバックの整理·分析</li>
-              <li>ソフトウェアの仕様·内容の確認、動作レビュー</li>
-              <li>デモンストレーションや展示会における技術説明の補助</li>
-              <li>社内開発チームとの連携（フィードバック共有、改善是案）</li>
-            </ul>
-            <h3>応募資格</h3>
-            <ul>
-              <li>応募必須要件</li>
-              <li>⾼卒以上</li>
-              <li>職種未経験OK</li>
-              <li>業種未経験OK</li>
-            </ul>
+          <div class="container-left recruit-content">
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">仕事内容</h3>
+              <p>
+                ⽇本市場に向けたシミュレーション技能訓練ソフトウェアの導入⽀援•技術対応業
+                務を中⼼に ､ 製品のローカライズ M内容調整や表現の最適化N
+                も含めた幅広い業務を お任せします ｡
+              </p>
+              <ul>
+                <li>日本市場向けの製品仕様·操作性の最適化支援（ローカライズ）</li>
+                <li>顧客からの要望やフィードバックの整理·分析</li>
+                <li>ソフトウェアの仕様·内容の確認、動作レビュー</li>
+                <li>デモンストレーションや展示会における技術説明の補助</li>
+                <li>社内開発チームとの連携（フィードバック共有、改善是案）</li>
+              </ul>
+            </div>
+            
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">応募資格</h3>
+              <ul>
+                <li>応募必須要件</li>
+                <li>⾼卒以上</li>
+                <li>職種未経験OK</li>
+                <li>業種未経験OK</li>
+              </ul>
+            </div>
           </div>
-          <div class="container-right">
-            <h3>必須要件</h3>
-            <ul>
-              <li>PLC、CNC、電気制御、メカトロニクスなどに関する基礎知識</li>
-              <li>
-                工業高校·高専·理工系大学等での学習経験、またに関連業界での実務経験
-              </li>
-              <li>技術的な内容を把握し、構造的に整理·報告できる能力</li>
-              <li>PC基本操作(Word,Excel, PowerPoint)</li>
-            </ul>
-            <h3>歓迎要件</h3>
-            <ul>
-              <li>会話レベルの英語能力 (社内開発チームとのやり取りのため)</li>
-              <li>教育·訓練ソフト、シミュレーター等の利用経験</li>
-              <li>技術営業やサポート業務の実務経験</li>
-              <li>製造業や教育分野に対する理解と関心</li>
-              <li>海外出張 (中国本社)に対応可能な方</li>
-            </ul>
-            <p>
-              ※実務経験は問いません。技術と教育の分野に関心を持ち、積極的に学べるを歓迎します。トラブルシューティング能力。
-            </p>
+          <div class="container-right recruit-content">
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">必須要件</h3>
+              <ul>
+                <li>PLC、CNC、電気制御、メカトロニクスなどに関する基礎知識</li>
+                <li>
+                  工業高校·高専·理工系大学等での学習経験、またに関連業界での実務経験
+                </li>
+                <li>技術的な内容を把握し、構造的に整理·報告できる能力</li>
+                <li>PC基本操作(Word,Excel, PowerPoint)</li>
+              </ul>
+            </div>
+            
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">歓迎要件</h3>
+              <ul>
+                <li>会話レベルの英語能力 (社内開発チームとのやり取りのため)</li>
+                <li>教育·訓練ソフト、シミュレーター等の利用経験</li>
+                <li>技術営業やサポート業務の実務経験</li>
+                <li>製造業や教育分野に対する理解と関心</li>
+                <li>海外出張 (中国本社)に対応可能な方</li>
+              </ul>
+              <p>
+                <span class="highlight">※実務経験は問いません。技術と教育の分野に関心を持ち、積極的に学べるを歓迎します。トラブルシューティング能力。</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
+      
       <section id="recruitment" class="recruitment light">
         <div class="recruitment-container-area container-area">
-          <div class="container-left">
-            <h3>募集背景・⼈数</h3>
-            <p>増員に伴う募集です｡</p>
-            <ul>
-              <li>急募のため、内定までの期間は2週間以内を予定しています。</li>
-            </ul>
-            <p>組織強化のため増員</p>
+          <div class="container-left recruit-content">
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">募集背景・⼈数</h3>
+              <p>増員に伴う募集です｡</p>
+              <ul>
+                <li>急募のため、内定までの期間は2週間以内を予定しています。</li>
+              </ul>
+              <p>組織強化のため増員</p>
+            </div>
 
-            <h3>給与</h3>
-            <p>
-              年俸 350万円～500万円
-              <br />
-              ※試⽤期間は6ヶ⽉で ､ そのほかの条件に変更はありません ｡
-            </p>
-            <p>⽀払⽅法：年俸の1/12を毎⽉⽀給</p>
-            <p>賞与回数：2回</p>
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">給与</h3>
+              <p>
+                年俸 350万円～500万円
+                <br />
+                ※試⽤期間は6ヶ⽉で ､ そのほかの条件に変更はありません ｡
+              </p>
+              <p>⽀払⽅法：年俸の1/12を毎⽉⽀給</p>
+              <p>賞与回数：2回</p>
+            </div>
           </div>
-          <div class="container-right">
-            <h3>勤務地</h3>
-            <p>東京都内</p>
-            <p>
-              勤務スタイル
-              <br />
-              ⾃社内勤務
-            </p>
-            <p>
-              転勤の可能性
-              <br />
-              なし
-            </p>
-            <p>
-              ＜住所＞
-              <br />
-              東京都内
-            </p>
+          <div class="container-right recruit-content">
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">勤務地</h3>
+              <p>東京都内</p>
+              <p>
+                勤務スタイル
+                <br />
+                ⾃社内勤務
+              </p>
+              <p>
+                転勤の可能性
+                <br />
+                なし
+              </p>
+              <p>
+                ＜住所＞
+                <br />
+                東京都内
+              </p>
+            </div>
 
-            <h3>勤務時間</h3>
-            <p>09:00～18:00 （休憩1時間含む）</p>
-            <p>
-              みなし労働時間：1⽇あたり8時間
-              <br />
-              休憩1時間
-            </p>
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">勤務時間</h3>
+              <p>09:00～18:00 （休憩1時間含む）</p>
+              <p>
+                みなし労働時間：1⽇あたり8時間
+                <br />
+                休憩1時間
+              </p>
+            </div>
           </div>
         </div>
       </section>
+      
       <section id="treatment" class="treatment light">
         <div class="treatment-container-area container-area">
-          <div class="container-left">
-            <h3>休⽇休暇</h3>
-            <p>完全週休2⽇制</p>
-            <p>年間休⽇：120⽇</p>
-            <p>休暇制度</p>
-            <ul>
-              <li>完全週休二日制</li>
-              <li>年次有給休暇</li>
-              <li>年末年始休暇</li>
-              <li>慶弔休暇</li>
-              <li>介護休暇</li>
-              <li>マタニティ休暇</li>
-              <li>育児休暇</li>
-            </ul>
-            <p>※その他、会社カレンダーに準ずる休日</p>
+          <div class="container-left recruit-content">
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">休⽇休暇</h3>
+              <p>完全週休2⽇制</p>
+              <p>年間休⽇：120⽇</p>
+              <p>休暇制度</p>
+              <ul>
+                <li>完全週休二日制</li>
+                <li>年次有給休暇</li>
+                <li>年末年始休暇</li>
+                <li>慶弔休暇</li>
+                <li>介護休暇</li>
+                <li>マタニティ休暇</li>
+                <li>育児休暇</li>
+              </ul>
+              <p>※その他、会社カレンダーに準ずる休日</p>
+            </div>
           </div>
-          <div class="container-right">
-            <h3>待遇•福利厚⽣</h3>
-            <p>
-              雇⽤保険
-              <br />
-              厚⽣年⾦
-              <br />
-              健康保険
-            </p>
-            <p>
-              福利厚⽣•諸⼿当
-              <br />
-              交通費⽀給 ､ 社会保険完備 ､ 健康診断
-              <br />
-              その他の福利厚⽣•諸⼿当
-              <br />
-              服装⾃由
-            </p>
-            <h3>雇⽤形態</h3>
-            <p>
-              正社員 または 契約社員 相談可
-              <br />
-              フルタイム∕平⽇勤務
+          <div class="container-right recruit-content">
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">待遇•福利厚⽣</h3>
+              <p>
+                雇⽤保険
+                <br />
+                厚⽣年⾦
+                <br />
+                健康保険
+              </p>
+              <p>
+                福利厚⽣•諸⼿当
+                <br />
+                交通費⽀給 ､ 社会保険完備 ､ 健康診断
+                <br />
+                その他の福利厚⽣•諸⼿当
+                <br />
+                服装⾃由
+              </p>
+            </div>
+            
+            <div class="recruit-section">
+              <h3 class="recruit-section-title">雇⽤形態</h3>
+              <p>
+                正社員 または 契約社員 相談可
+                <br />
+                フルタイム∕平⽇勤務
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 增加应聘按钮区域 -->
+      <section id="apply" class="apply light">
+        <div class="apply-container-area container-area">
+          <div class="recruit-section apply-section">
+            <h3 class="recruit-section-title">応募方法</h3>
+            <p>ご応募は下記のボタンをクリックして、必要事項をご記入の上、送信してください。</p>
+            <div class="notice-box">
+              <p><strong>重要なお知らせ</strong></p>
+              <p>希望勤務時間や条件については、面接時にお気軽にご相談ください。</p>
+            </div>
+            <p class="text-center">
+              <a href="mailto:info@difo.jp?subject=求人応募" class="apply-btn">応募する</a>
             </p>
           </div>
         </div>
       </section>
+      
       <footer id="footer" class="footer dark"></footer>
     </main>
     <div id="side-navi" class="side-navi"></div>

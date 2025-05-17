@@ -1,0 +1,156 @@
+/**
+ * 招聘信息移动端样式优化
+ * 为移动设备提供更好的招聘信息显示体验
+ */
+
+/* 移动端基础样式调整 */
+@media (max-width: 768px) {
+  /* 容器调整 */
+  section .container-area {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  section .container-area > div {
+    width: 100%;
+    padding: 0 !important;
+    margin-bottom: 2rem;
+  }
+
+  /* 招聘信息卡片式设计 */
+  .recruit-section {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 章节标题样式 */
+  .recruit-section-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #1a7c4b;
+    width: 100%;
+  }
+
+  /* 列表样式优化 */
+  .recruit-content ul {
+    padding-left: 0;
+    margin: 0 0 1rem 0;
+    list-style-type: none;
+    width: 100%;
+  }
+
+  .recruit-content li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* 添加自定义列表项标记 */
+  .recruit-content li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #1a7c4b; /* 使用品牌绿色作为列表标记 */
+    font-weight: bold;
+  }
+
+  /* 改进文本可读性 */
+  .recruit-content {
+    color: #333;
+    letter-spacing: 0.01em;
+    font-feature-settings: "palt"; /* 日文文本优化 */
+    width: 100%;
+  }
+
+  /* 重要信息高亮 */
+  .recruit-content .highlight {
+    background: rgba(26, 124, 75, 0.1); /* 浅绿色高亮 */
+    padding: 0 0.3em;
+    border-radius: 2px;
+  }
+
+  /* 募集要项标题样式 */
+  .requirements-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .requirements-title:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 3px;
+    background-color: #1a7c4b;
+  }
+
+  /* 调整section内padding */
+  section {
+    padding: 3rem 0;
+  }
+  
+  /* 文本对齐类 */
+  .text-center {
+    text-align: center;
+  }
+
+  /* 应聘按钮区域 */
+  .apply-section {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* 应用按钮样式 */
+  .apply-btn {
+    display: inline-block;
+    background-color: #1a7c4b;
+    color: white;
+    padding: 0.7rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 1rem 0;
+    transition: background-color 0.3s ease;
+    border: 2px solid #1a7c4b;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .apply-btn:active {
+    background-color: #156a3f;
+    transform: scale(0.98);
+  }
+
+  /* 重要通知框 */
+  .notice-box {
+    background: #f0f7f4;
+    border-left: 4px solid #1a7c4b;
+    padding: 0.8rem 1rem;
+    margin: 1.2rem 0;
+    border-radius: 4px;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  /* 消除section下边距 */
+  section:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 3rem;
+  }
+}

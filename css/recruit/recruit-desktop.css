@@ -1,0 +1,199 @@
+/**
+ * 招聘信息PC端样式优化
+ * 为桌面设备提供更专业的招聘信息显示体验
+ */
+
+/* 整体容器和背景 */
+section {
+  padding: 4rem 0;
+  background-color: var(--background-light);
+}
+
+/* 标题样式 */
+.requirements-title {
+  position: relative;
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+.requirements-title:after {
+  content: "";
+  position: absolute;
+  bottom: -0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5rem;
+  height: 3px;
+  background-color: #1a7c4b;
+}
+
+/* 内容区域布局 */
+section .container-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* 左右列定义 */
+section .container-area > div {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* 卡片样式 */
+.recruit-section {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recruit-section:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* 章节标题样式 */
+.recruit-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #1a7c4b;
+  position: relative;
+}
+
+/* 列表样式优化 */
+.recruit-content ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  list-style-type: none;
+}
+
+.recruit-content li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+/* 自定义列表项标记 */
+.recruit-content li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #1a7c4b;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* 段落样式 */
+.recruit-content p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* 高亮样式 */
+.highlight {
+  background: rgba(26, 124, 75, 0.08);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  border-left: 3px solid #1a7c4b;
+  display: inline-block;
+  margin: 0.5rem 0;
+}
+
+/* 文本对齐类 */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* 应聘按钮区域特殊样式 */
+.apply-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 应用按钮样式 */
+.apply-btn {
+  display: inline-block;
+  background-color: #1a7c4b;
+  color: white;
+  padding: 0.8rem 2.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 1.5rem 0;
+  transition: all 0.3s ease;
+  border: 2px solid #1a7c4b;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.apply-btn:hover {
+  background-color: white;
+  color: #1a7c4b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 重要通知框 */
+.notice-box {
+  background: #f0f7f4;
+  border-left: 4px solid #1a7c4b;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  text-align: left;
+}
+
+/* 消除section下边距 */
+section:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 5rem;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.recruit-section {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.recruit-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+/* 打印样式优化 */
+@media print {
+  .recruit-section {
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+    break-inside: avoid;
+  }
+  
+  .requirements-title:after {
+    background-color: #333;
+  }
+}
