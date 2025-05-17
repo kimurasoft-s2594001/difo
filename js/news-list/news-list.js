@@ -6,7 +6,7 @@ import {
   newsData,
 } from "../common/news-data.js";
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 3;
 let currentPage = 1;
 let filteredNews = [...newsData];
 
@@ -61,6 +61,35 @@ function onEvent() {
     renderNewsItems();
     updatePagination();
   });
+  
+  // 搜索框事件
+  $("#news-search").on("input", function() {
+    const keyword = $(this).val().trim();
+    const activeCategory = $(".news-category.active").data("category");
+    
+    if (keyword === "") {
+      // 如果搜索框为空，使用当前选中的分类
+      if (activeCategory === "all") {
+        filteredNews = [...newsData];
+      } else {
+        filteredNews = newsData.filter((item) => item.category === activeCategory);
+      }
+    } else {
+      // 搜索并过滤
+      if (activeCategory === "all") {
+        filteredNews = newsUtils.search(keyword);
+      } else {
+        filteredNews = newsUtils.search(keyword).filter(
+          (item) => item.category === activeCategory
+        );
+      }
+    }
+    
+    currentPage = 1;
+    renderNewsItems();
+    updatePagination();
+  });
+  
   $("#prev-page").on("click", function () {
     if (currentPage > 1) {
       currentPage--;
@@ -101,38 +130,37 @@ function scrollToTop() {
   location.href = "#header";
 }
 
-// // 添加分类过滤器
-// function addCategoryFilters() {
-//   const categories = newsUtils.getCategories();
-//   const filterContainer = $('<div class="news-categories"></div>');
+// 添加分类过滤器
+function addCategoryFilters() {
+  const categories = newsUtils.getCategories();
+  const filterContainer = $('<div class="news-categories"></div>');
 
-//   categories.forEach((category) => {
-//     const button = $(
-//       `<button class="news-category${
-//         category.id === "all" ? " active" : ""
-//       }" data-category="${category.id}">${category.name} (${
-//         category.count
-//       })</button>`
-//     );
-//     filterContainer.append(button);
-//   });
+  categories.forEach((category) => {
+    // 使用截图中的格式，不显示数量
+    const button = $(
+      `<button class="news-category${
+        category.id === "all" ? " active" : ""
+      }" data-category="${category.id}">${category.name}</button>`
+    );
+    filterContainer.append(button);
+  });
 
-//   // 如果需要搜索框，还可以添加搜索框
-//   const searchContainer = $('<div class="news-search"></div>');
-//   searchContainer.append(
-//     '<input type="text" id="news-search" placeholder="ニュースを検索...">'
-//   );
+  // 添加搜索框
+  const searchContainer = $('<div class="news-search"></div>');
+  searchContainer.append(
+    '<input type="text" id="news-search" placeholder="ニュースを検索...">'  
+  );
 
-//   $(".news-container").prepend(filterContainer);
-//   $(".news-container").prepend(searchContainer);
-// }
+  $(".news-container").prepend(filterContainer);
+  $(".news-container").prepend(searchContainer);
+}
 
 // 初始化
 function initialize() {
   // 获取所有新闻
   filteredNews = newsUtils.getAll();
   // 添加分类过滤器
-  // addCategoryFilters();
+  addCategoryFilters();
   // 绑定事件
   onEvent();
   // 渲染新闻列表

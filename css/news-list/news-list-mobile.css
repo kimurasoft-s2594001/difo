@@ -4,16 +4,69 @@
  */
 
 @media screen and (max-width: 768px) {
+  /* 分类过滤器移动端样式 */
+  .news-categories {
+    gap: 8px;
+    padding: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+  }
+
+  .news-category {
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 80px;
+    margin-bottom: 5px;
+    background-color: white;
+  }
+
+  .news-category.active {
+    color: white;
+  }
+
+  /* 活动状态下的特定分类 */
+  .news-category.active[data-category="event"] {
+    background-color: #4d7c8a;
+    border-color: #4d7c8a;
+  }
+
+  .news-category.active[data-category="product"] {
+    background-color: #e57373;
+    border-color: #e57373;
+  }
+
+  .news-category.active[data-category="update"] {
+    background-color: #7c6c1a;
+    border-color: #7c6c1a;
+  }
+
+  .news-category.active[data-category="all"] {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  /* 搜索框 */
+  .news-search {
+    margin-bottom: 1.5rem;
+  }
+
+  #news-search {
+    max-width: 100%;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
   /* 整体容器 */
   .news-list {
     padding: 3rem 0;
   }
-  
+
   /* 标题样式 */
   .section-title {
     margin-bottom: 2rem;
   }
-  
+
   .requirements-title {
     font-size: 1.3rem;
     margin-bottom: 0;
@@ -21,30 +74,30 @@
     /* 移除边框 */
     /* border-width: 1px; */
   }
-  
+
   .requirements-title:after {
     width: 60%;
     height: 2px;
   }
-  
+
   /* 内容区域 */
   .news-container {
     padding: 0 1rem;
   }
-  
+
   /* 新闻列表 */
   .news-items {
     gap: 1.2rem;
     margin-bottom: 2rem;
   }
-  
+
   /* 新闻卡片 */
   .news-item {
     flex-direction: column;
     padding: 1.2rem;
     border-radius: 8px;
   }
-  
+
   /* 图片容器 */
   .news-item-image {
     width: 100%;
@@ -52,45 +105,45 @@
     margin-right: 0;
     margin-bottom: 1rem;
   }
-  
+
   /* 元数据样式 */
   .news-item-meta {
     margin-bottom: 0.6rem;
   }
-  
+
   .news-item-date {
     font-size: 0.8rem;
   }
-  
+
   /* 分类标签 */
   .news-item-category {
     font-size: 0.75rem;
     padding: 0.25rem 0.8rem;
   }
-  
+
   /* 标题样式 */
   .news-item-title {
     font-size: 1.1rem;
     margin-bottom: 0.6rem;
   }
-  
+
   /* 摘要样式 */
   .news-item-excerpt {
     font-size: 0.85rem;
     line-height: 1.5;
   }
-  
+
   /* 分页导航 */
   .news-pagination {
     padding: 1.5rem 0 1rem;
   }
-  
+
   .news-pagination button {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
     border-width: 1px;
   }
-  
+
   .page-numbers {
     margin: 0 0.8rem;
     font-size: 0.9rem;
@@ -103,25 +156,25 @@
   .news-list {
     padding: 2.5rem 0;
   }
-  
+
   .requirements-title {
     font-size: 1.2rem;
     padding: 0.3rem 1.2rem;
   }
-  
+
   .news-item {
     padding: 1rem;
   }
-  
+
   .news-item-image {
     height: 160px;
   }
-  
+
   .news-pagination button {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
   }
-  
+
   .page-numbers {
     margin: 0 0.6rem;
     font-size: 0.8rem;

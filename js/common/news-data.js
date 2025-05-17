@@ -207,6 +207,7 @@ export function getCategoryName(category) {
     product: "製品情報",
     event: "イベント",
     update: "アップデート",
+    all: "全部"
   };
   return categories[category] || "";
 }

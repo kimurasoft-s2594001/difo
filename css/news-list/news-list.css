@@ -3,6 +3,85 @@ section {
   min-width: 100%;
 }
 
+/* 分类过滤器 */
+.news-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.news-category {
+  background-color: white;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+}
+
+.news-category:hover {
+  background-color: rgba(26, 124, 75, 0.05);
+}
+
+.news-category.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* 特定分类标签的活动状态 */
+.news-category.active[data-category="event"] {
+  background-color: #4d7c8a; /* 蓝绿色，与事件标签一致 */
+  border-color: #4d7c8a;
+}
+
+.news-category.active[data-category="product"] {
+  background-color: #e57373; /* 淡红色，与产品信息标签一致 */
+  border-color: #e57373;
+}
+
+.news-category.active[data-category="update"] {
+  background-color: #7c6c1a; /* 暖色调，与更新标签一致 */
+  border-color: #7c6c1a;
+}
+
+.news-category.active[data-category="all"] {
+  background-color: var(--primary-color); /* 全部标签使用品牌绿色 */
+  border-color: var(--primary-color);
+}
+
+/* 搜索框 */
+.news-search {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#news-search {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+  background-color: #f8f8f8;
+}
+
+#news-search:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(26, 124, 75, 0.1);
+  background-color: white;
+}
+
 .news-list {
   background-color: var(--background-light);
   padding: 5rem 0;
@@ -74,16 +153,17 @@ section {
   font-weight: 500;
 }
 
-.news-item-category.product {
-  background-color: #ff6b6b;
+/* 分类标签颜色 */
+.news-item-category.event {
+  background-color: #4d7c8a; /* 蓝绿色 */
 }
 
-.news-item-category.event {
-  background-color: #4ecdc4;
+.news-item-category.product {
+  background-color: #e57373; /* 淡红色 */
 }
 
 .news-item-category.update {
-  background-color: #ffd166;
+  background-color: #7c6c1a; /* 暖色调 */
 }
 
 .news-item-title {
