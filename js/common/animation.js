@@ -80,8 +80,9 @@ function initAnimations() {
   // 初始调用一次，处理可见元素
   handleScrollAnimations();
   handleNavHighlight();
-  initNavAnimation();
-
+  
+  // 移除了initNavAnimation的调用，因为其中的菜单按钮事件已在navigation.js中处理
+  
   // 监听滚动事件
   window.addEventListener(
     "scroll",
@@ -91,121 +92,14 @@ function initAnimations() {
     }, 100)
   );
 
-  // 处理菜单按钮点击
-  const menuBtn = document.querySelector(".menu-btn");
-  const nav = document.querySelector(".navigation");
-
-  if (menuBtn && nav) {
-    menuBtn.addEventListener("click", () => {
-      nav.classList.toggle("show");
-      menuBtn.classList.toggle("active");
-    });
-
-    // 点击导航链接时关闭菜单
-    document.querySelectorAll(".navigation a").forEach((link) => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("show");
-        menuBtn.classList.remove("active");
-      });
-    });
-
-    // 点击页面其他地方关闭菜单
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".menu-btn") && !e.target.closest(".navigation")) {
-        nav.classList.remove("show");
-        menuBtn.classList.remove("active");
-      }
-    });
-  }
+  // 移除了菜单按钮点击和导航链接点击事件，避免与navigation.js中的事件处理冲突
 }
 
-/**
- * 初始化导航菜单动画
- */
-function initNavAnimation() {
-  // 为导航菜单项设置索引（用于级联动画）
-  $(".navigation a").each(function (index) {
-    $(this).css("--menu-index", index + 1);
-  });
 
-  // 修改现有菜单按钮点击事件处理
-  $(".menu-btn")
-    .off("click")
-    .on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const $navigation = $(".navigation");
-      const $menuBtn = $(this);
-
-      if ($navigation.hasClass("show")) {
-        // 关闭菜单（添加动画）
-        $navigation.addClass("closing");
-        $menuBtn.removeClass("active");
-
-        // 等待动画完成后移除类
-        setTimeout(function () {
-          $navigation.removeClass("show closing");
-          $("body").css("overflow", "");
-        }, 400);
-      } else {
-        // 打开菜单
-        $navigation.removeClass("closing").addClass("show");
-        $menuBtn.addClass("active");
-        $("body").css("overflow", "hidden");
-      }
-    });
-
-  // 点击导航链接后直接关闭菜单
-  $(".navigation a").on("click", function () {
-    if ($(".navigation").hasClass("show")) {
-      // 直接移除show类，立即关闭菜单
-      $(".navigation").removeClass("show");
-      $(".menu-btn").removeClass("active");
-
-      // 恢复页面滚动
-      $("body").css("overflow", "");
-    }
-  });
-
-  // 点击页面其他区域关闭菜单
-  $(document).on("click", function (e) {
-    if (
-      $(".navigation").hasClass("show") &&
-      !$(e.target).closest(".navigation").length &&
-      !$(e.target).closest(".menu-btn").length
-    ) {
-      const $navigation = $(".navigation");
-      const $menuBtn = $(".menu-btn");
-
-      $navigation.addClass("closing");
-      $menuBtn.removeClass("active");
-
-      setTimeout(function () {
-        $navigation.removeClass("show closing");
-        $("body").css("overflow", "");
-      }, 400);
-    }
-  });
-
-  // 窗口尺寸变化处理
-  let resizeTimer;
-  $(window).on("resize", function () {
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(function () {
-      if ($(window).width() > 768) {
-        $(".navigation").removeClass("show closing");
-        $(".menu-btn").removeClass("active");
-        $("body").css("overflow", "");
-      }
-    }, 150);
-  });
-}
 
 export {
   handleScrollAnimations,
   handleNavHighlight,
   highlightCurrentNavItem,
-  initAnimations,
+  initAnimations
 };

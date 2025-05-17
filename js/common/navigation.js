@@ -20,17 +20,20 @@ export function setupMenuIndexes() {
  */
 export function setupMenuButtonEvents() {
   $(".menu-btn")
-    .off("click")
+    .off("click") // 移除所有点击事件，避免重复绑定
     .on("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
 
       const $navigation = $(".navigation");
+      const $menuBtn = $(this);
 
       if ($navigation.hasClass("show")) {
         // 关闭菜单
         $navigation.addClass("closing");
-        $(this).removeClass("active");
+        $menuBtn.removeClass("active");
+        // 更新无障碍属性
+        $menuBtn.attr("aria-expanded", "false");
 
         // 等待动画完成
         setTimeout(function () {
@@ -40,10 +43,21 @@ export function setupMenuButtonEvents() {
       } else {
         // 打开菜单
         $navigation.removeClass("closing").addClass("show");
-        $(this).addClass("active");
+        $menuBtn.addClass("active");
+        // 更新无障碍属性
+        $menuBtn.attr("aria-expanded", "true");
         $("body").css("overflow", "hidden");
       }
     });
+
+  // 添加键盘导航支持
+  $(".menu-btn").on("keydown", function(e) {
+    // 回车或空格键
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      $(this).trigger("click");
+    }
+  });
 }
 
 /**
