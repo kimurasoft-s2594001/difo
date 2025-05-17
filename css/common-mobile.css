@@ -1,194 +1,338 @@
-@media (max-width: 768px) {
-  :root {
-    --container-padding: 1rem;
-    --h1-size: 2rem;
-    --h2-size: 1.75rem;
-    --h3-size: 1.5rem;
-    --h4-size: 1.25rem;
-    --font-size-base: 14px;
-  }
+:root {
+  --container-padding: 1rem;
+  --h1-size: 2rem;
+  --h2-size: 1.75rem;
+  --h3-size: 1.5rem;
+  --h4-size: 1.25rem;
+  --font-size-base: 14px;
 
-  html {
-    scroll-padding-top: 60px;
-    scroll-behavior: smooth;
-  }
+  /* 移动端特有间距变量 */
+  --spacing-xs: 0.4rem;
+  --spacing-sm: 0.8rem;
+  --spacing-md: 1.2rem;
+  --spacing-lg: 1.8rem;
+  --spacing-xl: 2.4rem;
+}
 
-  main {
-    padding-top: 60px;
-  }
+html {
+  scroll-padding-top: 60px;
+  scroll-behavior: smooth;
+}
 
-  .container-area {
-    min-width: auto;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
-  }
+h1 {
+  font-size: var(--h1-size);
+}
 
-  section {
-    padding: var(--spacing-md) 0;
-  }
+h2 {
+  font-size: var(--h2-size);
+}
 
-  section:first-of-type {
-    padding-top: 20px;
-  }
+h3 {
+  font-size: var(--h3-size);
+}
 
-  /* ===== 头部样式 ===== */
-  .header {
-    height: 60px;
-  }
+h4 {
+  font-size: var(--h4-size);
+}
 
-  .header .logo {
-    margin-left: 15px;
-  }
+main {
+  padding-top: 60px;
+}
 
-  /* 菜单按钮样式 */
-  .menu-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    position: relative;
-    z-index: 110;
-    padding: 10px;
-  }
+.container-area {
+  min-width: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
 
-  .menu-btn .menu-bar {
-    width: 20px;
-    height: 2px;
-    background-color: var(--neutral-dark);
-    margin: 3px 0;
-    transition: all 0.3s ease;
-  }
+section {
+  padding: var(--spacing-md) 0;
+}
 
-  .menu-btn.active .menu-bar {
-    position: absolute;
-    margin: 0;
-  }
+section:first-of-type {
+  padding-top: 20px;
+}
 
-  .menu-btn.active .menu-bar:nth-child(1) {
-    transform: rotate(45deg);
-  }
+/* ===== 头部样式 ===== */
+.header {
+  height: 60px;
+}
 
-  .menu-btn.active .menu-bar:nth-child(2) {
-    opacity: 0;
-  }
+/* 头部容器区域样式 */
+.header-container-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
 
-  .menu-btn.active .menu-bar:nth-child(3) {
-    transform: rotate(-45deg);
-  }
+/* 移动端 Logo 样式 */
+.header .logo {
+  height: 40px;
+  margin-right: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
 
-  /* ===== 导航菜单样式 - 修复版 ===== */
-  .header .navigation {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background-color: rgba(255, 255, 255, 0.98);
-    overflow: hidden;
-    transition: height 0.3s ease;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    display: block; /* 确保是块级显示 */
-  }
+/* 移动端特殊 Logo 处理 */
+.header .logo img {
+  height: 40px; /* 修改为40px */
+  width: auto;
+  max-width: none;
+  position: relative;
+  top: 0; /* 重置顶部偏移 */
+  margin: 0 auto; /* 居中 */
+  object-fit: contain;
+  object-position: center;
+}
 
-  .header .navigation.show {
-    height: 350px;
-    overflow-y: auto;
-  }
+/* 菜单按钮样式 */
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: relative;
+  z-index: 110;
+  padding: 10px;
+}
 
-  /* 导航菜单项 - 确保每项占满一行 */
-  .header .navigation a {
-    display: block; /* 确保是块级元素 */
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    padding: 0 30px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    text-align: left; /* 文本左对齐 */
-    white-space: nowrap; /* 防止文本换行 */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    box-sizing: border-box; /* 确保内边距不会增加宽度 */
-  }
+.menu-btn .menu-bar {
+  width: 20px;
+  height: 2px;
+  background-color: var(--neutral-dark);
+  margin: 3px 0;
+  transition: all 0.3s ease;
+}
 
-  /* 移除可能导致布局问题的样式 */
-  .header .navigation a::after {
-    display: none;
-  }
+.menu-btn.active .menu-bar {
+  position: absolute;
+  margin: 0;
+}
 
-  /* 活动菜单项样式 */
-  .navigation a.active {
-    background-color: rgba(227, 240, 235, 0.5);
-    border-left: 4px solid #20764a;
-    padding-left: 26px;
-    font-weight: 500;
-    color: #20764a;
-  }
+.menu-btn.active .menu-bar:nth-child(1) {
+  transform: rotate(45deg);
+}
 
-  /* 移除可能导致布局问题的伪元素 */
-  .navigation a.active::after,
-  .navigation a.active::before {
-    display: none;
-  }
+.menu-btn.active .menu-bar:nth-child(2) {
+  opacity: 0;
+}
 
-  /* 菜单项悬停效果 */
-  .navigation a:hover {
-    background-color: rgba(227, 240, 235, 0.3);
-  }
+.menu-btn.active .menu-bar:nth-child(3) {
+  transform: rotate(-45deg);
+}
 
-  /* 活动菜单项悬停效果 */
-  .navigation a.active:hover {
-    background-color: rgba(227, 240, 235, 0.6);
-  }
+/* ===== 导航菜单样式 - 修复版 ===== */
+.header .navigation {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.98);
+  overflow: hidden;
+  transition: height 0.3s ease;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: block; /* 确保是块级显示 */
+}
 
-  /* ===== 侧边导航样式 ===== */
-  .side-navi {
-    right: 10px;
-  }
+.header .navigation.show {
+  height: 350px;
+  overflow-y: auto;
+}
 
-  /* 移动端上禁用hover效果，使用active替代 */
-  .side-navi a:hover svg {
-    /* 移动端上禁用hover效果 */
-    fill: transparent;
-    transform: none;
-  }
-  
-  .side-navi a:active svg {
-    /* 使用active代替hover */
-    fill: var(--white);
-    transform: scale(1.2);
-  }
+/* 导航菜单项 - 确保每项占满一行 */
+.header .navigation a {
+  display: block; /* 确保是块级元素 */
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: left; /* 文本左对齐 */
+  white-space: nowrap; /* 防止文本换行 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box; /* 确保内边距不会增加宽度 */
+}
 
-  /* ===== 页脚样式 ===== */
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+/* 移除可能导致布局问题的样式 */
+.header .navigation a::after {
+  display: none;
+}
 
-  .footer-content > div.footer-logo {
-    display: none;
-  }
+/* 活动菜单项样式 */
+.navigation a.active {
+  background-color: rgba(227, 240, 235, 0.5);
+  border-left: 4px solid #20764a;
+  padding-left: 26px;
+  font-weight: 500;
+  color: #20764a;
+}
 
-  .footer-content > div {
-    padding-top: 1rem;
-  }
+/* 移除可能导致布局问题的伪元素 */
+.navigation a.active::after,
+.navigation a.active::before {
+  display: none;
+}
 
-  /* ===== 按钮样式 ===== */
-  .btn {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.9rem;
-  }
+/* 菜单项悬停效果 */
+.navigation a:hover {
+  background-color: rgba(227, 240, 235, 0.3);
+}
 
-  /* ===== 登录按钮样式 ===== */
-  .login-link {
-    background-color: var(--primary-light);
-    color: var(--primary-color);
-    text-align: center;
-    font-weight: 600 !important;
-  }
+/* 活动菜单项悬停效果 */
+.navigation a.active:hover {
+  background-color: rgba(227, 240, 235, 0.6);
+}
+
+/* ===== 侧边导航样式 ===== */
+.side-navi {
+right: 10px;
+  z-index: 50;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+align-items: center;
+flex-direction: column;
+top: 50%;
+  transform: translateY(-50%);
+}
+
+.side-navi a {
+width: 10px;
+height: 10px;
+  margin: 8px 0;
+  position: relative;
+  display: block;
+}
+
+.side-navi svg {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--primary-color);
+  stroke-width: 2px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
+}
+
+/* 移动端上禁用hover效果，使用active替代 */
+.side-navi a:hover svg {
+  /* 移动端上禁用hover效果 */
+  fill: transparent;
+  transform: none;
+}
+
+.side-navi a:active svg,
+.side-navi a.active svg {
+  /* 使用active代替hover */
+  fill: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* ===== 页脚样式 ===== */
+.footer-content {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.footer-content > div.footer-logo {
+  display: none;
+}
+
+.footer-content > div {
+  padding-top: 1rem;
+}
+
+/* SNS图标和社交媒体链接的移动端样式 */
+.footer-sns-icon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.footer-sns svg {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+  /* 确保SVG内部填充是白色 */
+  fill: #ffffff;
+}
+
+.footer-sns-icon svg {
+  width: 28px;
+  height: 28px;
+  /* 限制SVG大小，防止显示过大 */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.footer-sns svg:active {
+  transform: scale(1.2);
+}
+
+/* 页脚标题样式 */
+.footer-content h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+/* 页脚链接和文本样式 */
+.footer-content a,
+.footer-content p {
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.footer-content a {
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+
+.footer-content p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 版权信息样式 */
+.footer-meta {
+  padding: 1rem 0;
+  font-size: 0.75rem;
+}
+
+/* ===== 按钮样式 ===== */
+.btn {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* ===== 登录按钮样式 ===== */
+.login-link {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  text-align: center;
+  font-weight: 600 !important;
+}
+
+/* 统一标题区样式 */
+.section-title {
+  margin-bottom: 2rem;
+}
+
+.section-title h4,
+.section-title h2 {
+  padding-bottom: 0.8rem;
 }
 
 /* 超小屏幕设备调整 */
@@ -196,6 +340,23 @@
   .btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.85rem;
+  }
+
+  /* 调整超小屏幕的SNS图标大小 */
+  .footer-sns svg,
+  .footer-sns-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* 更紧凑的页脚间距 */
+  .footer-content {
+    gap: 1rem;
+  }
+
+  /* 超小屏幕的logo调整 */
+  .header .logo {
+    height: 35px;
   }
 }
 

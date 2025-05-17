@@ -1,0 +1,356 @@
+:root {
+  /* 标题字体大小 */
+  --h1-size: 2.5rem;
+  --h2-size: 2rem;
+  --h3-size: 1.75rem;
+  --h4-size: 1.5rem;
+
+  /* 间距变量 */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 5rem;
+
+  /* 容器宽度 */
+  --container-width: 1200px;
+  --container-area-width: 1200px; /* 添加容器区域宽度 */
+  --container-padding: 2rem;
+
+  /* 导航和页脚相关 */
+  --logo-height-width: 50px;
+  --header-height: calc(var(--logo-height-width) + 20px);
+  --footer-height: 400px;
+  --footer-padding-top: 3rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* 与桌面版导航栏高度相同 */
+}
+
+h1 {
+  font-size: var(--h1-size);
+}
+
+h2 {
+  font-size: var(--h2-size);
+}
+
+h3 {
+  font-size: var(--h3-size);
+}
+
+h4 {
+  font-size: var(--h4-size);
+}
+
+/* 容器 */
+.container-area {
+  max-width: var(--container-width);
+  padding: 0 var(--container-padding);
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+/* 布局和间距 */
+section {
+  padding: var(--spacing-lg) 0;
+  position: relative;
+  width: 100%;
+  min-height: var(--spacing-xl);
+  scroll-snap-align: start;
+}
+
+/* 导航栏样式优化 */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* 桌面端header-container-area样式 */
+.header-container-area {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--container-padding);
+}
+
+/* 桌面端 Logo 样式 */
+.header .logo {
+  height: 50px;
+  margin-right: 20px;
+  max-width: 140px;
+  display: flex;
+  align-items: center;
+}
+
+/* 桌面端特殊 Logo 处理 */
+.header .logo img {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+}
+
+/* 更新导航链接样式 */
+.header .navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+.header .navigation a {
+  color: var(--neutral-dark);
+  padding: 0 15px;
+  height: 70px;
+  line-height: 70px;
+  position: relative;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  min-width: max-content;
+}
+
+/* 当前页面对应的导航项悬停效果 */
+.navigation a.active:hover {
+  background-color: rgba(32, 118, 74, 0.12);
+}
+
+/* 导航项底部线条效果 */
+.header .navigation a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.header .navigation a:hover::after,
+.header .navigation a.active::after {
+  width: 80%;
+  left: 10%;
+}
+
+/* 修改登录按钮样式为更简洁的链接式设计 */
+.login-link {
+  color: var(--primary-color) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease;
+}
+
+.login-link:hover {
+  opacity: 0.85;
+}
+
+/* 主内容区 */
+main {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  padding-top: var(--header-height);
+}
+
+/* 侧边导航 */
+.side-navi {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.side-navi a {
+  width: 12px;
+  height: 12px;
+  margin: 10px 0;
+  position: relative;
+  display: block;
+}
+
+.side-navi svg {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--primary-color);
+  stroke-width: 2px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
+}
+
+.side-navi a:hover svg,
+.side-navi a.active svg {
+  fill: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* 统一标题区样式 */
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title h4,
+.section-title h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title h4::after,
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 深色背景的样式 */
+.dark .section-title h4::after,
+.dark .section-title h2::after {
+  background-color: var(--accent-color);
+}
+
+/* 按钮样式 */
+.btn {
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-light:hover {
+  color: var(--white);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* 页脚 */
+.footer {
+  background-color: var(--neutral-dark);
+  color: var(--text-light);
+  padding-top: var(--footer-padding-top);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-content > div {
+  border-top: 2px solid var(--primary-color);
+  padding-top: 1.5rem;
+}
+
+.footer-logo {
+  border-top: none !important;
+}
+
+/* 页脚中logo的样式 */
+.footer-logo .logo {
+  height: 260px;
+  margin-bottom: 1rem;
+}
+
+.footer-logo .logo img {
+  height: 100%;
+  width: auto;
+}
+
+.footer-content h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-content a {
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  margin-bottom: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.footer-content p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* SNS图标样式 */
+.footer-sns-icon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-sns svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+  fill: #ffffff; /* 确保SVG填充为白色 */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.footer-sns-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-sns svg:hover {
+  transform: scale(1.2);
+}
+
+.footer-meta {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.menu-btn {
+  display: none; /* 在桌面版上不显示 */
+}

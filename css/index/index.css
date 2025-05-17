@@ -165,7 +165,7 @@
   position: absolute;
   width: 50px;
   height: 3px;
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -279,7 +279,7 @@
   position: absolute;
   width: 50px;
   height: 3px;
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   bottom: 0;
   left: 0;
 }
