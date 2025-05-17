@@ -160,25 +160,6 @@ function initAnimations() {
     }, 100)
   );
 
-  // 平滑滚动处理
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      const targetId = this.getAttribute("href");
-      const targetElement = document.querySelector(targetId);
-
-      if (targetElement) {
-        const offsetTop = targetElement.offsetTop - 70;
-
-        window.scrollTo({
-          top: offsetTop,
-          behavior: "smooth",
-        });
-      }
-    });
-  });
-
   // 处理菜单按钮点击
   const menuBtn = document.querySelector(".menu-btn");
   const nav = document.querySelector(".navigation");
@@ -244,19 +225,15 @@ function initNavAnimation() {
       }
     });
 
-  // 点击导航链接关闭菜单
+  // 点击导航链接后直接关闭菜单
   $(".navigation a").on("click", function () {
-    if ($(window).width() <= 768) {
-      const $navigation = $(".navigation");
-      const $menuBtn = $(".menu-btn");
+    if ($(".navigation").hasClass("show")) {
+      // 直接移除show类，立即关闭菜单
+      $(".navigation").removeClass("show");
+      $(".menu-btn").removeClass("active");
 
-      $navigation.addClass("closing");
-      $menuBtn.removeClass("active");
-
-      setTimeout(function () {
-        $navigation.removeClass("show closing");
-        $("body").css("overflow", "");
-      }, 400);
+      // 恢复页面滚动
+      $("body").css("overflow", "");
     }
   });
 
